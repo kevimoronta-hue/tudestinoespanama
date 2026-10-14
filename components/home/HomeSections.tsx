@@ -229,42 +229,183 @@ export function MomentsSection({ dict }: { dict: Dictionary }) {
 
 /* ---------- Why Panama — open editorial list on sand ---------- */
 
-const WHY: { key: keyof Dictionary["home"]["why"]["items"]; to: (l: Locale) => string }[] = [
-  { key: "connectivity", to: (l) => href("invest", l) },
-  { key: "diversity", to: (l) => href("discover", l, { cat: "regiones" }) },
-  { key: "logistics", to: (l) => `${href("invest", l)}#sectores` },
-  { key: "nature", to: (l) => href("discover", l, { cat: "naturaleza" }) },
-  { key: "community", to: (l) => href("live", l) },
-  { key: "position", to: (l) => href("articles", l) },
+type WhyKey = keyof Dictionary["home"]["why"]["items"];
+type WhyVariant = "feature" | "overlay" | "split" | "tall";
+
+/*
+ * One real, location-verified photo per idea (scripts/build-perspectivas-images.py).
+ * Visual order tells a story: moving through Panama → where it sits → what moves through it,
+ * then how people live there. Desktop: a large card with two stacked companions, mirrored
+ * below (two split cards + one tall card). Phones: one strong card per swipe.
+ */
+const WHY: {
+  key: WhyKey;
+  to: (l: Locale) => string;
+  image: string;
+  position: string;
+  variant: WhyVariant;
+  tone?: "light" | "ocean";
+  /** Split cards: photo on the right instead of the left. */
+  flip?: boolean;
+  grid: string;
+}[] = [
+  {
+    key: "connectivity",
+    to: (l) => href("invest", l),
+    image: "/images/perspectivas/conectividad-vuelo-panama.webp",
+    position: "object-[30%_45%] lg:object-[18%_40%]",
+    variant: "feature",
+    grid: "lg:col-span-7 lg:row-span-2",
+  },
+  {
+    key: "position",
+    to: (l) => href("articles", l),
+    image: "/images/perspectivas/posicion-calzada-amador.webp",
+    position: "object-[45%_55%]",
+    variant: "overlay",
+    grid: "lg:col-span-5",
+  },
+  {
+    key: "logistics",
+    to: (l) => `${href("invest", l)}#sectores`,
+    image: "/images/perspectivas/logistica-esclusas-canal.webp",
+    position: "object-[50%_72%]",
+    variant: "overlay",
+    grid: "lg:col-span-5",
+  },
+  {
+    key: "nature",
+    to: (l) => href("discover", l, { cat: "naturaleza" }),
+    image: "/images/perspectivas/naturaleza-isla-coiba.webp",
+    position: "object-[40%_40%]",
+    variant: "split",
+    tone: "ocean",
+    grid: "lg:col-span-7 lg:mt-7",
+  },
+  {
+    key: "diversity",
+    to: (l) => href("discover", l, { cat: "regiones" }),
+    image: "/images/perspectivas/regiones-valle-chiriqui.webp",
+    position: "object-[42%_62%]",
+    variant: "tall",
+    grid: "lg:col-span-5 lg:row-span-2 lg:mt-7",
+  },
+  {
+    key: "community",
+    to: (l) => href("live", l),
+    image: "/images/perspectivas/comunidad-paseo-casco-ancho.webp",
+    position: "object-[30%_80%]",
+    variant: "split",
+    tone: "light",
+    flip: true,
+    grid: "lg:col-span-7",
+  },
 ];
+
+/** "Ver más": text + small arrow; hover nudges the arrow 2px and deepens the colour. */
+function MoreLabel({ label, title, tone, push = true }: { label: string; title: string; tone: "light" | "dark"; push?: boolean }) {
+  return (
+    <span
+      className={`${push ? "mt-auto" : ""} inline-flex items-center gap-1.5 pt-5 font-display text-[0.9rem] font-bold transition-colors duration-[160ms] ${EASE} ${
+        tone === "light" ? "text-white/80 group-hover:text-white" : "text-blue-800 group-hover:text-ink"
+      }`}
+    >
+      {label}
+      <span className="sr-only">: {title}</span>
+      <Icon name="arrowRight" size={16} className={`transition-transform duration-[160ms] ${EASE} group-hover:translate-x-0.5`} />
+    </span>
+  );
+}
+
+function WhyCard({ w, locale, dict }: { w: (typeof WHY)[number]; locale: Locale; dict: Dictionary }) {
+  const item = dict.home.why.items[w.key];
+  const photo = (sizes: string) => (
+    <Image
+      src={w.image}
+      alt=""
+      fill
+      sizes={sizes}
+      className={`object-cover ${w.position} transition-transform duration-[180ms] ${EASE} group-hover:scale-[1.02]`}
+    />
+  );
+  const link = (
+    <Link href={w.to(locale)} className="outline-none after:absolute after:inset-0 after:z-10 after:content-['']">
+      {item.title}
+    </Link>
+  );
+  const shell = `group relative isolate flex h-full overflow-hidden rounded-[var(--radius-card)] transition-transform duration-[160ms] ${EASE} active:scale-[0.98] has-[a:focus-visible]:outline-3 has-[a:focus-visible]:outline-offset-3 has-[a:focus-visible]:outline-blue-600`;
+  const title = "font-display font-bold leading-[1.18] tracking-tight";
+
+  // Full-bleed photo, text on a bottom gradient.
+  if (w.variant === "feature" || w.variant === "overlay") {
+    const feature = w.variant === "feature";
+    return (
+      <article
+        className={`${shell} card-depth-dark min-h-[460px] flex-col justify-end bg-ocean-deep text-white ${feature ? "lg:min-h-[640px]" : "lg:min-h-[310px]"}`}
+      >
+        <div className="absolute inset-0 -z-10">{photo(feature ? "(min-width: 1024px) 720px, 86vw" : "(min-width: 1024px) 520px, 86vw")}</div>
+        <div
+          aria-hidden="true"
+          className={`absolute inset-0 -z-10 ${
+            feature
+              ? "bg-[linear-gradient(180deg,rgb(5_25_38/0)_40%,rgb(5_25_38/0.5)_68%,rgb(5_25_38/0.9)_100%)]"
+              : "bg-[linear-gradient(180deg,rgb(5_25_38/0)_18%,rgb(5_25_38/0.55)_52%,rgb(5_25_38/0.92)_100%)]"
+          }`}
+        />
+        <div className={`flex flex-col p-6 sm:p-7 ${feature ? "lg:max-w-[30rem] lg:p-10" : ""}`}>
+          <h3 className={`${title} !text-white ${feature ? "text-[1.6rem] sm:text-[2.1rem]" : "text-[1.35rem] sm:text-[1.45rem]"}`}>{link}</h3>
+          <p className={`mt-2 max-w-[36ch] leading-relaxed text-white/85 ${feature ? "text-[1.05rem]" : "text-[0.97rem]"}`}>{item.text}</p>
+          <MoreLabel label={dict.home.why.more} title={item.title} tone="light" />
+        </div>
+      </article>
+    );
+  }
+
+  // Tall: photo takes most of the height, text below on white.
+  if (w.variant === "tall") {
+    return (
+      <article className={`${shell} card-depth min-h-[460px] flex-col bg-white lg:min-h-[640px]`}>
+        <div className="relative min-h-[240px] flex-1 overflow-hidden">{photo("(min-width: 1024px) 520px, 86vw")}</div>
+        <div className="flex flex-col p-6 sm:p-7">
+          <h3 className={`${title} text-[1.3rem] sm:text-[1.4rem]`}>{link}</h3>
+          <p className="mt-2 max-w-[36ch] text-[0.97rem] leading-relaxed text-muted">{item.text}</p>
+          <MoreLabel label={dict.home.why.more} title={item.title} tone="dark" />
+        </div>
+      </article>
+    );
+  }
+
+  // Split: photo half + text half side by side from `sm`; stacked on phones.
+  const ocean = w.tone === "ocean";
+  return (
+    <article
+      className={`${shell} min-h-[460px] flex-col sm:min-h-0 sm:flex-row ${w.flip ? "sm:flex-row-reverse" : ""} ${
+        ocean ? "surface-ocean card-depth-dark text-white" : "card-depth bg-white"
+      } lg:min-h-[310px]`}
+    >
+      <div className="relative min-h-[240px] flex-1 overflow-hidden sm:min-h-[300px] sm:flex-[1.1] lg:min-h-0">
+        {photo("(min-width: 1024px) 400px, (min-width: 640px) 50vw, 86vw")}
+      </div>
+      <div className="flex flex-col p-6 sm:flex-1 sm:justify-end sm:p-7">
+        <h3 className={`${title} text-[1.3rem] sm:text-[1.4rem] ${ocean ? "!text-white" : ""}`}>{link}</h3>
+        <p className={`mt-2 max-w-[36ch] text-[0.97rem] leading-relaxed ${ocean ? "text-white/80" : "text-muted"}`}>{item.text}</p>
+        <MoreLabel label={dict.home.why.more} title={item.title} tone={ocean ? "light" : "dark"} push={false} />
+      </div>
+    </article>
+  );
+}
 
 export function WhyPanamaSection({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   return (
     <section aria-labelledby="why-title" className="bg-sand py-20 sm:py-28">
-      <div className="container-site grid gap-12 lg:grid-cols-12 lg:gap-16">
-        <div className="lg:col-span-4">
-          <div className="lg:sticky lg:top-[calc(var(--header-h)+40px)]">
-            <SectionHeading id="why-title" eyebrow={dict.home.why.eyebrow} title={dict.home.why.title} intro={dict.home.why.intro} />
-          </div>
-        </div>
-        <ul data-reveal className="grid gap-x-10 sm:grid-cols-2 lg:col-span-8">
-          {WHY.map((w) => {
-            const item = dict.home.why.items[w.key];
-            return (
-              <li key={w.key} className="group relative border-t border-ink/12 py-5 sm:py-7">
-                <h3 className="font-display text-xl font-bold tracking-tight">{item.title}</h3>
-                <p className="mt-2 max-w-[40ch] text-muted">{item.text}</p>
-                <Link
-                  href={w.to(locale)}
-                  className="mt-3 inline-flex min-h-11 items-center gap-1.5 font-display text-sm font-bold text-blue-800 after:absolute after:inset-0 after:content-['']"
-                >
-                  {dict.home.why.more}
-                  <span className="sr-only">: {item.title}</span>
-                  <Icon name="arrowRight" size={16} className={`transition-transform duration-[160ms] ${EASE} group-hover:translate-x-1`} />
-                </Link>
-              </li>
-            );
-          })}
+      <div className="container-site space-y-10 sm:space-y-12">
+        <SectionHeading id="why-title" eyebrow={dict.home.why.eyebrow} title={dict.home.why.title} intro={dict.home.why.intro} />
+        <ul data-reveal className={`${SWIPE_ROW} max-sm:!gap-3 lg:mx-0 lg:grid lg:snap-none lg:grid-cols-12 lg:gap-5 lg:overflow-visible lg:px-0 lg:pb-0`}>
+          {WHY.map((w) => (
+            <li key={w.key} className={`w-[calc(100vw-48px)] shrink-0 snap-center sm:w-[62%] lg:w-auto ${w.grid}`}>
+              <WhyCard w={w} locale={locale} dict={dict} />
+            </li>
+          ))}
         </ul>
       </div>
     </section>

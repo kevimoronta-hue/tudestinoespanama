@@ -277,5 +277,115 @@
    ],
    "sourceOfTruth": "lib/hero-media.ts"
   }
- }
+ },
+ "perspectivas": [
+  {
+   "key": "connectivity",
+   "file": "public/images/perspectivas/conectividad-vuelo-panama.webp",
+   "master": "media/references/p-connect.jpg",
+   "subject": "Avión de pasajeros sobre Panamá",
+   "location": "24 de Diciembre, Panamá (cerca de Tocumen)",
+   "author": "Adrian Avila",
+   "sourcePage": "https://unsplash.com/photos/DrQGnGwwqcs",
+   "fileUrl": "https://images.unsplash.com/photo-1634661421015-d7a995565388",
+   "license": "Unsplash License",
+   "licenseUrl": "https://unsplash.com/license",
+   "attributionRequired": false,
+   "resolution": {
+    "width": 2913,
+    "height": 1942
+   },
+   "locationEvidence": "contentLocation Unsplash: '24 de Diciembre, Panamá'."
+  },
+  {
+   "key": "position",
+   "file": "public/images/perspectivas/posicion-calzada-amador.webp",
+   "master": "media/references/p-position.jpg",
+   "subject": "Calzada de Amador, Biomuseo y buques en espera a la entrada del Canal",
+   "location": "Calzada de Amador, Ciudad de Panamá",
+   "author": "Sol Cerrud",
+   "sourcePage": "https://unsplash.com/photos/mRWn0LWr-6I",
+   "fileUrl": "https://images.unsplash.com/photo-1717434487126-08263623e49c",
+   "license": "Unsplash License",
+   "licenseUrl": "https://unsplash.com/license",
+   "attributionRequired": false,
+   "resolution": {
+    "width": 4032,
+    "height": 2268
+   },
+   "locationEvidence": "contentLocation Unsplash: 'Calzada de Amador, Panamá'."
+  },
+  {
+   "key": "logistics",
+   "file": "public/images/perspectivas/logistica-esclusas-canal.webp",
+   "master": "media/references/p-logistics.jpg",
+   "subject": "Buques en las esclusas del Canal bajo el Puente Centenario",
+   "location": "Canal de Panamá (lado Pacífico)",
+   "author": "Alex Pagliuca",
+   "sourcePage": "https://unsplash.com/photos/Vo64g7kwnEo",
+   "fileUrl": "https://images.unsplash.com/photo-1650900426337-0f7c0e0f86ea",
+   "license": "Unsplash License",
+   "licenseUrl": "https://unsplash.com/license",
+   "attributionRequired": false,
+   "resolution": {
+    "width": 6000,
+    "height": 4000
+   },
+   "locationEvidence": "Etiqueta Unsplash 'canal de Panamá'; Puente Centenario visible."
+  },
+  {
+   "key": "diversity",
+   "file": "public/images/perspectivas/regiones-valle-chiriqui.webp",
+   "master": "media/references/p-diversity.jpg",
+   "subject": "Valle de montaña con pueblo y río",
+   "location": "Chiriquí, Panamá",
+   "author": "BETZY AROSEMENA",
+   "sourcePage": "https://unsplash.com/photos/PxXWXsHTBCY",
+   "fileUrl": "https://images.unsplash.com/photo-1604401442263-e570cbcc68cf",
+   "license": "Unsplash License",
+   "licenseUrl": "https://unsplash.com/license",
+   "attributionRequired": false,
+   "resolution": {
+    "width": 6000,
+    "height": 4000
+   },
+   "locationEvidence": "contentLocation Unsplash: 'Chiriqui, Panama'."
+  },
+  {
+   "key": "nature",
+   "file": "public/images/perspectivas/naturaleza-isla-coiba.webp",
+   "master": "media/references/p-nature.jpg",
+   "subject": "Isla de Coiba: bosque, playa y arrecife (aérea)",
+   "location": "Isla de Coiba, Panamá",
+   "author": "Franz Schäfer",
+   "sourcePage": "https://unsplash.com/photos/0OMc3Vu-rF0",
+   "fileUrl": "https://images.unsplash.com/photo-1639765365918-311093da9e58",
+   "license": "Unsplash License",
+   "licenseUrl": "https://unsplash.com/license",
+   "attributionRequired": false,
+   "resolution": {
+    "width": 2986,
+    "height": 3739
+   },
+   "locationEvidence": "contentLocation Unsplash: 'Isla de Coiba, Panama'."
+  },
+  {
+   "key": "community",
+   "file": "public/images/perspectivas/comunidad-paseo-casco-ancho.webp",
+   "master": "media/references/p-communityB.jpg",
+   "subject": "Paseo del Casco Antiguo con personas paseando",
+   "location": "Casco Antiguo, Ciudad de Panamá",
+   "author": "Richie Gomez",
+   "sourcePage": "https://unsplash.com/photos/nc9aGu0fOPY",
+   "fileUrl": "https://images.unsplash.com/photo-1675352660999-d57003508a73",
+   "license": "Unsplash License",
+   "licenseUrl": "https://unsplash.com/license",
+   "attributionRequired": false,
+   "resolution": {
+    "width": 5472,
+    "height": 3648
+   },
+   "locationEvidence": "contentLocation Unsplash: 'Casco Antiguo, Panama'. Recorte sin la pareja con mascarilla del primer plano."
+  }
+ ]
 }
