@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getDictionary } from "@/lib/dictionaries";
+import { HERO_MEDIA } from "@/lib/hero-media";
 import { localeMeta, locales, routeAlternates, type Locale, type RouteKey } from "@/lib/i18n";
 import { absoluteUrl, hasSiteUrl, SITE_URL } from "@/lib/site";
 
@@ -18,9 +19,9 @@ interface MetaInput {
 }
 
 const DEFAULT_OG = {
-  src: "/video/hero-panama-desktop-poster.webp",
-  width: 1920,
-  height: 1080,
+  src: HERO_MEDIA.desktop.poster,
+  width: HERO_MEDIA.desktop.width,
+  height: HERO_MEDIA.desktop.height,
 };
 
 export function buildMetadata(input: MetaInput): Metadata {

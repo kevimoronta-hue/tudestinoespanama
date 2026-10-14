@@ -8,19 +8,21 @@
 #   Cada clip debe durar al menos OFFSET + 2.0 s.
 #
 # Salidas (en $OUT_DIR, por defecto public/video/):
-#   hero-panama-desktop-16x9.mp4   1920×1080, 24 fps, 10,0 s, 240 fotogramas
-#   hero-panama-mobile-9x16.mp4    1080×1920, 24 fps, 10,0 s, 240 fotogramas
+#   hero-panama-<versión>-desktop-16x9.mp4   1920×1080, 24 fps, 10,0 s, 240 fotogramas
+#   hero-panama-<versión>-mobile-9x16.mp4    1080×1920, 24 fps, 10,0 s, 240 fotogramas
+#   <versión> = HERO_VERSION de lib/hero-media.ts (fuente única). /video/* se sirve como
+#   "immutable": para un montaje nuevo, sube HERO_VERSION; nunca sobrescribas un archivo publicado.
 #   (+ .webm VP9 con --webm, + pósters WebP con --posters)
 #
 # Montaje: 5 × 2,000 s, cortes secos (filtro concat, sin fundidos), sin audio,
-# H.264 High, CRF 23 (16x9) / 26 (9x16) — overridable with CRF_16x9 / CRF_9x16, preset slow, +faststart.
+# H.264 High, CRF 26 (16x9) / 29 (9x16) — overridable with CRF_16x9 / CRF_9x16, preset slow, +faststart.
 #
 # Uso:
 #   scripts/build-hero-video.sh [--only 16x9|9x16] [--posters] [--webm] [-h]
 #
 # Opciones:
 #   --only 16x9|9x16  Construye solo una orientación (solo exige esos 5 clips).
-#   --posters         Regenera los pósters WebP desde el último fotograma.
+#   --posters         Regenera los pósters WebP desde el primer fotograma (sin salto póster → vídeo).
 #                     Por defecto NO se tocan los pósters existentes.
 #   --webm            Genera además una versión WebM (VP9).
 #   -h, --help        Muestra esta ayuda.
@@ -45,6 +47,8 @@ OUT_DIR="${OUT_DIR:-$PROJECT_ROOT/public/video}"
 DEFAULT_OFFSET="${DEFAULT_OFFSET:-0.3}"
 
 # v2 (2026-10-14): fotos HD Unsplash. v1 (Commons): "01-arrival 02-canal 03-casco 04-skyline 05-nature".
+HERO_VERSION="$(sed -n 's/^export const HERO_VERSION = "\(.*\)";$/\1/p' "$PROJECT_ROOT/lib/hero-media.ts")"
+[ -n "$HERO_VERSION" ] || { echo "ERROR: no se encontró HERO_VERSION en lib/hero-media.ts" >&2; exit 1; }
 SCENES="${SCENES:-01-cinta 02-casco 03-canal 04-isla 05-bahia}"
 SEG_SECONDS="2.000"
 FPS="${FPS:-24}"       # Kling v3.0 entrega 24 fps: se conserva sin duplicar fotogramas
@@ -186,16 +190,15 @@ verify_output() { # $1 = archivo
 make_poster() { # $1 = vídeo, $2 = póster .webp
   local video="$1" poster="$2" png
   png="${poster%.webp}.tmp-poster.png"
-  # Último fotograma: lee el final del archivo y conserva el último decodificado.
-  ffmpeg -hide_banner -loglevel error -y -sseof -0.5 -i "$video" \
-    -update 1 -frames:v 100 "$png"
+  # Primer fotograma: el vídeo arranca exactamente sobre el póster.
+  ffmpeg -hide_banner -loglevel error -y -i "$video" -frames:v 1 "$png"
   if ffmpeg -hide_banner -encoders 2>/dev/null | grep -q libwebp; then
-    ffmpeg -hide_banner -loglevel error -y -i "$png" -c:v libwebp -quality 82 "$poster"
+    ffmpeg -hide_banner -loglevel error -y -i "$png" -c:v libwebp -quality 55 "$poster"
   elif command -v cwebp >/dev/null 2>&1; then
-    cwebp -quiet -q 82 "$png" -o "$poster"
+    cwebp -quiet -q 55 "$png" -o "$poster"
   elif command -v python3 >/dev/null 2>&1 && \
       python3 -c "from PIL import features; import sys; sys.exit(0 if features.check('webp') else 1)" 2>/dev/null; then
-    python3 -c "import sys; from PIL import Image; Image.open(sys.argv[1]).save(sys.argv[2], 'WEBP', quality=82, method=6)" "$png" "$poster"
+    python3 -c "import sys; from PIL import Image; Image.open(sys.argv[1]).save(sys.argv[2], 'WEBP', quality=55, method=6)" "$png" "$poster"
   else
     rm -f "$png"
     die "no hay codificador WebP (ffmpeg libwebp, cwebp o Python PIL); póster no generado."
@@ -208,9 +211,9 @@ make_poster() { # $1 = vídeo, $2 = póster .webp
 status=0
 for o in $ORIENTATIONS; do
   if [ "$o" = "16x9" ]; then
-    W=1920; H=1080; CRF="${CRF_16x9:-23}"; NAME="hero-panama-desktop-16x9"; POSTER="hero-panama-desktop-poster.webp"; MAX=$MAX_DESKTOP_BYTES
+    W=1920; H=1080; CRF="${CRF_16x9:-26}"; NAME="hero-panama-$HERO_VERSION-desktop-16x9"; POSTER="hero-panama-$HERO_VERSION-desktop-poster.webp"; MAX=$MAX_DESKTOP_BYTES
   else
-    W=1080; H=1920; CRF="${CRF_9x16:-26}"; NAME="hero-panama-mobile-9x16"; POSTER="hero-panama-mobile-poster.webp"; MAX=$MAX_MOBILE_BYTES
+    W=1080; H=1920; CRF="${CRF_9x16:-29}"; NAME="hero-panama-$HERO_VERSION-mobile-9x16"; POSTER="hero-panama-$HERO_VERSION-mobile-poster.webp"; MAX=$MAX_MOBILE_BYTES
   fi
 
   echo "== $o → $OUT_DIR/$NAME.mp4" >&2

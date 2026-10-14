@@ -1,36 +1,33 @@
-# Fuentes de imágenes — Hero y secciones
+# Fuentes de imágenes — sitio y video de portada
 
-Versión legible por máquina: [`data/media-sources.json`](../data/media-sources.json).
+Versión legible por máquina: [`data/media-sources.json`](../data/media-sources.json) (`webPhotos`, `heroVideo`).
 
-- **Fecha de obtención:** 2026-10-14
-- **Método:** API de Wikimedia Commons (`prop=imageinfo`, `extmetadata`). Autor, licencia y resolución se volvieron a consultar el 2026-10-14 y coinciden con `media/references/meta.json`.
-- **Uso:** cada foto es el fotograma inicial de un clip image-to-video (escena del hero) y tiene además un derivado web WebP.
+## Estado actual (2026-10-14)
 
-## Resumen
+Todas las imágenes publicadas proceden de 5 fotografías **Unsplash** (licencia Unsplash: uso libre, atribución no obligatoria; se acreditan igualmente en Nosotros → Créditos).
 
-| # | Escena | Archivo local | Autor | Licencia | Atribución obligatoria | Derivado web |
-|---|--------|---------------|-------|----------|------------------------|--------------|
-| 1 | Llegada | `01-arrival.jpg` | Dronepicr | CC BY 3.0 | Sí | `public/images/panama-city-bahia-aerea.webp` |
-| 2 | Canal | `02-canal.jpg` | U.S. Department of State | Dominio público | No | `public/images/canal-esclusas-miraflores.webp` |
-| 3 | Identidad / Casco Antiguo | `03-casco.jpg` | David Broad | CC BY 3.0 | Sí | `public/images/casco-antiguo-fachada.webp` |
-| 4 | Modernidad / Skyline | `04-skyline.jpg` | dronepicr | CC BY 2.0 | Sí | `public/images/skyline-cinta-costera.webp` |
-| 5 | Apertura / Naturaleza | `05-nature.jpg` | Ayaita | CC BY 3.0 | Sí | `public/images/guna-yala-isla.webp` |
-
-Los pósters `public/video/hero-panama-desktop-poster.webp` (1920×1080) y `public/video/hero-panama-mobile-poster.webp` (1080×1920) derivan de los recortes de la escena 5 y llevan el mismo crédito.
-
-### Archivos derivados (medidos con `ffprobe` el 2026-10-14)
+| Escena | Master local (no versionado) | Autor | Derivados |
+|---|---|---|---|
+| Bahía al atardecer | `media/references/u-bahia.jpg` 4032×3024 | Sol Cerrud | `public/images/panama-city-bahia-aerea.webp`, plano 5 del hero |
+| Esclusas de Miraflores | `media/references/u-canalA.jpg` 4032×3024 | Rikin Katyal | `public/images/canal-esclusas-miraflores.webp`, plano 3 |
+| Casco Antiguo | `media/references/u-casco.jpg` 3740×2494 | Kaori Hirakata | `public/images/casco-antiguo-fachada.webp`, plano 2 |
+| Cinta Costera | `media/references/u-cinta.jpg` 5464×3070 | Luis Aleman | `public/images/skyline-cinta-costera.webp`, plano 1 + pósters |
+| San Blas (Guna Yala) | `media/references/u-isla.jpg` 4000×3000 | Azzedine Rouichi | `public/images/guna-yala-isla.webp`, plano 4 |
 
 | Archivo | Dimensiones |
 |---------|-------------|
-| `media/references/frames/*-16x9.jpg` (5 archivos) | 1920×1080 |
-| `media/references/frames/*-9x16.jpg` (5 archivos) | 1080×1920 |
-| `public/images/*.webp` (5 archivos, Unsplash, ver `webPhotos` en `data/media-sources.json`; `scripts/build-web-images.py`) | 2560×1600 |
-| `public/video/hero-panama-desktop-poster.webp` | 1920×1080 |
-| `public/video/hero-panama-mobile-poster.webp` | 1080×1920 |
+| `public/images/*.webp` (5, `scripts/build-web-images.py`) | 2560×1600 |
+| `media/references/frames-v2/*-16x9.jpg` / `*-9x16.jpg` (fotogramas de inicio del hero) | 1920×1080 / 1080×1920 |
+| `public/video/hero-panama-v2-desktop-16x9.mp4` + `-desktop-poster.webp` | 1920×1080 |
+| `public/video/hero-panama-v2-mobile-9x16.mp4` + `-mobile-poster.webp` | 1080×1920 |
 
-Los puntos focales que se indican abajo **se estimaron a posteriori** comparando cada recorte con su original (búsqueda de la mejor coincidencia, suponiendo un recorte de tipo *cover* sin zoom adicional). Son aproximados (±0,02).
+Fuente única de las rutas del hero: `lib/hero-media.ts` (`HERO_VERSION`). `/video/*` se sirve como *immutable*: un montaje nuevo lleva siempre un nombre nuevo.
 
 ---
+
+## Historial — fuentes Wikimedia Commons v1 (retiradas el 2026-10-14)
+
+Ya no se publican. Los originales, los recortes `media/references/frames/`, `meta.json` y los clips v1 se eliminaron del proyecto (los archivos versionados siguen en el historial git). Se conserva el detalle de atribución de abajo como registro.
 
 ## 1 · Llegada — `01-arrival`
 

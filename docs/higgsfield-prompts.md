@@ -4,14 +4,15 @@
 
 | Archivo | Formato | Duración | Peso |
 | --- | --- | --- | --- |
-| `public/video/hero-panama-desktop-16x9.mp4` | 1920×1080, H.264 High, 24 fps, sin audio, faststart, CRF 26 | 10,000 s (240 fotogramas) | 7,2 MB |
-| `public/video/hero-panama-mobile-9x16.mp4` | 1080×1920, H.264 High, 24 fps, sin audio, faststart, CRF 29 | 10,000 s (240 fotogramas) | 4,4 MB |
-| `public/video/hero-panama-{desktop,mobile}-poster.webp` | primer fotograma del montaje (sin salto póster → vídeo), WebP q55 | — | 172 / 179 KB |
+| `public/video/hero-panama-v2-desktop-16x9.mp4` | 1920×1080, H.264 High, 24 fps, sin audio, faststart, CRF 26 | 10,000 s (240 fotogramas) | 7,2 MB |
+| `public/video/hero-panama-v2-mobile-9x16.mp4` | 1080×1920, H.264 High, 24 fps, sin audio, faststart, CRF 29 | 10,000 s (240 fotogramas) | 4,4 MB |
+| `public/video/hero-panama-v2-{desktop,mobile}-poster.webp` | primer fotograma del montaje (sin salto póster → vídeo), WebP q55 | — | 172 / 179 KB |
 
 - **Fotos**: los 5 masters Unsplash de `data/media-sources.json` → `webPhotos` (`media/references/u-*.jpg`, no versionados).
 - **Fotogramas de inicio**: `media/references/frames-v2/{escena}-{16x9,9x16}.jpg`, encuadrados por separado (el 9:16 no es un recorte del vídeo 16:9: un recorte así daría 607×1080 px ampliados ×1,8).
 - **Generación**: Google Flow, **Veo 3.1 Fast**, image-to-video, 8 s, descarga "upscaled" 1080p; 10 clips × 20 créditos = 200 créditos. Proyecto local de descarga: `~/flow-mcp-out/TuDestinoHeroV2/`. Todos los clips aceptados al primer intento.
-- **Montaje**: `CRF_16x9=26 CRF_9x16=29 scripts/build-hero-video.sh` (5 × 2,000 s desde 0,3 s, cortes secos, sin audio). WebM VP9 probado y descartado: más pesado que el MP4 a calidad igual (11,0 / 8,7 MB).
+- **Nombres versionados**: `lib/hero-media.ts` (`HERO_VERSION = "v2"`) es la fuente única para el hero, el póster Open Graph y el script de montaje. `/video/*` se sirve con `Cache-Control: immutable`: la v2 se publicó primero con los nombres de la v1 y los navegadores que ya tenían la v1 en caché la seguían mostrando; desde ahora cada montaje lleva un nombre nuevo.
+- **Montaje**: `scripts/build-hero-video.sh --posters` (CRF 26 / 29 por defecto) (5 × 2,000 s desde 0,3 s, cortes secos, sin audio). WebM VP9 probado y descartado: más pesado que el MP4 a calidad igual (11,0 / 8,7 MB).
 - **QC**: fotogramas 0 / 1 / 2,3 / 4 / 6 / 7,8 s de cada clip. En el tramo usado (0,3–2,3 s) la geometría coincide con la foto. Más allá de ~4 s Veo extiende la escena (más fachadas, resto del buque, olas mayores): esos segundos no se usan.
 
 | # | Escena | Foto | Movimiento (uno por plano) |
@@ -28,7 +29,9 @@ Reglas comunes de los prompts v2 (texto completo en el historial de la sesión /
 
 ---
 
-# Video hero — pipeline Higgsfield (image-to-video)
+# Historial v1 — pipeline Higgsfield / Flow (retirado)
+
+> Los archivos citados en esta sección (clips v1, `media/clips-rejected/`, `media/clips-kling/`, `media/references/frames/`, `data/hero-prompts.json`, `scripts/veo-generate.mjs`) se eliminaron el 2026-10-14; los versionados siguen en el historial git.
 
 Estado al 2026-10-14. Documento honesto: indica lo generado, lo pendiente y cómo terminarlo.
 

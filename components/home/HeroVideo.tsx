@@ -1,20 +1,14 @@
 import { existsSync } from "node:fs";
 import path from "node:path";
 import type { Dictionary } from "@/lib/dictionaries";
+import { HERO_MEDIA } from "@/lib/hero-media";
 import { href, type Locale } from "@/lib/i18n";
 import { buttonClasses } from "../ui/Button";
 import { Icon } from "../ui/Icon";
 import { TrackedLink } from "../ui/TrackedLink";
 import { HeroVideoPlayer } from "./HeroVideoPlayer";
 
-const VIDEO = {
-  mobile: "/video/hero-panama-mobile-9x16.mp4",
-  desktop: "/video/hero-panama-desktop-16x9.mp4",
-};
-const POSTER = {
-  mobile: "/video/hero-panama-mobile-poster.webp",
-  desktop: "/video/hero-panama-desktop-poster.webp",
-};
+const { desktop, mobile } = HERO_MEDIA;
 
 /** A source is only offered once the final montage exists in /public (see scripts/build-hero-video.sh). */
 function available(src: string): string | undefined {
@@ -26,18 +20,18 @@ export function HeroVideo({ locale, dict }: { locale: Locale; dict: Dictionary }
     <section aria-labelledby="hero-title" className="relative isolate flex h-[100svh] min-h-[600px] overflow-hidden bg-ocean-deep text-white">
       {/* Poster: rendered in the HTML, visible immediately and used as LCP element. */}
       <picture>
-        <source media="(min-aspect-ratio: 1/1)" srcSet={POSTER.desktop} type="image/webp" width={1920} height={1080} />
+        <source media="(min-aspect-ratio: 1/1)" srcSet={desktop.poster} type="image/webp" width={desktop.width} height={desktop.height} />
         <img
-          src={POSTER.mobile}
+          src={mobile.poster}
           alt=""
-          width={1080}
-          height={1920}
+          width={mobile.width}
+          height={mobile.height}
           fetchPriority="high"
           decoding="async"
           className="absolute inset-0 h-full w-full object-cover"
         />
       </picture>
-      <HeroVideoPlayer mobileSrc={available(VIDEO.mobile)} desktopSrc={available(VIDEO.desktop)} />
+      <HeroVideoPlayer mobileSrc={available(mobile.video)} desktopSrc={available(desktop.video)} />
 
       {/* Progressive overlay: protects the navbar at the top and the text block. */}
       <div
