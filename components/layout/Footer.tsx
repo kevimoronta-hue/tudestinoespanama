@@ -1,101 +1,87 @@
+import Image from "next/image";
 import Link from "next/link";
 import { getToday } from "@/lib/content";
 import type { Dictionary } from "@/lib/dictionaries";
-import { href, localeMeta, locales, routeAlternates, type Locale } from "@/lib/i18n";
+import { href, routeAlternates, type Locale } from "@/lib/i18n";
 import { showDemoContent } from "@/lib/site";
 import { Flag } from "../ui/Flag";
-import { Icon } from "../ui/Icon";
-import { Logo } from "./Logo";
 
-export async function Footer({ locale, dict, lightLogoSrc }: { locale: Locale; dict: Dictionary; lightLogoSrc: string | null }) {
+/** White-on-blue logo (scripts/build-logo-white.py): the brand blue of the master turned white. */
+const LOGO_RATIO = 1564 / 468;
+
+const link =
+  "inline-flex min-h-11 items-center text-[0.95rem] text-white/75 transition-colors duration-[160ms] ease-[cubic-bezier(0.23,1,0.32,1)] hover:text-white";
+
+/**
+ * Global footer, one for every page and language: logo, a short navigation, then a quiet
+ * legal line. Background = the logo navy (--logo-navy #002870) deepening to --logo-navy-deep (#001d57).
+ * The language switch lives only in the navbar.
+ */
+export async function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const year = (await getToday()).slice(0, 4);
-  const homes = routeAlternates("home");
-
-  const col = (title: string, links: { label: string; href: string }[]) => (
-    <div>
-      <h2 className="font-display text-xs font-bold uppercase tracking-[0.16em] text-white/50">{title}</h2>
-      <ul className="mt-4 space-y-0.5">
-        {links.map((l) => (
-          <li key={l.label}>
-            <Link
-              href={l.href}
-              className="inline-flex min-h-11 items-center text-[0.95rem] text-white/80 transition-colors duration-150 hover:text-white"
-            >
-              {l.label}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+  const nav = [
+    { label: dict.nav.discover, href: href("discover", locale) },
+    { label: dict.nav.live, href: href("live", locale) },
+    { label: dict.nav.invest, href: href("invest", locale) },
+    { label: dict.nav.about, href: href("about", locale) },
+    { label: dict.nav.contact, href: href("contact", locale) },
+  ];
+  const logoH = 64;
 
   return (
     <footer
-      className="relative isolate overflow-hidden bg-ocean-deep text-white"
+      className="relative isolate bg-[linear-gradient(180deg,var(--logo-navy)_0%,var(--logo-navy-deep)_100%)] text-white"
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
     >
-      {/* Night-water depth: a soft lighter swell at the top, darker towards the bottom. */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-[radial-gradient(120%_70%_at_15%_0%,rgb(14_106_128/0.28)_0%,transparent_60%),linear-gradient(180deg,var(--ocean-deep)_0%,var(--ocean-950)_100%)]"
-      />
-
-      <div className="container-site grid gap-12 pb-12 pt-16 sm:pt-20 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] lg:gap-10">
-        <div className="max-w-sm space-y-6">
-          <Link href={homes[locale]} aria-label={dict.nav.logoHome} className="inline-flex">
-            <Logo height={48} alt={dict.meta.siteName} variant="light" lightSrc={lightLogoSrc} />
-          </Link>
-          <p className="text-[0.97rem] leading-relaxed text-white/75">{dict.footer.tagline}</p>
-          <p className="flex gap-2.5 text-sm leading-relaxed text-white/60">
-            <Icon name="heart" size={18} className="mt-0.5 shrink-0 text-[#f3b5bd]" />
-            {dict.footer.commitment}
-          </p>
-        </div>
-        {col(dict.footer.explore, [
-          { label: dict.nav.discover, href: href("discover", locale) },
-          { label: dict.nav.live, href: href("live", locale) },
-          { label: dict.nav.invest, href: href("invest", locale) },
-          { label: dict.nav.explore, href: href("explore", locale) },
-        ])}
-        {col(dict.footer.project, [
-          { label: dict.nav.about, href: href("about", locale) },
-          { label: dict.nav.contact, href: href("contact", locale) },
-          { label: dict.nav.cta, href: href("contact", locale) },
-        ])}
-        {col(dict.footer.legal, [
-          { label: dict.footer.privacy, href: href("privacy", locale) },
-          { label: dict.footer.credits, href: `${href("about", locale)}#creditos` },
-        ])}
-      </div>
-
       <div className="container-site">
-        <nav aria-label={dict.nav.languageList} className="border-t border-white/10 py-5">
-          <ul className="flex flex-wrap gap-x-1 gap-y-1">
-            {locales.map((l) => (
-              <li key={l}>
-                <Link
-                  href={homes[l]}
-                  hrefLang={localeMeta[l].htmlLang}
-                  lang={localeMeta[l].htmlLang}
-                  aria-current={l === locale ? "true" : undefined}
-                  className={`inline-flex min-h-11 items-center gap-2 rounded-full px-3 text-sm transition-colors duration-150 ${
-                    l === locale ? "bg-white/10 text-white" : "text-white/65 hover:text-white"
-                  }`}
-                >
-                  <Flag code={localeMeta[l].flag} size={18} />
-                  {localeMeta[l].name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <div className="flex flex-col gap-9 pb-8 pt-14 sm:pb-12 sm:pt-16 lg:flex-row lg:items-center lg:justify-between lg:gap-12 lg:py-20">
+          <Link href={routeAlternates("home")[locale]} aria-label={dict.nav.logoHome} className="inline-flex self-start">
+            <Image
+              src="/brand/logo-white-480.webp"
+              alt={dict.meta.siteName}
+              width={Math.round(logoH * LOGO_RATIO)}
+              height={logoH}
+              sizes={`${Math.round(logoH * LOGO_RATIO)}px`}
+              className="block h-[52px] w-auto sm:h-[64px]"
+              unoptimized
+            />
+          </Link>
+          <nav aria-label={dict.footer.explore}>
+            <ul className="grid grid-cols-2 gap-x-8 sm:flex sm:flex-wrap sm:gap-x-9 sm:gap-y-1">
+              {nav.map((l) => (
+                <li key={l.label}>
+                  <Link href={l.href} className={link}>
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
 
-        <div className="space-y-2.5 border-t border-white/10 py-6 text-xs leading-relaxed text-white/50">
-          <p>{dict.footer.disclaimer}</p>
-          {showDemoContent ? <p className="text-[#f5d98a]">{dict.footer.demoNotice}</p> : null}
-          <p className="text-white/60">
-            © {year} {dict.footer.rights}
-          </p>
+        <div className="flex flex-col gap-4 border-t border-white/12 py-7 text-[0.85rem] text-white/70 sm:flex-row sm:items-center sm:justify-between lg:py-9">
+          <div className="space-y-1.5">
+            <p className="flex items-center gap-2.5 text-white/85">
+              <Flag code="pa" size={18} />
+              <span>
+                © {year} {dict.footer.rights}
+              </span>
+            </p>
+            <p>{dict.footer.disclaimer}</p>
+            {showDemoContent ? <p className="text-[#f5d98a]">{dict.footer.demoNotice}</p> : null}
+          </div>
+          <ul className="flex flex-wrap gap-x-6">
+            <li>
+              <Link href={href("privacy", locale)} className={`${link} !text-[0.85rem] !text-white/70 hover:!text-white`}>
+                {dict.footer.privacy}
+              </Link>
+            </li>
+            <li>
+              <Link href={`${href("about", locale)}#creditos`} className={`${link} !text-[0.85rem] !text-white/70 hover:!text-white`}>
+                {dict.footer.credits}
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
     </footer>

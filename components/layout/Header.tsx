@@ -29,11 +29,11 @@ interface Props {
 }
 
 /**
- * At scrollY = 0 the header has NO background on every page: over the home hero it
- * uses the light treatment (white links, light logo); on inner pages it sits on the
- * page header's own surface with dark links. Once scrolled it becomes an opaque-ish
- * white bar (small blur, hairline, soft shadow). Only one passive scroll listener,
- * and state changes only when crossing the threshold.
+ * Same full-width bar on every page. At scrollY = 0 it is a barely-there glass surface:
+ * over the home hero it uses the light treatment (white links, light logo); on inner pages
+ * it blends into the page header with dark links. Once scrolled it becomes lightly frosted
+ * glass (see .nav-glass). Only one passive scroll listener, and state changes only when
+ * crossing the threshold.
  */
 export function Header({ locale, items, cta, labels, detailAlternates, lightLogoSrc }: Props) {
   const pathname = usePathname() ?? "";
@@ -96,30 +96,13 @@ export function Header({ locale, items, cta, labels, detailAlternates, lightLogo
     </>
   );
 
-  // Home: floating liquid-glass capsule over the hero (see .nav-glass in globals.css).
-  if (overHero) {
-    return (
-      <header className="animate-nav-in fixed inset-x-0 top-0 z-50" style={{ paddingTop: "env(safe-area-inset-top)" }}>
-        <div className="container-site flex items-center" style={{ height: "var(--header-h)" }}>
-          <div
-            data-scrolled={scrolled}
-            className="nav-glass flex h-[58px] w-full items-center justify-between gap-4 pl-3 pr-1.5 sm:pl-4 sm:pr-2 xl:-mx-4 xl:w-[calc(100%+2rem)] xl:pl-5"
-          >
-            {logo}
-            {actions}
-          </div>
-        </div>
-      </header>
-    );
-  }
-
+  // One bar for every page and language: original full-width shape, smart-glass surface
+  // (see .nav-glass in globals.css). The arrival animation is shared by all routes.
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,box-shadow] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] ${
-        scrolled
-          ? "border-line/80 bg-white/95 shadow-[0_8px_24px_-18px_rgb(6_34_48/0.35)] backdrop-blur-[6px]"
-          : "border-transparent bg-transparent"
-      }`}
+      data-tone={overHero ? "hero" : "page"}
+      data-scrolled={scrolled}
+      className="nav-glass animate-nav-in fixed inset-x-0 top-0 z-50"
       style={{ paddingTop: "env(safe-area-inset-top)" }}
     >
       <div className="container-site flex items-center justify-between gap-4" style={{ height: "var(--header-h)" }}>

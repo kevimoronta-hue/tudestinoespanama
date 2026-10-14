@@ -7,7 +7,14 @@ import path from "node:path";
  * and footer. Drop the client-supplied file into public/brand/ with one of these names
  * and it is picked up at build time; no code change needed.
  */
-const LIGHT_LOGO_CANDIDATES = ["logo-light.svg", "logo-light.webp", "logo-light.png"];
+const LIGHT_LOGO_CANDIDATES = [
+  "logo-light.svg",
+  "logo-light.webp",
+  "logo-light.png",
+  // Fallback until the client supplies one: the master with its blue turned white
+  // (scripts/build-logo-white.py), also used by the footer.
+  "logo-white-480.webp",
+];
 
 export function lightLogoSrc(): string | null {
   const file = LIGHT_LOGO_CANDIDATES.find((f) => existsSync(path.join(process.cwd(), "public", "brand", f)));

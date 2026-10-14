@@ -25,7 +25,7 @@ export function FinalCTA({
     <section
       id={id}
       aria-labelledby={`${id}-title`}
-      className="bg-[linear-gradient(180deg,var(--sand)_0%,var(--sand)_62%,var(--ocean-deep)_62%,var(--ocean-deep)_100%)] pt-20 sm:pt-28"
+      className="bg-[linear-gradient(180deg,var(--sand)_0%,var(--sand)_62%,var(--logo-navy)_62%,var(--logo-navy)_100%)] pt-20 sm:pt-28"
     >
       <div className="container-site">
         <div className="grid gap-10 rounded-[var(--radius-surface)] bg-white p-6 shadow-[0_30px_80px_-50px_rgb(6_34_48/0.55)] sm:p-10 lg:grid-cols-12 lg:gap-16 lg:p-14">

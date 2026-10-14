@@ -86,7 +86,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
         <main id="contenido" tabIndex={-1} className="flex-1 outline-none">
           {children}
         </main>
-        <Footer locale={locale} dict={dict} lightLogoSrc={lightLogoSrc()} />
+        <Footer locale={locale} dict={dict} />
         <RevealObserver />
       </body>
     </html>
