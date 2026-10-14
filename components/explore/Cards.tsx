@@ -1,0 +1,202 @@
+import Image from "next/image";
+import Link from "next/link";
+import type { Dictionary } from "@/lib/dictionaries";
+import { formatDate, type Locale } from "@/lib/i18n";
+import { t } from "@/lib/t";
+import type { ListingItem } from "@/types/listing";
+import { DemoBadge } from "../ui/Badge";
+import { Icon } from "../ui/Icon";
+
+export interface CardProps {
+  item: ListingItem;
+  locale: Locale;
+  labels: Dictionary["card"];
+  /** Above-the-fold cards can load eagerly. */
+  priority?: boolean;
+  headingLevel?: "h2" | "h3";
+}
+
+/*
+ * Editorial cards: photo first, then a small overline, the title and one line of
+ * useful facts. No icon tiles, no stacked pills. The whole card is one link
+ * (stretched title link → a single tab stop).
+ */
+
+const shell =
+  "group relative flex h-full flex-col overflow-hidden rounded-[1.25rem] bg-white ring-1 ring-line transition-[box-shadow] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:shadow-[0_18px_40px_-26px_rgb(6_34_48/0.45)] has-[a:focus-visible]:ring-3 has-[a:focus-visible]:ring-blue-600";
+
+function TitleLink({ href, children, as: Tag = "h3" }: { href?: string; children: string; as?: "h2" | "h3" }) {
+  return (
+    <Tag className="font-display text-[1.2rem] font-bold leading-snug tracking-tight text-ink">
+      {href ? (
+        <Link href={href} className="outline-none after:absolute after:inset-0 after:content-['']">
+          {children}
+        </Link>
+      ) : (
+        children
+      )}
+    </Tag>
+  );
+}
+
+function Overline({ children }: { children: React.ReactNode }) {
+  return <p className="font-display text-xs font-bold uppercase tracking-[0.12em] text-ocean">{children}</p>;
+}
+
+function Photo({ item, priority, ratio = "aspect-[3/2]" }: { item: ListingItem; priority?: boolean; ratio?: string }) {
+  if (!item.image) return null;
+  return (
+    <div className={`relative ${ratio} overflow-hidden bg-ocean-mist`}>
+      <Image
+        src={item.image.src}
+        alt={item.image.alt}
+        fill
+        sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw"
+        loading={priority ? "eager" : "lazy"}
+        className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.03]"
+      />
+    </div>
+  );
+}
+
+function Demo({ item, labels, floating }: { item: ListingItem; labels: Dictionary["card"]; floating?: boolean }) {
+  if (!item.demo) return null;
+  return (
+    <span className={floating ? "absolute left-3 top-3 z-10" : ""}>
+      <DemoBadge label={labels.demo} title={labels.demoTitle} />
+    </span>
+  );
+}
+
+function Facts({ children }: { children: React.ReactNode }) {
+  return <p className="mt-auto flex flex-wrap gap-x-3 gap-y-1 pt-4 text-sm text-muted">{children}</p>;
+}
+
+const Dot = () => <span aria-hidden="true">·</span>;
+
+export function GuideCard({ item, locale, labels, priority, headingLevel }: CardProps) {
+  return (
+    <article className={shell}>
+      <Demo item={item} labels={labels} floating={Boolean(item.image)} />
+      <Photo item={item} priority={priority} />
+      <div className="flex flex-1 flex-col gap-2 p-5 sm:p-6">
+        {!item.image ? <Demo item={item} labels={labels} /> : null}
+        <Overline>{item.categoryLabel}</Overline>
+        <TitleLink href={item.href} as={headingLevel}>
+          {item.title}
+        </TitleLink>
+        <p className="line-clamp-2 text-[0.97rem] text-muted">{item.excerpt}</p>
+        <Facts>
+          {item.updatedAt ? (
+            <time dateTime={item.updatedAt}>{t(labels.updated, { date: formatDate(item.updatedAt, locale) })}</time>
+          ) : null}
+          {item.updatedAt && item.readingTime ? <Dot /> : null}
+          {item.readingTime ? <span>{t(labels.readingTime, { n: item.readingTime })}</span> : null}
+        </Facts>
+      </div>
+    </article>
+  );
+}
+
+export function ProfessionalCard({ item, locale, labels, headingLevel }: CardProps) {
+  return (
+    <article className={shell}>
+      <Photo item={item} />
+      <div className="flex flex-1 flex-col gap-2 p-5 sm:p-6">
+        <div className="flex flex-wrap items-center gap-2">
+          <Overline>{item.categoryLabel}</Overline>
+          {item.sponsored ? (
+            <span className="text-xs font-semibold uppercase tracking-[0.08em] text-red-700">· {labels.sponsored}</span>
+          ) : null}
+          <Demo item={item} labels={labels} />
+        </div>
+        <TitleLink href={item.href} as={headingLevel}>
+          {item.title}
+        </TitleLink>
+        <p className="line-clamp-2 text-[0.97rem] text-muted">{item.excerpt}</p>
+        <Facts>
+          <span>{item.location}</span>
+          <Dot />
+          {item.verifiedAt ? (
+            <span className="text-success">{t(labels.verified, { date: formatDate(item.verifiedAt, locale) })}</span>
+          ) : (
+            <span>{labels.notVerified}</span>
+          )}
+        </Facts>
+      </div>
+    </article>
+  );
+}
+
+export function OpportunityCard({ item, locale, labels, headingLevel }: CardProps) {
+  return (
+    <article className={shell}>
+      <div className="flex flex-1 flex-col gap-2 p-5 sm:p-6">
+        <div className="flex flex-wrap items-center gap-2">
+          <Overline>{item.categoryLabel}</Overline>
+          <span className={`text-xs font-semibold uppercase tracking-[0.08em] ${item.expired ? "text-muted" : "text-success"}`}>
+            · {item.expired ? labels.expired : labels.active}
+          </span>
+          <Demo item={item} labels={labels} />
+        </div>
+        <TitleLink href={item.href} as={headingLevel}>
+          {item.title}
+        </TitleLink>
+        {item.organization ? <p className="text-sm font-medium text-ink/80">{item.organization}</p> : null}
+        <p className="line-clamp-2 text-[0.97rem] text-muted">{item.excerpt}</p>
+        <Facts>
+          <span>{item.location}</span>
+          <Dot />
+          <span className={item.expired ? "" : "font-medium text-ink"}>
+            {item.deadline ? t(labels.deadline, { date: formatDate(item.deadline, locale) }) : labels.noDeadline}
+          </span>
+        </Facts>
+      </div>
+    </article>
+  );
+}
+
+export function VideoCard({ item, labels, headingLevel }: CardProps) {
+  return (
+    <article className={shell}>
+      <div className="relative">
+        <Demo item={item} labels={labels} floating />
+        <Photo item={item} ratio="aspect-video" />
+        <span aria-hidden="true" className="absolute inset-0 grid place-items-center bg-ocean-deep/25">
+          <span className="grid size-12 place-items-center rounded-full bg-white/90 text-ocean-deep">
+            <Icon name="play" size={20} />
+          </span>
+        </span>
+      </div>
+      <div className="flex flex-1 flex-col gap-2 p-5 sm:p-6">
+        <Overline>{item.categoryLabel}</Overline>
+        <TitleLink href={item.href} as={headingLevel}>
+          {item.title}
+        </TitleLink>
+        <p className="line-clamp-2 text-[0.97rem] text-muted">{item.excerpt}</p>
+        <Facts>
+          <span>{item.location}</span>
+          {item.videoPending ? (
+            <>
+              <Dot />
+              <span>{labels.videoPending}</span>
+            </>
+          ) : null}
+        </Facts>
+      </div>
+    </article>
+  );
+}
+
+export function ListingCard(props: CardProps) {
+  switch (props.item.kind) {
+    case "articles":
+      return <GuideCard {...props} />;
+    case "professionals":
+      return <ProfessionalCard {...props} />;
+    case "opportunities":
+      return <OpportunityCard {...props} />;
+    case "videos":
+      return <VideoCard {...props} />;
+  }
+}
