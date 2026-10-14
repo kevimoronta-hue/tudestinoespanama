@@ -46,6 +46,7 @@ next-env.d.ts
 /media/clips/
 /media/clips-kling/
 /media/clips-rejected/
+/media/clips-v1/
 
 # Local tooling (machine-specific)
 /.claude/

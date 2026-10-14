@@ -33,7 +33,7 @@ export const en: Dictionary = {
     subtitle: "Discover a country to live, connect and invest in.",
     primary: "Discover Panama",
     secondary: "Explore opportunities",
-    posterAlt: "Island with palm trees and huts in Guna Yala, on Panama's Caribbean coast.",
+    posterAlt: "Aerial view of the Cinta Costera and the Panama City skyline on the Pacific.",
   },
   home: {
     intro: {
@@ -267,9 +267,8 @@ export const en: Dictionary = {
       ],
       creditsTitle: "Image credits",
       creditsIntro:
-        "Site photographs come from Unsplash, under its licence. The cover video was animated with AI tools from Wikimedia Commons photographs; their authors and licences are listed below.",
+        "Site photographs and the cover video come from Unsplash photographs, used under its licence. The video was animated with AI tools from those photographs, without changing the places they show.",
       creditsPhotos: "Photographs",
-      creditsVideo: "Cover video",
     },
     contact: {
       eyebrow: "Contact",
@@ -543,8 +542,6 @@ export const en: Dictionary = {
     legal: "Legal",
     privacy: "Privacy policy",
     credits: "Image credits",
-    via: "via",
-    publicDomain: "public domain",
     commitment: "Stated goal: allocate at least 20% of profits to supporting sectors with social needs.",
     disclaimer: "Informational content. Not legal, immigration, tax or financial advice.",
     rights: "Tu Destino es Panamá",

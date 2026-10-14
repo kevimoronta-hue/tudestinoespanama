@@ -33,7 +33,7 @@ export const de: Dictionary = {
     subtitle: "Entdecken Sie ein Land zum Leben, Vernetzen und Investieren.",
     primary: "Panama entdecken",
     secondary: "Möglichkeiten erkunden",
-    posterAlt: "Insel mit Palmen und Hütten in Guna Yala an der Karibikküste Panamas.",
+    posterAlt: "Luftaufnahme der Cinta Costera und der Skyline von Panama-Stadt am Pazifik.",
   },
   home: {
     intro: {
@@ -269,9 +269,8 @@ export const de: Dictionary = {
       ],
       creditsTitle: "Bildnachweise",
       creditsIntro:
-        "Die Fotos der Website stammen von Unsplash und werden gemäß deren Lizenz verwendet. Das Titelvideo wurde mit KI-Werkzeugen aus Fotos von Wikimedia Commons animiert; Urheber und Lizenzen stehen unten.",
+        "Die Fotos und das Titelvideo stammen von Unsplash-Fotos, die gemäß deren Lizenz verwendet werden. Das Video wurde mit KI-Werkzeugen aus diesen Fotos animiert, ohne die gezeigten Orte zu verändern.",
       creditsPhotos: "Fotos",
-      creditsVideo: "Titelvideo",
     },
     contact: {
       eyebrow: "Kontakt",
@@ -554,8 +553,6 @@ export const de: Dictionary = {
     legal: "Rechtliches",
     privacy: "Datenschutzerklärung",
     credits: "Bildnachweise",
-    via: "über",
-    publicDomain: "gemeinfrei",
     commitment:
       "Erklärtes Ziel: mindestens 20 % der Gewinne zur Unterstützung von Bereichen mit sozialem Bedarf einzusetzen.",
     disclaimer:

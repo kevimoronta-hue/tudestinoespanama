@@ -31,7 +31,7 @@ export const es = {
     subtitle: "Descubre un país para vivir, conectar e invertir.",
     primary: "Descubre Panamá",
     secondary: "Explora oportunidades",
-    posterAlt: "Isla con palmeras y cabañas en Guna Yala, en la costa caribeña de Panamá.",
+    posterAlt: "Vista aérea de la Cinta Costera y el skyline de Ciudad de Panamá frente al Pacífico.",
   },
   home: {
     intro: {
@@ -267,9 +267,8 @@ export const es = {
       ],
       creditsTitle: "Créditos de imágenes",
       creditsIntro:
-        "Las fotografías del sitio proceden de Unsplash, bajo su licencia. El video de portada se animó con herramientas de IA a partir de fotografías de Wikimedia Commons, cuyos autores y licencias se indican abajo.",
+        "Las fotografías y el video de portada proceden de fotografías de Unsplash, usadas según su licencia. El video se animó con herramientas de IA a partir de esas fotografías, sin cambiar los lugares que muestran.",
       creditsPhotos: "Fotografías",
-      creditsVideo: "Video de portada",
     },
     contact: {
       eyebrow: "Contacto",
@@ -546,8 +545,6 @@ export const es = {
     legal: "Legal",
     privacy: "Política de privacidad",
     credits: "Créditos de imágenes",
-    via: "vía",
-    publicDomain: "dominio público",
     commitment:
       "Objetivo declarado: destinar al menos el 20 % de los beneficios al apoyo de sectores con necesidades sociales.",
     disclaimer:

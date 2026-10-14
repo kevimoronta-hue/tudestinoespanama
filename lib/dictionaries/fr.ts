@@ -33,7 +33,7 @@ export const fr: Dictionary = {
     subtitle: "Découvrez un pays où vivre, tisser des liens et investir.",
     primary: "Découvrir le Panama",
     secondary: "Explorer les opportunités",
-    posterAlt: "Île bordée de palmiers et de cabanes à Guna Yala, sur la côte caraïbe du Panama.",
+    posterAlt: "Vue aérienne de la Cinta Costera et des tours de la ville de Panama face au Pacifique.",
   },
   home: {
     intro: {
@@ -270,9 +270,8 @@ export const fr: Dictionary = {
       ],
       creditsTitle: "Crédits photographiques",
       creditsIntro:
-        "Les photographies du site proviennent d'Unsplash, sous sa licence. La vidéo d'accueil a été animée par IA à partir de photographies de Wikimedia Commons, dont les auteurs et licences sont indiqués ci-dessous.",
+        "Les photographies et la vidéo d'accueil proviennent de photographies Unsplash, utilisées selon sa licence. La vidéo a été animée par IA à partir de ces photographies, sans modifier les lieux montrés.",
       creditsPhotos: "Photographies",
-      creditsVideo: "Vidéo d'accueil",
     },
     contact: {
       eyebrow: "Contact",
@@ -555,8 +554,6 @@ export const fr: Dictionary = {
     legal: "Mentions légales",
     privacy: "Politique de confidentialité",
     credits: "Crédits photographiques",
-    via: "via",
-    publicDomain: "domaine public",
     commitment:
       "Objectif déclaré : consacrer au moins 20 % des bénéfices au soutien de secteurs ayant des besoins sociaux.",
     disclaimer:

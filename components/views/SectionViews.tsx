@@ -11,7 +11,6 @@ import {
   opportunityToItem,
   professionalToItem,
 } from "@/lib/content";
-import { licenseLabel } from "@/lib/credits";
 import { getDictionary } from "@/lib/dictionaries";
 import { href, type Locale, type RouteKey } from "@/lib/i18n";
 import { routeMetadata } from "@/lib/seo";
@@ -530,16 +529,15 @@ export function AboutView({ locale }: { locale: Locale }) {
               </h2>
               <p className="text-sm leading-relaxed text-muted">{d.creditsIntro}</p>
             </div>
-            <div className="grid gap-8 text-sm sm:grid-cols-2 lg:col-span-8">
+            <div className="text-sm lg:col-span-8">
               {[
                 { title: d.creditsPhotos, list: mediaSources.webPhotos.map((m) => ({ key: m.key, place: m.location, author: m.author, license: m.license, href: m.sourcePage })) },
-                { title: d.creditsVideo, list: mediaSources.items.map((m) => ({ key: m.key, place: m.location, author: m.author, license: licenseLabel(m.license, dict), href: m.sourcePage })) },
               ].map((group) => (
                 <div key={group.title}>
                   <h3 className="font-display text-xs font-bold uppercase tracking-[0.12em] text-ocean">{group.title}</h3>
-                  <ul className="mt-3 divide-y divide-line">
+                  <ul className="mt-3 grid gap-x-10 sm:grid-cols-2">
                     {group.list.map((c) => (
-                      <li key={c.key} className="py-3">
+                      <li key={c.key} className="border-b border-line py-3">
                         <p className="font-medium text-ink">{c.place}</p>
                         <p className="text-muted">
                           <a href={c.href} target="_blank" rel="noopener noreferrer" className="underline decoration-line-strong underline-offset-4 hover:text-blue-800">

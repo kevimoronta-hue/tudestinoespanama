@@ -33,7 +33,7 @@ export const it: Dictionary = {
     subtitle: "Scopri un paese in cui vivere, creare legami e investire.",
     primary: "Scopri Panamá",
     secondary: "Esplora le opportunità",
-    posterAlt: "Isola con palme e capanne a Guna Yala, sulla costa caraibica di Panamá.",
+    posterAlt: "Veduta aerea della Cinta Costera e dello skyline di Ciudad de Panamá sul Pacifico.",
   },
   home: {
     intro: {
@@ -269,9 +269,8 @@ export const it: Dictionary = {
       ],
       creditsTitle: "Crediti delle immagini",
       creditsIntro:
-        "Le fotografie del sito provengono da Unsplash, secondo la sua licenza. Il video di copertina è stato animato con strumenti di IA a partire da fotografie di Wikimedia Commons, i cui autori e licenze sono indicati qui sotto.",
+        "Le fotografie e il video di copertina provengono da fotografie Unsplash, usate secondo la sua licenza. Il video è stato animato con strumenti di IA a partire da quelle fotografie, senza modificare i luoghi mostrati.",
       creditsPhotos: "Fotografie",
-      creditsVideo: "Video di copertina",
     },
     contact: {
       eyebrow: "Contatti",
@@ -548,8 +547,6 @@ export const it: Dictionary = {
     legal: "Note legali",
     privacy: "Informativa sulla privacy",
     credits: "Crediti delle immagini",
-    via: "via",
-    publicDomain: "pubblico dominio",
     commitment:
       "Obiettivo dichiarato: destinare almeno il 20 % degli utili al sostegno di settori con necessità sociali.",
     disclaimer:

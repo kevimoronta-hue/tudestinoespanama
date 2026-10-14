@@ -4,7 +4,7 @@
 # Higgsfield/Kling (uno por escena y orientación).
 #
 # Entradas esperadas (en $CLIPS_DIR, por defecto media/clips/):
-#   {01-arrival,02-canal,03-casco,04-skyline,05-nature}-{16x9,9x16}.mp4
+#   $SCENES-{16x9,9x16}.mp4 (por defecto 01-cinta 02-casco 03-canal 04-isla 05-bahia)
 #   Cada clip debe durar al menos OFFSET + 2.0 s.
 #
 # Salidas (en $OUT_DIR, por defecto public/video/):
@@ -44,7 +44,8 @@ CLIPS_DIR="${CLIPS_DIR:-$PROJECT_ROOT/media/clips}"
 OUT_DIR="${OUT_DIR:-$PROJECT_ROOT/public/video}"
 DEFAULT_OFFSET="${DEFAULT_OFFSET:-0.3}"
 
-SCENES="01-arrival 02-canal 03-casco 04-skyline 05-nature"
+# v2 (2026-10-14): fotos HD Unsplash. v1 (Commons): "01-arrival 02-canal 03-casco 04-skyline 05-nature".
+SCENES="${SCENES:-01-cinta 02-casco 03-canal 04-isla 05-bahia}"
 SEG_SECONDS="2.000"
 FPS="${FPS:-24}"       # Kling v3.0 entrega 24 fps: se conserva sin duplicar fotogramas
 SEG_FRAMES=$((FPS * 2))
