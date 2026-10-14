@@ -118,6 +118,17 @@ export const de: Dictionary = {
         videos: { title: "Videos & Ressourcen", text: "Videomaterial und nützliche Dokumente." },
       },
     },
+    moments: {
+      title: "Panama in fünf Momenten",
+      intro: "Vom Himmel bis zum Meer: fünf reale Orte, so fotografiert, wie sie sind.",
+      items: [
+        { place: "Bucht von Panama", region: "Panama-Stadt", text: "Die Ankunft: Bucht, Jachthafen und Finanzviertel aus der Luft." },
+        { place: "Miraflores-Schleusen", region: "Panamakanal", text: "Schiffe auf der Durchfahrt durch die Schleusen, auf der Pazifikseite des Kanals." },
+        { place: "Casco Antiguo", region: "Panama-Stadt", text: "Koloniale Fassaden, schmiedeeiserne Balkone und Gassen für Spaziergänge." },
+        { place: "Cinta Costera", region: "Panama-Stadt", text: "Die städtische Uferpromenade und die Skyline am Pazifik." },
+        { place: "Guna Yala", region: "Karibikküste Panamas", text: "Palmeninseln und ruhiges Wasser in der Comarca Guna Yala." },
+      ],
+    },
     social: {
       eyebrow: "Engagement",
       title: "Wachsen heißt auch, etwas zurückzugeben.",

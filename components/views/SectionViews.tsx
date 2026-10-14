@@ -75,16 +75,16 @@ export function DiscoverView({ locale }: { locale: Locale }) {
       </section>
       <section className="pb-20 sm:pb-28">
         <div className="container-site">
-          <div className="flex flex-col gap-6 rounded-[2rem] border border-line bg-blue-50 p-8 sm:p-12 lg:flex-row lg:items-center lg:justify-between">
-            <div className="space-y-2">
-              <h2 className="text-h3">{d.ctaTitle}</h2>
-              <p className="measure text-muted">{d.ctaText}</p>
+          <div className="surface-ocean card-depth-dark flex flex-col gap-8 rounded-[var(--radius-surface)] p-7 sm:p-12 lg:flex-row lg:items-end lg:justify-between lg:p-14">
+            <div className="space-y-3">
+              <h2 className="text-h2 max-w-[18ch] !text-white">{d.ctaTitle}</h2>
+              <p className="measure text-lg text-white/80">{d.ctaText}</p>
             </div>
-            <div className="flex flex-col gap-3 sm:flex-row">
+            <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
               <ButtonLink href={href("live", locale)} icon="arrowRight">
                 {d.ctaLive}
               </ButtonLink>
-              <ButtonLink href={href("contact", locale)} variant="secondary">
+              <ButtonLink href={href("contact", locale)} variant="outline-light">
                 {d.ctaContact}
               </ButtonLink>
             </div>
@@ -97,15 +97,15 @@ export function DiscoverView({ locale }: { locale: Locale }) {
 
 /* ======================= Vivir ======================= */
 
-const LIVE_TOPICS: { key: ArticleCategory; icon: IconName }[] = [
-  { key: "primeros-pasos", icon: "compass" },
-  { key: "vivienda", icon: "home" },
-  { key: "costo-de-vida", icon: "layers" },
-  { key: "educacion", icon: "book" },
-  { key: "salud", icon: "heart" },
-  { key: "transporte", icon: "map" },
-  { key: "servicios", icon: "sparkle" },
-  { key: "tramites", icon: "shield" },
+const LIVE_TOPICS: { key: ArticleCategory }[] = [
+  { key: "primeros-pasos" },
+  { key: "vivienda" },
+  { key: "costo-de-vida" },
+  { key: "educacion" },
+  { key: "salud" },
+  { key: "transporte" },
+  { key: "servicios" },
+  { key: "tramites" },
 ];
 
 const REFERENCE_INSTITUTIONS = [
@@ -149,33 +149,37 @@ export function LiveView({ locale }: { locale: Locale }) {
       <section aria-labelledby="live-topics" className="py-16 sm:py-20">
         <div className="container-site space-y-10">
           <SectionHeading id="live-topics" title={d.categoriesTitle} intro={d.categoriesIntro} size="h3" />
-          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="card-depth grid overflow-hidden rounded-[var(--radius-surface)] bg-line [gap:1px] sm:grid-cols-2 lg:grid-cols-4">
             {LIVE_TOPICS.map((topic) => {
               const n = count(topic.key);
               const label = dict.categories.articles[topic.key];
               const body = (
                 <>
-                  <span className="flex items-center justify-between">
-                    <Icon name={topic.icon} size={24} className="text-blue-700" />
-                    <span className={`text-xs font-bold ${n ? "text-blue-800" : "text-muted"}`}>
-                      {n ? `${n} ${d.guidesAvailable}` : d.noGuides}
-                    </span>
+                  <span className="font-display text-[1.12rem] font-bold leading-snug text-ink">{label}</span>
+                  <span className="text-[0.95rem] leading-relaxed text-muted">{dict.liveTopics[topic.key as keyof typeof dict.liveTopics]}</span>
+                  <span className={`mt-auto flex items-center gap-2 pt-3 text-sm font-semibold ${n ? "text-blue-800" : "text-muted"}`}>
+                    {n ? `${n} ${d.guidesAvailable}` : d.noGuides}
+                    {n ? (
+                      <Icon
+                        name="arrowRight"
+                        size={16}
+                        className="transition-transform duration-[160ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-0.5"
+                      />
+                    ) : null}
                   </span>
-                  <span className="font-display text-lg font-bold text-ink">{label}</span>
-                  <span className="text-sm text-muted">{dict.liveTopics[topic.key as keyof typeof dict.liveTopics]}</span>
                 </>
               );
               return (
-                <li key={topic.key}>
+                <li key={topic.key} className="flex">
                   {n ? (
                     <Link
                       href={`${href("live", locale, { cat: topic.key })}#guias`}
-                      className="flex h-full flex-col gap-3 rounded-3xl border border-line bg-white p-6 transition-[border-color,box-shadow] hover:border-blue-800/40 hover:shadow-[0_16px_36px_-24px_rgb(6_34_48/0.4)]"
+                      className="group flex w-full flex-col gap-2 bg-white p-6 transition-colors duration-[160ms] ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-ocean-mist sm:p-7"
                     >
                       {body}
                     </Link>
                   ) : (
-                    <div className="flex h-full flex-col gap-3 rounded-3xl border border-dashed border-line-strong bg-off-white p-6">{body}</div>
+                    <div className="flex w-full flex-col gap-2 bg-off-white p-6 sm:p-7">{body}</div>
                   )}
                 </li>
               );
@@ -203,7 +207,7 @@ export function LiveView({ locale }: { locale: Locale }) {
                   href={inst.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex min-h-14 items-center justify-between gap-4 rounded-2xl border border-line bg-white px-5 py-4 font-semibold text-blue-800 hover:border-blue-800/40"
+                  className="card-depth flex min-h-14 items-center justify-between gap-4 rounded-[var(--radius-control)] bg-white px-5 py-4 font-semibold text-blue-800 transition-colors duration-[160ms] ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-ocean-mist"
                 >
                   <span>{inst.name}</span>
                   <Icon name="external" size={18} className="shrink-0" />
@@ -292,24 +296,28 @@ export async function InvestView({ locale }: { locale: Locale }) {
           <h2 id="invest-overview" className="text-h3">
             {d.overviewTitle}
           </h2>
-          <div className="measure space-y-4 text-lg leading-relaxed text-ink/90">
-            {d.overview.map((p) => (
-              <p key={p}>{p}</p>
+          <div className="measure space-y-4 text-lg leading-relaxed text-ink/75">
+            {d.overview.map((p, i) => (
+              <p key={p} className={i === 0 ? "font-display text-[1.3rem] font-semibold leading-[1.45] tracking-[-0.01em] text-ink sm:text-[1.45rem]" : ""}>
+                {p}
+              </p>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="sectores" aria-labelledby="invest-sectors" className="bg-off-white py-16 sm:py-20">
+      <section id="sectores" aria-labelledby="invest-sectors" className="surface-ocean py-16 sm:py-24">
         <div className="container-site space-y-10">
-          <SectionHeading id="invest-sectors" title={d.sectorsTitle} intro={d.sectorsIntro} size="h3" />
-          <ul className="grid gap-px overflow-hidden rounded-3xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+          <SectionHeading id="invest-sectors" title={d.sectorsTitle} intro={d.sectorsIntro} size="h3" tone="light" />
+          <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 lg:gap-4">
             {SECTORS.map((s) => (
-              <li key={s.key} className="flex items-center gap-4 bg-white p-6">
-                <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-blue-100 text-blue-800">
-                  <Icon name={s.icon} size={22} />
-                </span>
-                <span className="font-display text-lg font-bold">{d.sectors[s.key]}</span>
+              <li
+                key={s.key}
+                data-reveal
+                className="card-depth-dark flex min-h-[6.5rem] items-end justify-between gap-4 rounded-[var(--radius-card)] bg-white/[0.04] p-6"
+              >
+                <span className="font-display text-[1.15rem] font-bold leading-snug text-white">{d.sectors[s.key]}</span>
+                <Icon name={s.icon} size={22} className="shrink-0 text-white/45" />
               </li>
             ))}
           </ul>
@@ -328,7 +336,7 @@ export async function InvestView({ locale }: { locale: Locale }) {
             <SectionHeading id="invest-form" eyebrow={d.eyebrow} title={d.formTitle} intro={d.formIntro} />
             <Callout tone="warning">{d.disclaimer}</Callout>
           </div>
-          <div className="rounded-[2rem] border border-line bg-white p-6 sm:p-10">
+          <div className="card-depth rounded-[var(--radius-surface)] bg-white p-6 sm:p-10">
             <ContactForm locale={locale} kind="invest" labels={dict.form} privacyHref={href("privacy", locale)} />
           </div>
         </div>
@@ -417,59 +425,96 @@ export function aboutMetadata(locale: Locale) {
 export function AboutView({ locale }: { locale: Locale }) {
   const dict = getDictionary(locale);
   const d = dict.pages.about;
-  const values: { key: keyof typeof d.values; icon: IconName }[] = [
-    { key: "integrity", icon: "shield" },
-    { key: "service", icon: "users" },
-    { key: "quality", icon: "checkCircle" },
-    { key: "innovation", icon: "sparkle" },
-  ];
+  const values = (["integrity", "service", "quality", "innovation"] as const).map((k) => d.values[k]);
   return (
     <>
-      <PageHeader eyebrow={d.eyebrow} title={d.title} breadcrumb={crumbs(locale, { name: dict.nav.about, key: "about" })} />
+      <PageHeader
+        eyebrow={d.eyebrow}
+        title={d.title}
+        intro={dict.meta.description}
+        breadcrumb={crumbs(locale, { name: dict.nav.about, key: "about" })}
+        image={{ src: "/images/panama-city-bahia-aerea.webp", alt: dict.pages.live.imageAlt }}
+      />
 
-      <section className="py-16 sm:py-20">
-        <div className="container-site grid gap-6 lg:grid-cols-2">
-          {[
-            { title: d.missionTitle, text: d.mission, icon: "compass" as IconName },
-            { title: d.visionTitle, text: d.vision, icon: "globe" as IconName },
-          ].map((b) => (
-            <article key={b.title} className="rounded-[2rem] border border-line bg-white p-8 sm:p-10">
-              <Icon name={b.icon} size={30} className="text-blue-700" />
-              <h2 className="mt-5 text-h3">{b.title}</h2>
-              <p className="mt-3 text-lg leading-relaxed text-ink/85">{b.text}</p>
-            </article>
-          ))}
+      {/*
+        Misión + Visión: one deep-ocean composition, not two equal boxes. Misión is the
+        light, text-led card; Visión is the photographic card, offset lower and overlapping
+        it on desktop so the pair reads as "now → horizon".
+      */}
+      <section aria-label={`${d.missionTitle} · ${d.visionTitle}`} className="surface-ocean py-16 sm:py-24 lg:py-28">
+        <div className="container-site grid gap-0 lg:grid-cols-12">
+          <article
+            data-reveal
+            className="card-depth relative z-0 rounded-[var(--radius-surface)] bg-white p-7 pb-14 sm:p-10 sm:pb-16 lg:col-span-7 lg:col-start-1 lg:row-start-1 lg:self-start lg:p-14 lg:pb-28 lg:pr-24"
+          >
+            <h2 className="eyebrow">{d.missionTitle}</h2>
+            <p className="mt-5 font-display text-[1.45rem] font-semibold leading-[1.3] tracking-[-0.015em] text-ink sm:text-[1.8rem] lg:text-[2.05rem]">
+              {d.mission}
+            </p>
+          </article>
+
+          <article
+            data-reveal
+            className="card-depth-dark relative z-10 -mt-6 ml-5 overflow-hidden rounded-[var(--radius-surface)] bg-ocean-950 sm:ml-16 lg:col-span-6 lg:col-start-7 lg:row-start-1 lg:mt-36 lg:ml-0 lg:self-start"
+          >
+            <Image
+              src="/images/canal-esclusas-miraflores.webp"
+              alt=""
+              fill
+              sizes="(min-width: 1024px) 620px, 100vw"
+              className="object-cover object-[30%_center] opacity-80"
+            />
+            <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(170deg,rgb(4_22_31/0.1)_0%,rgb(4_22_31/0.55)_45%,rgb(4_22_31/0.94)_85%)]" />
+            <div className="relative flex min-h-[340px] flex-col justify-end p-7 sm:min-h-[380px] sm:p-10 lg:min-h-[420px] lg:p-12">
+              <h2 className="font-display text-[0.8125rem] font-bold uppercase tracking-[0.14em] !text-white/80">{d.visionTitle}</h2>
+              <p className="mt-4 max-w-[34ch] font-display text-[1.3rem] font-semibold leading-[1.35] tracking-[-0.01em] text-white sm:text-[1.55rem]">
+                {d.vision}
+              </p>
+            </div>
+          </article>
         </div>
       </section>
 
-      <section aria-labelledby="values-title" className="bg-off-white py-16 sm:py-20">
-        <div className="container-site space-y-10">
-          <SectionHeading id="values-title" title={d.valuesTitle} size="h3" />
-          <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {/* Values: editorial rows on sand, sticky heading on desktop. No icon tiles. */}
+      <section aria-labelledby="values-title" className="bg-sand py-16 sm:py-24">
+        <div className="container-site grid gap-10 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-4">
+            <h2 id="values-title" className="text-h2 lg:sticky lg:top-[calc(var(--header-h)+32px)]">
+              {d.valuesTitle}
+            </h2>
+          </div>
+          <ul className="lg:col-span-8">
             {values.map((v) => (
-              <li key={v.key} className="rounded-3xl border border-line bg-white p-6">
-                <Icon name={v.icon} size={26} className="text-red-700" />
-                <h3 className="mt-4 font-display text-lg font-bold">{d.values[v.key].title}</h3>
-                <p className="mt-2 text-sm text-muted">{d.values[v.key].text}</p>
+              <li
+                key={v.title}
+                data-reveal
+                className="grid gap-2 border-t border-ink/12 py-6 first:border-t-0 first:pt-0 sm:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] sm:gap-10 sm:py-8"
+              >
+                <h3 className="font-display text-[1.2rem] font-bold leading-snug sm:text-[1.35rem]">{v.title}</h3>
+                <p className="text-[1.02rem] leading-relaxed text-ink/75">{v.text}</p>
               </li>
             ))}
           </ul>
         </div>
       </section>
 
-      <section aria-labelledby="principles-title" className="py-16 sm:py-20">
-        <div className="container-site grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
-          <h2 id="principles-title" className="text-h3">
-            {d.principlesTitle}
-          </h2>
-          <ul className="space-y-4">
-            {d.principles.map((p) => (
-              <li key={p} className="flex gap-3 text-lg text-ink/90">
-                <Icon name="check" size={22} className="mt-1 shrink-0 text-success" />
-                {p}
-              </li>
-            ))}
-          </ul>
+      {/* How we work: a raised card that straddles the sand → white seam. */}
+      <section aria-labelledby="principles-title" className="relative pb-16 sm:pb-24">
+        <div aria-hidden="true" className="absolute inset-x-0 top-0 h-24 bg-sand sm:h-32" />
+        <div className="container-site relative">
+          <div className="card-depth grid gap-8 rounded-[var(--radius-surface)] bg-white p-7 sm:p-10 lg:grid-cols-12 lg:gap-16 lg:p-14">
+            <h2 id="principles-title" className="text-h3 lg:col-span-4 lg:text-[1.75rem]">
+              {d.principlesTitle}
+            </h2>
+            <ul className="space-y-5 lg:col-span-8">
+              {d.principles.map((p) => (
+                <li key={p} className="relative pl-6 text-[1.05rem] leading-relaxed text-ink/90 sm:text-lg">
+                  <span aria-hidden="true" className="absolute left-0 top-[0.7em] h-px w-3 bg-red-600" />
+                  {p}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
@@ -480,11 +525,11 @@ export function AboutView({ locale }: { locale: Locale }) {
           <SectionHeading id="credits-title" title={d.creditsTitle} intro={d.creditsIntro} size="h3" />
           <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {mediaSources.items.map((m) => (
-              <li key={m.key} className="overflow-hidden rounded-3xl border border-line bg-white">
-                <div className="relative aspect-[16/10] bg-blue-100">
-                  <Image src={`/${m.webDerivative.replace(/^public\//, "")}`} alt="" fill sizes="(min-width: 1024px) 400px, 100vw" className="object-cover" />
+              <li key={m.key} className="card-depth flex overflow-hidden rounded-[var(--radius-card)] bg-white sm:block">
+                <div className="relative w-[36%] shrink-0 bg-blue-100 sm:aspect-[16/10] sm:w-auto">
+                  <Image src={`/${m.webDerivative.replace(/^public\//, "")}`} alt="" fill sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 36vw" className="object-cover" />
                 </div>
-                <div className="space-y-1 p-5 text-sm">
+                <div className="min-w-0 space-y-1 p-4 text-sm sm:p-5">
                   <p className="font-semibold text-ink">{m.location}</p>
                   <p className="text-muted">
                     {m.author} ·{" "}
@@ -524,7 +569,7 @@ export function ContactView({ locale }: { locale: Locale }) {
       <PageHeader eyebrow={d.eyebrow} title={d.title} intro={d.intro} breadcrumb={crumbs(locale, { name: dict.nav.contact, key: "contact" })} />
       <section className="py-16 sm:py-20">
         <div className="container-site grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16">
-          <div className="rounded-[2rem] border border-line bg-white p-6 shadow-[0_24px_60px_-40px_rgb(6_34_48/0.4)] sm:p-10">
+          <div className="card-depth rounded-[var(--radius-surface)] bg-white p-6 sm:p-10">
             <ContactForm locale={locale} labels={dict.form} privacyHref={href("privacy", locale)} />
           </div>
           <aside className="space-y-6 lg:sticky lg:top-28 lg:self-start">

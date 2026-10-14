@@ -153,11 +153,11 @@ export function ArticleView({ locale, slug }: { locale: Locale; slug: string }) 
         </div>
 
         <aside className="space-y-6 lg:sticky lg:top-28 lg:self-start">
-          <div className="space-y-3 rounded-3xl border border-line p-6">
+          <div className="card-depth space-y-3 rounded-[var(--radius-card)] bg-white p-6">
             <p className="font-display font-bold">{d.share}</p>
             <ShareButtons title={a.title} labels={{ share: d.share, copyLink: d.copyLink, copied: d.copied }} />
           </div>
-          <div className="space-y-4 rounded-3xl bg-ocean-deep p-6 text-white">
+          <div className="surface-ocean card-depth-dark space-y-4 rounded-[var(--radius-card)] p-6 text-white">
             <p className="font-display text-lg font-bold">{d.ctaTitle}</p>
             <p className="text-sm text-white/80">{d.ctaText}</p>
             <ButtonLink href={href("contact", locale)} variant="light" icon="arrowRight" className="w-full">
@@ -256,7 +256,7 @@ export function ProfessionalView({ locale, slug }: { locale: Locale; slug: strin
         </div>
 
         <aside className="space-y-4 lg:sticky lg:top-28 lg:self-start">
-          <div className="space-y-4 rounded-3xl border border-line p-6">
+          <div className="card-depth space-y-4 rounded-[var(--radius-card)] bg-white p-6">
             <h2 className="font-display text-lg font-bold">{d.contact}</h2>
             <ul className="space-y-2">
               {p.website ? (
@@ -364,7 +364,7 @@ export async function OpportunityView({ locale, slug }: { locale: Locale; slug: 
           <Callout>{d.disclaimer}</Callout>
         </div>
         <aside className="space-y-4 lg:sticky lg:top-28 lg:self-start">
-          <dl className="divide-y divide-line rounded-3xl border border-line">
+          <dl className="card-depth divide-y divide-line rounded-[var(--radius-card)] bg-white">
             {facts.map((f) => (
               <div key={f.label} className="flex flex-col gap-1 px-6 py-4">
                 <dt className="text-xs font-bold uppercase tracking-[0.1em] text-muted">{f.label}</dt>

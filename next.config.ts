@@ -18,6 +18,9 @@ const nextConfig: NextConfig = {
   },
   images: {
     formats: ["image/avif", "image/webp"],
+    // Source photos are 2560 px wide (scripts/build-web-images.py): never request 3840.
+    // Phones get 640–1080, large cards and retina desktops up to 2560.
+    deviceSizes: [640, 750, 828, 1080, 1200, 1600, 1920, 2560],
   },
   // Browsers still request /favicon.ico; serve the generated app icon.
   async rewrites() {

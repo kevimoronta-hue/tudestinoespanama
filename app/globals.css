@@ -31,10 +31,15 @@
   --ocean-800: #0b3445;
   --ocean: #0e6a80;
   --ocean-mist: #edf5f6;
-  --sand: #f6f1e8;
+  --sand: #f2ece2;
+
+  /* Radius scale: surfaces (sections/large cards) · cards · controls */
+  --radius-surface: 2rem;
+  --radius-card: 1.25rem;
+  --radius-control: 0.875rem;
 
   --white: #ffffff;
-  --off-white: #f7f9fc;
+  --off-white: #f8f6f2; /* warm white */
   --surface: #ffffff;
   --text-primary: #071c38;
   --text-secondary: #52657a;
@@ -68,6 +73,9 @@
   --color-ocean: var(--ocean);
   --color-ocean-mist: var(--ocean-mist);
   --color-sand: var(--sand);
+  --radius-surface: var(--radius-surface);
+  --radius-card: var(--radius-card);
+  --radius-control: var(--radius-control);
   --color-off-white: var(--off-white);
   --color-surface: var(--surface);
   --color-ink: var(--text-primary);
@@ -214,6 +222,33 @@
   .prose-article li {
     font-size: 1.0625rem;
     line-height: 1.75;
+  }
+
+  /*
+   * Card depth: fine border + diffuse, low shadow + a 1px inner highlight.
+   * Never a big drop shadow, never glass.
+   */
+  .card-depth {
+    box-shadow:
+      0 0 0 1px var(--border),
+      0 1px 2px rgb(6 34 48 / 0.04),
+      0 18px 40px -28px rgb(6 34 48 / 0.28),
+      inset 0 1px 0 rgb(255 255 255 / 0.9);
+  }
+  .card-depth-dark {
+    box-shadow:
+      0 0 0 1px rgb(255 255 255 / 0.08),
+      0 24px 60px -36px rgb(0 0 0 / 0.6),
+      inset 0 1px 0 rgb(255 255 255 / 0.08);
+  }
+  /* Deep ocean surface: two soft light pools + a very faint grain (no image request). */
+  .surface-ocean {
+    background-color: var(--ocean-deep);
+    background-image:
+      radial-gradient(70% 60% at 85% 0%, rgb(14 106 128 / 0.38), transparent 70%),
+      radial-gradient(60% 50% at 0% 100%, rgb(7 59 131 / 0.35), transparent 70%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    color: #fff;
   }
 
   /* Touch targets ≥ 44px */

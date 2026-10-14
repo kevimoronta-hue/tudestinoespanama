@@ -6,6 +6,7 @@ import {
   GuidesSection,
   IntroSection,
   JourneysSection,
+  MomentsSection,
   SocialCommitment,
   WhyPanamaSection,
 } from "@/components/home/HomeSections";
@@ -38,6 +39,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       <HeroVideo locale={locale} dict={dict} />
       <IntroSection dict={dict} />
       <JourneysSection locale={locale} dict={dict} />
+      <MomentsSection dict={dict} />
       <WhyPanamaSection locale={locale} dict={dict} />
       <GuidesSection locale={locale} dict={dict} />
       <ExploreSection locale={locale} dict={dict} />

@@ -41,7 +41,6 @@ export async function Footer({ locale, dict, lightLogoSrc }: { locale: Locale; d
         aria-hidden="true"
         className="absolute inset-0 -z-10 bg-[radial-gradient(120%_70%_at_15%_0%,rgb(14_106_128/0.28)_0%,transparent_60%),linear-gradient(180deg,var(--ocean-deep)_0%,var(--ocean-950)_100%)]"
       />
-      <div aria-hidden="true" className="h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
 
       <div className="container-site grid gap-12 pb-12 pt-16 sm:pt-20 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] lg:gap-10">
         <div className="max-w-sm space-y-6">

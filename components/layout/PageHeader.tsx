@@ -32,7 +32,7 @@ export function PageHeader({ eyebrow, title, intro, breadcrumb, image, children 
           {children}
         </div>
         {image ? (
-          <div className="relative aspect-[16/10] overflow-hidden rounded-[2rem] bg-blue-100 lg:aspect-[4/5] lg:max-h-[440px]">
+          <div className="card-depth relative aspect-[16/10] overflow-hidden rounded-[var(--radius-surface)] bg-blue-100 lg:aspect-auto lg:h-[460px]">
             <Image src={image.src} alt={image.alt} fill loading="eager" fetchPriority="high" sizes="(min-width: 1024px) 480px, 100vw" className="object-cover" />
           </div>
         ) : null}

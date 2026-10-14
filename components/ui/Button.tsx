@@ -5,7 +5,7 @@ import { Icon, type IconName } from "./Icon";
 export type ButtonVariant = "primary" | "secondary" | "ghost" | "light" | "outline-light";
 
 const base =
-  "tap inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-display text-[0.95rem] font-bold leading-tight transition-[background-color,color,border-color,box-shadow,transform] duration-200 ease-out active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-55 disabled:active:scale-100 aria-disabled:cursor-not-allowed aria-disabled:opacity-55";
+  "tap inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-display text-[0.95rem] font-bold leading-tight transition-[background-color,color,border-color,box-shadow,transform] duration-[160ms] ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-55 disabled:active:scale-100 aria-disabled:cursor-not-allowed aria-disabled:opacity-55";
 
 const variants: Record<ButtonVariant, string> = {
   primary: "bg-red-600 text-white shadow-[0_1px_0_rgb(0_0_0/0.08)] hover:bg-red-700 focus-visible:bg-red-700",

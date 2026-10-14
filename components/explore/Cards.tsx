@@ -14,6 +14,8 @@ export interface CardProps {
   /** Above-the-fold cards can load eagerly. */
   priority?: boolean;
   headingLevel?: "h2" | "h3";
+  /** Guide cards only: "feature" = large editorial card, "compact" = thumbnail row. */
+  variant?: "default" | "feature" | "compact";
 }
 
 /*
@@ -22,12 +24,25 @@ export interface CardProps {
  * (stretched title link → a single tab stop).
  */
 
+// Depth: fine border + diffuse low shadow + inner highlight (.card-depth). Hover: image 1.02
+// and a slightly stronger border, no lift. Press: 0.985. 160 ms, snappy ease-out.
 const shell =
-  "group relative flex h-full flex-col overflow-hidden rounded-[1.25rem] bg-white ring-1 ring-line transition-[box-shadow] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:shadow-[0_18px_40px_-26px_rgb(6_34_48/0.45)] has-[a:focus-visible]:ring-3 has-[a:focus-visible]:ring-blue-600";
+  "card-depth group relative flex h-full flex-col overflow-hidden rounded-[var(--radius-card)] bg-white transition-[box-shadow,transform] duration-[160ms] ease-[cubic-bezier(0.23,1,0.32,1)] hover:shadow-[0_0_0_1px_var(--border-strong),0_1px_2px_rgb(6_34_48/0.05),0_22px_44px_-28px_rgb(6_34_48/0.34)] active:scale-[0.985] has-[a:focus-visible]:outline-3 has-[a:focus-visible]:outline-offset-2 has-[a:focus-visible]:outline-blue-600";
 
-function TitleLink({ href, children, as: Tag = "h3" }: { href?: string; children: string; as?: "h2" | "h3" }) {
+function TitleLink({
+  href,
+  children,
+  as: Tag = "h3",
+  size = "md",
+}: {
+  href?: string;
+  children: string;
+  as?: "h2" | "h3";
+  size?: "sm" | "md" | "lg";
+}) {
+  const sizes = { sm: "text-[1.02rem] sm:text-[1.1rem]", md: "text-[1.2rem]", lg: "text-[1.5rem] sm:text-[1.85rem] leading-tight" };
   return (
-    <Tag className="font-display text-[1.2rem] font-bold leading-snug tracking-tight text-ink">
+    <Tag className={`font-display font-bold leading-snug tracking-tight text-ink ${sizes[size]}`}>
       {href ? (
         <Link href={href} className="outline-none after:absolute after:inset-0 after:content-['']">
           {children}
@@ -53,7 +68,7 @@ function Photo({ item, priority, ratio = "aspect-[3/2]" }: { item: ListingItem; 
         fill
         sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw"
         loading={priority ? "eager" : "lazy"}
-        className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.03]"
+        className="object-cover transition-transform duration-[180ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.02]"
       />
     </div>
   );
@@ -74,7 +89,63 @@ function Facts({ children }: { children: React.ReactNode }) {
 
 const Dot = () => <span aria-hidden="true">·</span>;
 
-export function GuideCard({ item, locale, labels, priority, headingLevel }: CardProps) {
+export function GuideCard({ item, locale, labels, priority, headingLevel, variant = "default" }: CardProps) {
+  const facts = (
+    <>
+      {item.updatedAt ? (
+        <time dateTime={item.updatedAt}>{t(labels.updated, { date: formatDate(item.updatedAt, locale) })}</time>
+      ) : null}
+      {item.updatedAt && item.readingTime ? <Dot /> : null}
+      {item.readingTime ? <span>{t(labels.readingTime, { n: item.readingTime })}</span> : null}
+    </>
+  );
+
+  if (variant === "feature") {
+    return (
+      <article className={shell}>
+        <Demo item={item} labels={labels} floating={Boolean(item.image)} />
+        <Photo item={item} priority={priority} ratio="aspect-[16/10]" />
+        <div className="flex flex-1 flex-col gap-3 p-6 sm:p-9">
+          {!item.image ? <Demo item={item} labels={labels} /> : null}
+          <Overline>{item.categoryLabel}</Overline>
+          <TitleLink href={item.href} as={headingLevel} size="lg">
+            {item.title}
+          </TitleLink>
+          <p className="line-clamp-3 max-w-[56ch] text-[1.02rem] text-muted">{item.excerpt}</p>
+          <Facts>{facts}</Facts>
+        </div>
+      </article>
+    );
+  }
+
+  if (variant === "compact") {
+    return (
+      <article className={`${shell} !flex-row`}>
+        {item.image ? (
+          <div className="relative w-[38%] shrink-0 overflow-hidden bg-ocean-mist sm:w-[40%]">
+            <Image
+              src={item.image.src}
+              alt={item.image.alt}
+              fill
+              sizes="(min-width: 1024px) 220px, 40vw"
+              className="object-cover transition-transform duration-[180ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.02]"
+            />
+          </div>
+        ) : null}
+        <div className="flex min-w-0 flex-1 flex-col gap-1.5 p-4 sm:p-6">
+          <div className="flex flex-wrap items-center gap-2">
+            <Overline>{item.categoryLabel}</Overline>
+            <Demo item={item} labels={labels} />
+          </div>
+          <TitleLink href={item.href} as={headingLevel} size="sm">
+            {item.title}
+          </TitleLink>
+          <p className="mt-auto flex flex-wrap gap-x-2 pt-2 text-[0.82rem] text-muted">{facts}</p>
+        </div>
+      </article>
+    );
+  }
+
   return (
     <article className={shell}>
       <Demo item={item} labels={labels} floating={Boolean(item.image)} />
