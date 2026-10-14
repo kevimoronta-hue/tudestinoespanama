@@ -5,30 +5,26 @@ import type { ContentImage, VideoResource } from "@/types/content";
  * content/videos.ts. No `videoUrl` until a real, licensed recording is supplied.
  */
 
-function thumb(src: string, alt: string, credit: string): ContentImage {
-  return { src, alt, width: 1600, height: 1000, credit };
+function thumb(src: string, alt: string): ContentImage {
+  return { src, alt, width: 2560, height: 1600 };
 }
 
 const T = {
   casco: thumb(
     "/images/casco-antiguo-fachada.webp",
     "Facciata coloniale con balconi nel Casco Antiguo di Ciudad de Panamá",
-    "David Broad, CC BY 3.0, via Wikimedia Commons",
   ),
   canal: thumb(
     "/images/canal-esclusas-miraflores.webp",
-    "Due navi in transito nelle chiuse di Miraflores del Canale di Panamá",
-    "U.S. Department of State, pubblico dominio, via Wikimedia Commons",
+    "Nave portacontainer in transito nelle chiuse di Miraflores del Canale di Panamá",
   ),
   gunaYala: thumb(
     "/images/guna-yala-isla.webp",
-    "Piccola isola con palme e capanne a Guna Yala",
-    "Ayaita, CC BY 3.0, via Wikimedia Commons",
+    "Spiaggia di sabbia bianca con palme nelle isole di Guna Yala (San Blas)",
   ),
   skyline: thumb(
     "/images/skyline-cinta-costera.webp",
     "Skyline di Ciudad de Panamá e la Cinta Costera",
-    "dronepicr, CC BY 2.0, via Wikimedia Commons",
   ),
 };
 

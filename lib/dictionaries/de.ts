@@ -40,7 +40,7 @@ export const de: Dictionary = {
       eyebrow: "Willkommen",
       title: "Ein Land. Viele Wege, es zu einem Teil Ihrer Geschichte zu machen.",
       text: "Tu Destino es Panamá bündelt Informationen, Orientierung und hilfreiche Kontakte für alle, die das Land kennenlernen, einen neuen Lebensabschnitt beginnen oder geschäftliche Möglichkeiten erkunden möchten.",
-      imageAlt: "Zwei Schiffe passieren die Miraflores-Schleusen des Panamakanals.",
+      imageAlt: "Luftaufnahme der Cinta Costera und der Skyline von Panama-Stadt am Pazifik.",
     },
     journeys: {
       eyebrow: "Drei Wege",
@@ -62,7 +62,7 @@ export const de: Dictionary = {
           title: "Investieren",
           text: "Erkunden Sie das Geschäftsumfeld, die Branchen und Möglichkeiten, die von verifizierten Quellen veröffentlicht wurden.",
           cta: "Möglichkeiten erkunden",
-          imageAlt: "Schiffe in den Miraflores-Schleusen des Panamakanals.",
+          imageAlt: "Containerschiff in den Miraflores-Schleusen des Panamakanals.",
         },
       },
     },
@@ -175,7 +175,7 @@ export const de: Dictionary = {
       ctaButton: "Orientierung anfragen",
       guidesAvailable: "Ratgeber",
       noGuides: "Demnächst",
-      imageAlt: "Luftaufnahme der Bucht von Panama und der Cinta Costera.",
+      imageAlt: "Luftaufnahme der Bucht von Panama und ihrer Hochhäuser bei Sonnenuntergang.",
     },
     invest: {
       eyebrow: "Investieren",
@@ -207,7 +207,7 @@ export const de: Dictionary = {
       disclaimer:
         "Die veröffentlichten Informationen dienen ausschließlich der Information und stellen keine Finanz-, Steuer- oder Rechtsberatung dar.",
       viewAll: "Alle ansehen",
-      imageAlt: "Schiffe in den Miraflores-Schleusen des Panamakanals.",
+      imageAlt: "Containerschiff in den Miraflores-Schleusen des Panamakanals.",
     },
     explore: {
       eyebrow: "Erkunden",
@@ -269,7 +269,9 @@ export const de: Dictionary = {
       ],
       creditsTitle: "Bildnachweise",
       creditsIntro:
-        "Fotografien von Wikimedia Commons, verwendet gemäß ihrer jeweiligen Lizenz. Die Bilder wurden zugeschnitten; das Titelvideo wurde mithilfe von KI-Werkzeugen aus der Originalfotografie animiert.",
+        "Die Fotos der Website stammen von Unsplash und werden gemäß deren Lizenz verwendet. Das Titelvideo wurde mit KI-Werkzeugen aus Fotos von Wikimedia Commons animiert; Urheber und Lizenzen stehen unten.",
+      creditsPhotos: "Fotos",
+      creditsVideo: "Titelvideo",
     },
     contact: {
       eyebrow: "Kontakt",

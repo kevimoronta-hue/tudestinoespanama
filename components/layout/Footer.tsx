@@ -1,7 +1,5 @@
 import Link from "next/link";
-import mediaSources from "@/data/media-sources.json";
 import { getToday } from "@/lib/content";
-import { creditLine } from "@/lib/credits";
 import type { Dictionary } from "@/lib/dictionaries";
 import { href, localeMeta, locales, routeAlternates, type Locale } from "@/lib/i18n";
 import { showDemoContent } from "@/lib/site";
@@ -94,9 +92,6 @@ export async function Footer({ locale, dict, lightLogoSrc }: { locale: Locale; d
 
         <div className="space-y-2.5 border-t border-white/10 py-6 text-xs leading-relaxed text-white/50">
           <p>{dict.footer.disclaimer}</p>
-          <p>
-            {dict.footer.credits}: {mediaSources.items.map((m) => creditLine(m, dict)).join(" · ")}
-          </p>
           {showDemoContent ? <p className="text-[#f5d98a]">{dict.footer.demoNotice}</p> : null}
           <p className="text-white/60">
             © {year} {dict.footer.rights}

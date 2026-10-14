@@ -6,30 +6,26 @@ import type { ContentImage, VideoResource } from "@/types/content";
  * is supplied. Thumbnails reuse the licensed article images.
  */
 
-function thumb(src: string, alt: string, credit: string): ContentImage {
-  return { src, alt, width: 1600, height: 1000, credit };
+function thumb(src: string, alt: string): ContentImage {
+  return { src, alt, width: 2560, height: 1600 };
 }
 
 const T = {
   casco: thumb(
     "/images/casco-antiguo-fachada.webp",
     "Koloniale Fassade mit Balkonen im Casco Antiguo von Panama-Stadt",
-    "David Broad, CC BY 3.0, über Wikimedia Commons",
   ),
   canal: thumb(
     "/images/canal-esclusas-miraflores.webp",
-    "Zwei Schiffe passieren die Miraflores-Schleusen des Panamakanals",
-    "U.S. Department of State, gemeinfrei, über Wikimedia Commons",
+    "Containerschiff in den Miraflores-Schleusen des Panamakanals",
   ),
   gunaYala: thumb(
     "/images/guna-yala-isla.webp",
-    "Kleine Insel mit Palmen und Hütten in Guna Yala",
-    "Ayaita, CC BY 3.0, über Wikimedia Commons",
+    "Weißer Sandstrand mit Palmen auf den Inseln von Guna Yala (San Blas)",
   ),
   skyline: thumb(
     "/images/skyline-cinta-costera.webp",
     "Skyline von Panama-Stadt und die Cinta Costera",
-    "dronepicr, CC BY 2.0, über Wikimedia Commons",
   ),
 };
 

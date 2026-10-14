@@ -40,7 +40,7 @@ export const en: Dictionary = {
       eyebrow: "Welcome",
       title: "One country. Many ways to make it part of your story.",
       text: "Tu Destino es Panamá brings together information, guidance and useful connections for people who want to get to know the country, start a new chapter or explore business possibilities.",
-      imageAlt: "Two ships transit the Miraflores Locks on the Panama Canal.",
+      imageAlt: "Aerial view of the Cinta Costera and the Panama City skyline on the Pacific.",
     },
     journeys: {
       eyebrow: "Three paths",
@@ -62,7 +62,7 @@ export const en: Dictionary = {
           title: "Invest",
           text: "Explore the business environment, sectors and opportunities published by verified sources.",
           cta: "Explore possibilities",
-          imageAlt: "Ships in the Miraflores Locks of the Panama Canal.",
+          imageAlt: "Container ship in the Miraflores Locks of the Panama Canal.",
         },
       },
     },
@@ -175,7 +175,7 @@ export const en: Dictionary = {
       ctaButton: "Request guidance",
       guidesAvailable: "guides",
       noGuides: "Coming soon",
-      imageAlt: "Aerial view of Panama Bay and the Cinta Costera.",
+      imageAlt: "Aerial view of Panama Bay and its towers at sunset.",
     },
     invest: {
       eyebrow: "Invest",
@@ -206,7 +206,7 @@ export const en: Dictionary = {
       disclaimer:
         "Published information is for informational purposes only and does not constitute financial, tax or legal advice.",
       viewAll: "See all",
-      imageAlt: "Ships in the Miraflores Locks of the Panama Canal.",
+      imageAlt: "Container ship in the Miraflores Locks of the Panama Canal.",
     },
     explore: {
       eyebrow: "Explore",
@@ -267,7 +267,9 @@ export const en: Dictionary = {
       ],
       creditsTitle: "Image credits",
       creditsIntro:
-        "Photographs from Wikimedia Commons, reused under their licences. Images have been cropped and, for the cover video, animated with AI tools from the original photograph.",
+        "Site photographs come from Unsplash, under its licence. The cover video was animated with AI tools from Wikimedia Commons photographs; their authors and licences are listed below.",
+      creditsPhotos: "Photographs",
+      creditsVideo: "Cover video",
     },
     contact: {
       eyebrow: "Contact",

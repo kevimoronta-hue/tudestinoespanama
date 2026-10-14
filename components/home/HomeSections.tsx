@@ -29,7 +29,7 @@ const SWIPE_ROW =
 /* ---------- Intro — open text + media card ---------- */
 
 export function IntroSection({ dict }: { dict: Dictionary }) {
-  const canal = dict.home.moments.items[1];
+  const coast = dict.home.moments.items[3];
   return (
     <section aria-labelledby="intro-title" className="py-20 sm:py-28">
       <div className="container-site grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
@@ -42,17 +42,17 @@ export function IntroSection({ dict }: { dict: Dictionary }) {
         <figure data-reveal className="relative lg:col-span-6">
           <div className="relative aspect-[4/3] overflow-hidden rounded-[var(--radius-surface)] bg-ocean-mist">
             <Image
-              src="/images/canal-esclusas-miraflores.webp"
+              src="/images/skyline-cinta-costera.webp"
               alt={dict.home.intro.imageAlt}
               fill
               sizes="(min-width: 1024px) 700px, 100vw"
-              className="object-cover object-[45%_center]"
+              className="object-cover object-[35%_center]"
             />
           </div>
           {/* Small caption surface overlapping the photo edge. */}
           <figcaption className="absolute -bottom-6 left-5 max-w-[80%] rounded-[var(--radius-control)] bg-white px-5 py-3.5 shadow-[0_14px_34px_-20px_rgb(6_34_48/0.45)] sm:left-8">
-            <span className="block font-display text-[0.95rem] font-bold text-ink">{canal.place}</span>
-            <span className="block text-sm text-muted">{canal.region}</span>
+            <span className="block font-display text-[0.95rem] font-bold text-ink">{coast.place}</span>
+            <span className="block text-sm text-muted">{coast.region}</span>
           </figcaption>
         </figure>
       </div>
@@ -101,7 +101,7 @@ export function JourneyCard({
         sizes={large ? "(min-width: 1024px) 720px, 85vw" : "(min-width: 1024px) 520px, 85vw"}
         className={`-z-10 object-cover ${position} transition-transform duration-[180ms] ${EASE} group-hover:scale-[1.02]`}
       />
-      <div aria-hidden="true" className={`absolute inset-0 -z-10 ${large ? "bg-[linear-gradient(180deg,rgb(6_34_48/0)_25%,rgb(6_34_48/0.9)_100%)] md:bg-[linear-gradient(180deg,rgb(6_34_48/0)_40%,rgb(6_34_48/0.85)_100%)]" : "bg-[linear-gradient(180deg,rgb(6_34_48/0.05)_15%,rgb(6_34_48/0.9)_100%)]"}`} />
+      <div aria-hidden="true" className={`absolute inset-0 -z-10 ${large ? "bg-[linear-gradient(180deg,rgb(6_34_48/0)_20%,rgb(6_34_48/0.55)_55%,rgb(6_34_48/0.94)_100%)] md:bg-[linear-gradient(180deg,rgb(6_34_48/0)_35%,rgb(6_34_48/0.5)_65%,rgb(6_34_48/0.92)_100%)]" : "bg-[linear-gradient(180deg,rgb(6_34_48/0.05)_15%,rgb(6_34_48/0.5)_55%,rgb(6_34_48/0.94)_100%)]"}`} />
       <div className={`space-y-2 ${large ? "p-7 sm:p-10" : "p-6 sm:p-7"}`}>
         <h3 className={`font-display font-extrabold tracking-tight !text-white ${large ? "text-3xl sm:text-[2.6rem] sm:leading-[1.05]" : "text-2xl"}`}>
           {title}
@@ -166,9 +166,9 @@ export function JourneysSection({ locale, dict }: { locale: Locale; dict: Dictio
 
 const MOMENT_IMAGES = [
   { src: "/images/panama-city-bahia-aerea.webp", position: "object-center" },
-  { src: "/images/canal-esclusas-miraflores.webp", position: "object-[40%_center]" },
+  { src: "/images/canal-esclusas-miraflores.webp", position: "object-[62%_center]" },
   { src: "/images/casco-antiguo-fachada.webp", position: "object-[65%_center]" },
-  { src: "/images/skyline-cinta-costera.webp", position: "object-[60%_center]" },
+  { src: "/images/skyline-cinta-costera.webp", position: "object-[35%_center]" },
   { src: "/images/guna-yala-isla.webp", position: "object-[50%_70%]" },
 ];
 
@@ -378,18 +378,18 @@ export function ExploreSection({ locale, dict }: { locale: Locale; dict: Diction
 /* ---------- Social commitment — split media card ---------- */
 
 export function SocialCommitment({ locale, dict, withLink = true }: { locale: Locale; dict: Dictionary; withLink?: boolean }) {
-  const coast = dict.home.moments.items[3];
+  const bay = dict.home.moments.items[0];
   return (
     <section aria-labelledby="social-title" className="pb-20 sm:pb-28">
       <div className="container-site">
         <div className="grid overflow-hidden rounded-[var(--radius-surface)] bg-ocean-deep text-white lg:grid-cols-12">
           <div className="relative aspect-[16/9] lg:col-span-5 lg:aspect-auto lg:min-h-[440px]">
             <Image
-              src="/images/skyline-cinta-costera.webp"
-              alt={`${coast.place}, ${coast.region}`}
+              src="/images/panama-city-bahia-aerea.webp"
+              alt={`${bay.place}, ${bay.region}`}
               fill
               sizes="(min-width: 1024px) 520px, 100vw"
-              className="object-cover object-[60%_center]"
+              className="object-cover object-[72%_center]"
             />
           </div>
           <div className="space-y-5 px-6 py-10 sm:px-10 sm:py-14 lg:col-span-7 lg:px-14 lg:py-16">

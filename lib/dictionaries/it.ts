@@ -40,7 +40,7 @@ export const it: Dictionary = {
       eyebrow: "Benvenuto",
       title: "Un paese. Tanti modi per farlo diventare parte della tua storia.",
       text: "Tu Destino es Panamá riunisce informazioni, orientamento e contatti utili per chi desidera conoscere il paese, costruire una nuova tappa della propria vita o esplorare opportunità di business.",
-      imageAlt: "Due navi transitano attraverso le chiuse di Miraflores, nel Canale di Panamá.",
+      imageAlt: "Veduta aerea della Cinta Costera e dello skyline di Ciudad de Panamá sul Pacifico.",
     },
     journeys: {
       eyebrow: "Tre percorsi",
@@ -62,7 +62,7 @@ export const it: Dictionary = {
           title: "Investire",
           text: "Esplora il contesto imprenditoriale, i settori e le opportunità pubblicate da fonti verificate.",
           cta: "Esplora le possibilità",
-          imageAlt: "Navi nelle chiuse di Miraflores del Canale di Panamá.",
+          imageAlt: "Nave portacontainer nelle chiuse di Miraflores del Canale di Panamá.",
         },
       },
     },
@@ -175,7 +175,7 @@ export const it: Dictionary = {
       ctaButton: "Richiedi orientamento",
       guidesAvailable: "guide",
       noGuides: "Prossimamente",
-      imageAlt: "Veduta aerea della baia di Panamá e della Cinta Costera.",
+      imageAlt: "Veduta aerea della baia di Panamá e delle sue torri al tramonto.",
     },
     invest: {
       eyebrow: "Investire",
@@ -207,7 +207,7 @@ export const it: Dictionary = {
       disclaimer:
         "Le informazioni pubblicate hanno finalità informative e non costituiscono consulenza finanziaria, fiscale o legale.",
       viewAll: "Vedi tutto",
-      imageAlt: "Navi nelle chiuse di Miraflores del Canale di Panamá.",
+      imageAlt: "Nave portacontainer nelle chiuse di Miraflores del Canale di Panamá.",
     },
     explore: {
       eyebrow: "Esplora",
@@ -269,7 +269,9 @@ export const it: Dictionary = {
       ],
       creditsTitle: "Crediti delle immagini",
       creditsIntro:
-        "Fotografie di Wikimedia Commons, riutilizzate secondo la rispettiva licenza. Le immagini sono state ritagliate e, nel caso del video di copertina, animate con strumenti di IA a partire dalla fotografia originale.",
+        "Le fotografie del sito provengono da Unsplash, secondo la sua licenza. Il video di copertina è stato animato con strumenti di IA a partire da fotografie di Wikimedia Commons, i cui autori e licenze sono indicati qui sotto.",
+      creditsPhotos: "Fotografie",
+      creditsVideo: "Video di copertina",
     },
     contact: {
       eyebrow: "Contatti",

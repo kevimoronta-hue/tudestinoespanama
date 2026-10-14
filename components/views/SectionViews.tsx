@@ -47,8 +47,8 @@ export function discoverMetadata(locale: Locale) {
   return routeMetadata("discover", locale, d.eyebrow, d.intro, {
     src: "/images/casco-antiguo-fachada.webp",
     alt: d.imageAlt,
-    width: 1600,
-    height: 1000,
+    width: 2560,
+    height: 1600,
   });
 }
 
@@ -120,8 +120,8 @@ export function liveMetadata(locale: Locale) {
   return routeMetadata("live", locale, d.eyebrow, d.intro, {
     src: "/images/panama-city-bahia-aerea.webp",
     alt: d.imageAlt,
-    width: 1600,
-    height: 1000,
+    width: 2560,
+    height: 1600,
   });
 }
 
@@ -239,8 +239,8 @@ export function investMetadata(locale: Locale) {
   return routeMetadata("invest", locale, d.eyebrow, d.intro, {
     src: "/images/canal-esclusas-miraflores.webp",
     alt: d.imageAlt,
-    width: 1600,
-    height: 1000,
+    width: 2560,
+    height: 1600,
   });
 }
 
@@ -462,7 +462,7 @@ export function AboutView({ locale }: { locale: Locale }) {
               alt=""
               fill
               sizes="(min-width: 1024px) 620px, 100vw"
-              className="object-cover object-[30%_center] opacity-80"
+              className="object-cover object-[68%_center] opacity-80"
             />
             <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(170deg,rgb(4_22_31/0.1)_0%,rgb(4_22_31/0.55)_45%,rgb(4_22_31/0.94)_85%)]" />
             <div className="relative flex min-h-[340px] flex-col justify-end p-7 sm:min-h-[380px] sm:p-10 lg:min-h-[420px] lg:p-12">
@@ -520,34 +520,40 @@ export function AboutView({ locale }: { locale: Locale }) {
 
       <SocialCommitment locale={locale} dict={dict} withLink={false} />
 
+      {/* Credits: one quiet text block, no thumbnails, no per-image source links in the layout. */}
       <section id="creditos" aria-labelledby="credits-title" className="pb-20 sm:pb-28">
-        <div className="container-site space-y-6">
-          <SectionHeading id="credits-title" title={d.creditsTitle} intro={d.creditsIntro} size="h3" />
-          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {mediaSources.items.map((m) => (
-              <li key={m.key} className="card-depth flex overflow-hidden rounded-[var(--radius-card)] bg-white sm:block">
-                <div className="relative w-[36%] shrink-0 bg-blue-100 sm:aspect-[16/10] sm:w-auto">
-                  <Image src={`/${m.webDerivative.replace(/^public\//, "")}`} alt="" fill sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 36vw" className="object-cover" />
+        <div className="container-site">
+          <div className="grid gap-8 border-t border-line pt-10 lg:grid-cols-12 lg:gap-16">
+            <div className="space-y-3 lg:col-span-4">
+              <h2 id="credits-title" className="text-h3">
+                {d.creditsTitle}
+              </h2>
+              <p className="text-sm leading-relaxed text-muted">{d.creditsIntro}</p>
+            </div>
+            <div className="grid gap-8 text-sm sm:grid-cols-2 lg:col-span-8">
+              {[
+                { title: d.creditsPhotos, list: mediaSources.webPhotos.map((m) => ({ key: m.key, place: m.location, author: m.author, license: m.license, href: m.sourcePage })) },
+                { title: d.creditsVideo, list: mediaSources.items.map((m) => ({ key: m.key, place: m.location, author: m.author, license: licenseLabel(m.license, dict), href: m.sourcePage })) },
+              ].map((group) => (
+                <div key={group.title}>
+                  <h3 className="font-display text-xs font-bold uppercase tracking-[0.12em] text-ocean">{group.title}</h3>
+                  <ul className="mt-3 divide-y divide-line">
+                    {group.list.map((c) => (
+                      <li key={c.key} className="py-3">
+                        <p className="font-medium text-ink">{c.place}</p>
+                        <p className="text-muted">
+                          <a href={c.href} target="_blank" rel="noopener noreferrer" className="underline decoration-line-strong underline-offset-4 hover:text-blue-800">
+                            {c.author}
+                          </a>{" "}
+                          · {c.license}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <div className="min-w-0 space-y-1 p-4 text-sm sm:p-5">
-                  <p className="font-semibold text-ink">{m.location}</p>
-                  <p className="text-muted">
-                    {m.author} ·{" "}
-                    {m.licenseUrl ? (
-                      <a href={m.licenseUrl} target="_blank" rel="noopener noreferrer license" className="text-blue-800 underline underline-offset-4">
-                        {licenseLabel(m.license, dict)}
-                      </a>
-                    ) : (
-                      licenseLabel(m.license, dict)
-                    )}
-                  </p>
-                  <a href={m.sourcePage} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1 text-blue-800 underline underline-offset-4">
-                    Wikimedia Commons <Icon name="external" size={14} />
-                  </a>
-                </div>
-              </li>
-            ))}
-          </ul>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
     </>

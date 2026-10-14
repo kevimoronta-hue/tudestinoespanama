@@ -2,8 +2,6 @@ import { existsSync } from "node:fs";
 import path from "node:path";
 import type { Dictionary } from "@/lib/dictionaries";
 import { href, type Locale } from "@/lib/i18n";
-import mediaSources from "@/data/media-sources.json";
-import { creditLine } from "@/lib/credits";
 import { buttonClasses } from "../ui/Button";
 import { Icon } from "../ui/Icon";
 import { TrackedLink } from "../ui/TrackedLink";
@@ -24,9 +22,6 @@ function available(src: string): string | undefined {
 }
 
 export function HeroVideo({ locale, dict }: { locale: Locale; dict: Dictionary }) {
-  const poster = mediaSources.items.find((m) => m.key === "05-nature");
-  const credit = poster ? creditLine(poster, dict) : "";
-
   return (
     <section aria-labelledby="hero-title" className="relative isolate flex h-[100svh] min-h-[600px] overflow-hidden bg-ocean-deep text-white">
       {/* Poster: rendered in the HTML, visible immediately and used as LCP element. */}
@@ -79,7 +74,6 @@ export function HeroVideo({ locale, dict }: { locale: Locale; dict: Dictionary }
         </div>
       </div>
 
-      <p className="absolute bottom-2 right-3 hidden text-[11px] text-white/60 md:block">{credit}</p>
     </section>
   );
 }

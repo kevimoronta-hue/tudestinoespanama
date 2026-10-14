@@ -38,7 +38,7 @@ export const es = {
       eyebrow: "Bienvenida",
       title: "Un país. Muchas formas de hacerlo parte de tu historia.",
       text: "Tu Destino es Panamá reúne información, orientación y conexiones útiles para quienes desean conocer el país, construir una nueva etapa o explorar posibilidades de negocio.",
-      imageAlt: "Dos buques transitan por las esclusas de Miraflores en el Canal de Panamá.",
+      imageAlt: "Vista aérea de la Cinta Costera y el skyline de Ciudad de Panamá frente al Pacífico.",
     },
     journeys: {
       eyebrow: "Tres caminos",
@@ -60,7 +60,7 @@ export const es = {
           title: "Invertir",
           text: "Explora el entorno empresarial, sectores y oportunidades publicadas por fuentes verificadas.",
           cta: "Explorar posibilidades",
-          imageAlt: "Buques en las esclusas de Miraflores del Canal de Panamá.",
+          imageAlt: "Buque portacontenedores en las esclusas de Miraflores del Canal de Panamá.",
         },
       },
     },
@@ -173,7 +173,7 @@ export const es = {
       ctaButton: "Solicitar orientación",
       guidesAvailable: "guías",
       noGuides: "Próximamente",
-      imageAlt: "Vista aérea de la bahía de Panamá y la Cinta Costera.",
+      imageAlt: "Vista aérea de la bahía de Panamá y sus torres al atardecer.",
     },
     invest: {
       eyebrow: "Invertir",
@@ -205,7 +205,7 @@ export const es = {
       disclaimer:
         "La información publicada tiene fines informativos y no constituye asesoría financiera, fiscal o jurídica.",
       viewAll: "Ver todo",
-      imageAlt: "Buques en las esclusas de Miraflores del Canal de Panamá.",
+      imageAlt: "Buque portacontenedores en las esclusas de Miraflores del Canal de Panamá.",
     },
     explore: {
       eyebrow: "Explora",
@@ -267,7 +267,9 @@ export const es = {
       ],
       creditsTitle: "Créditos de imágenes",
       creditsIntro:
-        "Fotografías de Wikimedia Commons, reutilizadas según su licencia. Las imágenes han sido recortadas y, en el caso del video de portada, animadas mediante herramientas de IA a partir de la fotografía original.",
+        "Las fotografías del sitio proceden de Unsplash, bajo su licencia. El video de portada se animó con herramientas de IA a partir de fotografías de Wikimedia Commons, cuyos autores y licencias se indican abajo.",
+      creditsPhotos: "Fotografías",
+      creditsVideo: "Video de portada",
     },
     contact: {
       eyebrow: "Contacto",

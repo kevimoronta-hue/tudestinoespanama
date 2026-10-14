@@ -79,28 +79,20 @@ type ImageKey = "bahia" | "canal" | "casco" | "skyline" | "gunaYala";
 
 const IMAGES: Record<
   ImageKey,
-  { src: string; alt: Record<Locale, string>; credit: Record<Locale, string> }
+  { src: string; alt: Record<Locale, string> }
 > = {
   bahia: {
     src: "/images/panama-city-bahia-aerea.webp",
     alt: {
-      es: "Vista aérea del distrito financiero de Ciudad de Panamá y la bahía junto a la Cinta Costera",
-      en: "Aerial view of Panama City's financial district and the bay along the Cinta Costera",
-    },
-    credit: {
-      es: "Dronepicr, CC BY 3.0, vía Wikimedia Commons",
-      en: "Dronepicr, CC BY 3.0, via Wikimedia Commons",
+      es: "Vista aérea del distrito financiero de Ciudad de Panamá y la bahía al atardecer",
+      en: "Aerial view of Panama City's financial district and the bay at sunset",
     },
   },
   canal: {
     src: "/images/canal-esclusas-miraflores.webp",
     alt: {
-      es: "Dos barcos transitando por las esclusas de Miraflores del Canal de Panamá",
-      en: "Two ships transiting the Miraflores Locks of the Panama Canal",
-    },
-    credit: {
-      es: "U.S. Department of State, dominio público, vía Wikimedia Commons",
-      en: "U.S. Department of State, public domain, via Wikimedia Commons",
+      es: "Buque portacontenedores transitando por las esclusas de Miraflores del Canal de Panamá",
+      en: "Container ship transiting the Miraflores Locks of the Panama Canal",
     },
   },
   casco: {
@@ -109,10 +101,6 @@ const IMAGES: Record<
       es: "Fachada colonial con balcones en el Casco Antiguo de Ciudad de Panamá",
       en: "Colonial facade with balconies in Panama City's Casco Antiguo",
     },
-    credit: {
-      es: "David Broad, CC BY 3.0, vía Wikimedia Commons",
-      en: "David Broad, CC BY 3.0, via Wikimedia Commons",
-    },
   },
   skyline: {
     src: "/images/skyline-cinta-costera.webp",
@@ -120,20 +108,12 @@ const IMAGES: Record<
       es: "Horizonte de Ciudad de Panamá y la Cinta Costera",
       en: "Panama City skyline and the Cinta Costera",
     },
-    credit: {
-      es: "dronepicr, CC BY 2.0, vía Wikimedia Commons",
-      en: "dronepicr, CC BY 2.0, via Wikimedia Commons",
-    },
   },
   gunaYala: {
     src: "/images/guna-yala-isla.webp",
     alt: {
-      es: "Pequeña isla con palmeras y chozas en Guna Yala",
-      en: "Small island with palm trees and huts in Guna Yala",
-    },
-    credit: {
-      es: "Ayaita, CC BY 3.0, vía Wikimedia Commons",
-      en: "Ayaita, CC BY 3.0, via Wikimedia Commons",
+      es: "Playa de arena blanca con palmeras en las islas de Guna Yala (San Blas)",
+      en: "White-sand beach with palm trees in the Guna Yala (San Blas) islands",
     },
   },
 };
@@ -143,9 +123,8 @@ function cover(key: ImageKey, locale: Locale): ContentImage {
   return {
     src: img.src,
     alt: img.alt[locale],
-    width: 1600,
-    height: 1000,
-    credit: img.credit[locale],
+    width: 2560,
+    height: 1600,
   };
 }
 

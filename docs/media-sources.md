@@ -24,7 +24,7 @@ Los pósters `public/video/hero-panama-desktop-poster.webp` (1920×1080) y `publ
 |---------|-------------|
 | `media/references/frames/*-16x9.jpg` (5 archivos) | 1920×1080 |
 | `media/references/frames/*-9x16.jpg` (5 archivos) | 1080×1920 |
-| `public/images/*.webp` (5 archivos, `scripts/build-web-images.py`) | 2560×1600 |
+| `public/images/*.webp` (5 archivos, Unsplash, ver `webPhotos` en `data/media-sources.json`; `scripts/build-web-images.py`) | 2560×1600 |
 | `public/video/hero-panama-desktop-poster.webp` | 1920×1080 |
 | `public/video/hero-panama-mobile-poster.webp` | 1080×1920 |
 

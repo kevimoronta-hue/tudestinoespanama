@@ -11,10 +11,9 @@ type Locale = "es" | "en";
 function thumb(
   src: string,
   alt: Record<Locale, string>,
-  credit: Record<Locale, string>,
   locale: Locale,
 ): ContentImage {
-  return { src, alt: alt[locale], width: 1600, height: 1000, credit: credit[locale] };
+  return { src, alt: alt[locale], width: 2560, height: 1600 };
 }
 
 const T = {
@@ -25,22 +24,14 @@ const T = {
         es: "Fachada colonial con balcones en el Casco Antiguo de Ciudad de Panamá",
         en: "Colonial facade with balconies in Panama City's Casco Antiguo",
       },
-      {
-        es: "David Broad, CC BY 3.0, vía Wikimedia Commons",
-        en: "David Broad, CC BY 3.0, via Wikimedia Commons",
-      },
       l,
     ),
   canal: (l: Locale) =>
     thumb(
       "/images/canal-esclusas-miraflores.webp",
       {
-        es: "Dos barcos transitando por las esclusas de Miraflores del Canal de Panamá",
-        en: "Two ships transiting the Miraflores Locks of the Panama Canal",
-      },
-      {
-        es: "U.S. Department of State, dominio público, vía Wikimedia Commons",
-        en: "U.S. Department of State, public domain, via Wikimedia Commons",
+        es: "Buque portacontenedores transitando por las esclusas de Miraflores del Canal de Panamá",
+        en: "Container ship transiting the Miraflores Locks of the Panama Canal",
       },
       l,
     ),
@@ -48,12 +39,8 @@ const T = {
     thumb(
       "/images/guna-yala-isla.webp",
       {
-        es: "Pequeña isla con palmeras y chozas en Guna Yala",
-        en: "Small island with palm trees and huts in Guna Yala",
-      },
-      {
-        es: "Ayaita, CC BY 3.0, vía Wikimedia Commons",
-        en: "Ayaita, CC BY 3.0, via Wikimedia Commons",
+        es: "Playa de arena blanca con palmeras en las islas de Guna Yala (San Blas)",
+        en: "White-sand beach with palm trees in the Guna Yala (San Blas) islands",
       },
       l,
     ),
@@ -63,10 +50,6 @@ const T = {
       {
         es: "Horizonte de Ciudad de Panamá y la Cinta Costera",
         en: "Panama City skyline and the Cinta Costera",
-      },
-      {
-        es: "dronepicr, CC BY 2.0, vía Wikimedia Commons",
-        en: "dronepicr, CC BY 2.0, via Wikimedia Commons",
       },
       l,
     ),

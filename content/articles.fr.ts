@@ -71,37 +71,32 @@ const SRC = {
 
 type ImageKey = "bahia" | "canal" | "casco" | "skyline" | "gunaYala";
 
-const IMAGES: Record<ImageKey, { src: string; alt: string; credit: string }> = {
+const IMAGES: Record<ImageKey, { src: string; alt: string }> = {
   bahia: {
     src: "/images/panama-city-bahia-aerea.webp",
-    alt: "Vue aérienne du quartier financier de la ville de Panama et de la baie le long de la Cinta Costera",
-    credit: "Dronepicr, CC BY 3.0, via Wikimedia Commons",
+    alt: "Vue aérienne du quartier financier de la ville de Panama et de la baie au coucher du soleil",
   },
   canal: {
     src: "/images/canal-esclusas-miraflores.webp",
-    alt: "Deux navires franchissant les écluses de Miraflores du canal de Panama",
-    credit: "U.S. Department of State, domaine public, via Wikimedia Commons",
+    alt: "Porte-conteneurs franchissant les écluses de Miraflores du canal de Panama",
   },
   casco: {
     src: "/images/casco-antiguo-fachada.webp",
     alt: "Façade coloniale à balcons dans le Casco Antiguo de la ville de Panama",
-    credit: "David Broad, CC BY 3.0, via Wikimedia Commons",
   },
   skyline: {
     src: "/images/skyline-cinta-costera.webp",
     alt: "Silhouette de la ville de Panama et la Cinta Costera",
-    credit: "dronepicr, CC BY 2.0, via Wikimedia Commons",
   },
   gunaYala: {
     src: "/images/guna-yala-isla.webp",
-    alt: "Petite île plantée de palmiers et de huttes à Guna Yala",
-    credit: "Ayaita, CC BY 3.0, via Wikimedia Commons",
+    alt: "Plage de sable blanc bordée de palmiers dans les îles de Guna Yala (San Blas)",
   },
 };
 
 function cover(key: ImageKey): ContentImage {
   const img = IMAGES[key];
-  return { src: img.src, alt: img.alt, width: 1600, height: 1000, credit: img.credit };
+  return { src: img.src, alt: img.alt, width: 2560, height: 1600 };
 }
 
 export const articlesFr: Article[] = [

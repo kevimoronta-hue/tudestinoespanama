@@ -70,37 +70,32 @@ const SRC = {
 
 type ImageKey = "bahia" | "canal" | "casco" | "skyline" | "gunaYala";
 
-const IMAGES: Record<ImageKey, { src: string; alt: string; credit: string }> = {
+const IMAGES: Record<ImageKey, { src: string; alt: string }> = {
   bahia: {
     src: "/images/panama-city-bahia-aerea.webp",
-    alt: "Luftaufnahme des Finanzviertels von Panama-Stadt und der Bucht an der Cinta Costera",
-    credit: "Dronepicr, CC BY 3.0, über Wikimedia Commons",
+    alt: "Luftaufnahme des Finanzviertels von Panama-Stadt und der Bucht bei Sonnenuntergang",
   },
   canal: {
     src: "/images/canal-esclusas-miraflores.webp",
-    alt: "Zwei Schiffe passieren die Miraflores-Schleusen des Panamakanals",
-    credit: "U.S. Department of State, gemeinfrei, über Wikimedia Commons",
+    alt: "Containerschiff in den Miraflores-Schleusen des Panamakanals",
   },
   casco: {
     src: "/images/casco-antiguo-fachada.webp",
     alt: "Koloniale Fassade mit Balkonen im Casco Antiguo von Panama-Stadt",
-    credit: "David Broad, CC BY 3.0, über Wikimedia Commons",
   },
   skyline: {
     src: "/images/skyline-cinta-costera.webp",
     alt: "Skyline von Panama-Stadt und die Cinta Costera",
-    credit: "dronepicr, CC BY 2.0, über Wikimedia Commons",
   },
   gunaYala: {
     src: "/images/guna-yala-isla.webp",
-    alt: "Kleine Insel mit Palmen und Hütten in Guna Yala",
-    credit: "Ayaita, CC BY 3.0, über Wikimedia Commons",
+    alt: "Weißer Sandstrand mit Palmen auf den Inseln von Guna Yala (San Blas)",
   },
 };
 
 function cover(key: ImageKey): ContentImage {
   const img = IMAGES[key];
-  return { src: img.src, alt: img.alt, width: 1600, height: 1000, credit: img.credit };
+  return { src: img.src, alt: img.alt, width: 2560, height: 1600 };
 }
 
 export const articlesDe: Article[] = [

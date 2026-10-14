@@ -1,155 +1,277 @@
 {
-  "retrievedAt": "2026-10-14",
-  "retrievalMethod": "API de Wikimedia Commons (prop=imageinfo, extmetadata); licencia, autor y resolución reverificados el 2026-10-14.",
-  "changesNotice": "Recortada y animada mediante IA",
-  "items": [
-    {
-      "scene": 1,
-      "sceneName": "Llegada",
-      "key": "01-arrival",
-      "title": "File:Panama City financial district.jpg",
-      "sourcePage": "https://commons.wikimedia.org/wiki/File:Panama_City_financial_district.jpg",
-      "fileUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Panama_City_financial_district.jpg",
-      "author": "Dronepicr",
-      "license": "CC BY 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
-      "attributionRequired": true,
-      "creditLine": "Dronepicr, CC BY 3.0, vía Wikimedia Commons",
-      "location": "Ciudad de Panamá, distrito financiero visto desde la Bahía de Panamá (Cinta Costera)",
-      "gps": { "lat": 8.965575, "lon": -79.524282 },
-      "capturedAt": "2016-03-22T08:40:21",
-      "resolution": { "width": 3992, "height": 2242 },
-      "orientation": "landscape",
-      "compat169": "Sí. El original ya es casi 16:9 (1,78:1); recorte 3985×2242 a fotograma completo, reducido a 1920×1080.",
-      "compat916": "Sí, por recorte, con reservas. Es la imagen de menor resolución: el recorte 9:16 solo tiene 1261×2242 px de fuente (reducido a 1080×1920, sin ampliación, pero con muy poco margen) y descarta ~68 % del ancho. Revisar nitidez del clip resultante.",
-      "focalPoint": "16:9: centro (0,50 / 0,50). 9:16: x≈0,45, y=0,50 — torres del distrito financiero sobre la marina. Valores estimados por comparación de imagen.",
-      "crops": {
-        "16x9": "media/references/frames/01-arrival-16x9.jpg",
-        "9x16": "media/references/frames/01-arrival-9x16.jpg"
-      },
-      "webDerivative": "public/images/panama-city-bahia-aerea.webp",
-      "locationConfidence": "alta",
-      "locationEvidence": "Coordenadas GPS en EXIF + categorías Commons 'Panama Bay', 'Cinta Costera', 'Skylines of Panama City' + descripción 'Panama City, financial district'."
-    },
-    {
-      "scene": 2,
-      "sceneName": "Canal",
-      "key": "02-canal",
-      "title": "File:Two Ships Transit Miraflores Locks as Secretary Kerry Visits Panama Canal After Attending Summit of the Americas in Panama (17108904531).jpg",
-      "sourcePage": "https://commons.wikimedia.org/wiki/File:Two_Ships_Transit_Miraflores_Locks_as_Secretary_Kerry_Visits_Panama_Canal_After_Attending_Summit_of_the_Americas_in_Panama_(17108904531).jpg",
-      "fileUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Two_Ships_Transit_Miraflores_Locks_as_Secretary_Kerry_Visits_Panama_Canal_After_Attending_Summit_of_the_Americas_in_Panama_%2817108904531%29.jpg",
-      "author": "U.S. Department of State",
-      "license": "Dominio público",
-      "licenseUrl": null,
-      "attributionRequired": false,
-      "creditLine": "U.S. Department of State, dominio público, vía Wikimedia Commons",
-      "location": "Esclusas de Miraflores, Canal de Panamá",
-      "gps": { "lat": 8.97461, "lon": -79.578952 },
-      "capturedAt": "2015-04-10T18:57:03",
-      "resolution": { "width": 4727, "height": 3146 },
-      "orientation": "landscape",
-      "compat169": "Sí, por recorte: 4727×2658 (franja vertical centrada), reducido a 1920×1080.",
-      "compat916": "Sí, por recorte: 1769×3146, reducido a 1080×1920. Margen de resolución suficiente.",
-      "focalPoint": "16:9: centro (0,50 / 0,50). 9:16: x≈0,38, y=0,50 — proa del buque rojo y muro central de la esclusa. Valores estimados por comparación de imagen.",
-      "crops": {
-        "16x9": "media/references/frames/02-canal-16x9.jpg",
-        "9x16": "media/references/frames/02-canal-9x16.jpg"
-      },
-      "webDerivative": "public/images/canal-esclusas-miraflores.webp",
-      "locationConfidence": "alta",
-      "locationEvidence": "Coordenadas GPS + categoría Commons 'Miraflores Locks' + descripción oficial del Departamento de Estado.",
-      "notes": "Atribución no obligatoria (obra del Gobierno de EE. UU.), pero se mantiene el crédito por transparencia. El nombre del buque es visible en la imagen."
-    },
-    {
-      "scene": 3,
-      "sceneName": "Identidad / Casco Antiguo",
-      "key": "03-casco",
-      "title": "File:Old Panama City - Casco Viejo - Panama - panoramio (14).jpg",
-      "sourcePage": "https://commons.wikimedia.org/wiki/File:Old_Panama_City_-_Casco_Viejo_-_Panama_-_panoramio_(14).jpg",
-      "fileUrl": "https://upload.wikimedia.org/wikipedia/commons/9/90/Old_Panama_City_-_Casco_Viejo_-_Panama_-_panoramio_%2814%29.jpg",
-      "author": "David Broad",
-      "license": "CC BY 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
-      "attributionRequired": true,
-      "creditLine": "David Broad, CC BY 3.0, vía Wikimedia Commons",
-      "location": "Casco Antiguo (Casco Viejo), Ciudad de Panamá",
-      "gps": { "lat": 8.952008, "lon": -79.535804 },
-      "capturedAt": "2016-02-15",
-      "resolution": { "width": 4288, "height": 2848 },
-      "orientation": "landscape",
-      "compat169": "Sí, por recorte: 4288×2412, desplazado ligeramente hacia arriba, reducido a 1920×1080.",
-      "compat916": "Sí, por recorte: 1602×2848, reducido a 1080×1920.",
-      "focalPoint": "16:9: x=0,50, y≈0,45 (balcones superiores). 9:16: x≈0,60, y=0,50 — esquina de la fachada rosa con balcones. Valores estimados por comparación de imagen.",
-      "crops": {
-        "16x9": "media/references/frames/03-casco-16x9.jpg",
-        "9x16": "media/references/frames/03-casco-9x16.jpg"
-      },
-      "webDerivative": "public/images/casco-antiguo-fachada.webp",
-      "locationConfidence": "alta",
-      "locationEvidence": "Coordenadas GPS + categoría Commons 'Historic District of Panamá' + título 'Casco Viejo'. El edificio concreto no está identificado.",
-      "notes": "Foto procedente de Panoramio (archivada); solo fecha de captura, sin hora."
-    },
-    {
-      "scene": 4,
-      "sceneName": "Modernidad / Skyline",
-      "key": "04-skyline",
-      "title": "File:Panama Stadt (27057207512).jpg",
-      "sourcePage": "https://commons.wikimedia.org/wiki/File:Panama_Stadt_(27057207512).jpg",
-      "fileUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Panama_Stadt_%2827057207512%29.jpg",
-      "author": "dronepicr",
-      "license": "CC BY 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
-      "attributionRequired": true,
-      "creditLine": "dronepicr, CC BY 2.0, vía Wikimedia Commons",
-      "location": "Cinta Costera / Bahía de Panamá, Ciudad de Panamá",
-      "gps": null,
-      "capturedAt": "2016-03-21T15:31",
-      "resolution": { "width": 5483, "height": 3655 },
-      "orientation": "landscape",
-      "compat169": "Sí, por recorte: 5483×3084, reducido a 1920×1080.",
-      "compat916": "Sí, por recorte: 2055×3655, reducido a 1080×1920. Amplio margen de resolución.",
-      "focalPoint": "16:9: centro (0,50 / 0,50). 9:16: x≈0,62, y=0,50 — grupo de torres y la avenida costera. Valores estimados por comparación de imagen.",
-      "crops": {
-        "16x9": "media/references/frames/04-skyline-16x9.jpg",
-        "9x16": "media/references/frames/04-skyline-9x16.jpg"
-      },
-      "webDerivative": "public/images/skyline-cinta-costera.webp",
-      "locationConfidence": "alta",
-      "locationEvidence": "Sin GPS. Categorías Commons 'Cinta Costera', 'Panama Bay', 'Skylines of Panama City'; título 'Panama Stadt'. Mismo autor que la escena 1.",
-      "notes": "Original de ~22 MB; no publicar en public/."
-    },
-    {
-      "scene": 5,
-      "sceneName": "Apertura / Naturaleza",
-      "key": "05-nature",
-      "title": "File:Guna Yala Island.jpg",
-      "sourcePage": "https://commons.wikimedia.org/wiki/File:Guna_Yala_Island.jpg",
-      "fileUrl": "https://upload.wikimedia.org/wikipedia/commons/7/72/Guna_Yala_Island.jpg",
-      "author": "Ayaita",
-      "license": "CC BY 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
-      "attributionRequired": true,
-      "creditLine": "Ayaita, CC BY 3.0, vía Wikimedia Commons",
-      "location": "Isla en la Comarca Guna Yala (archipiélago de San Blas), Caribe panameño — isla concreta no identificada",
-      "gps": null,
-      "capturedAt": "2012-05-06",
-      "resolution": { "width": 5184, "height": 3456 },
-      "orientation": "landscape",
-      "compat169": "Sí, por recorte: 5184×2916, reducido a 1920×1080.",
-      "compat916": "Sí, por recorte: 1944×3456, reducido a 1080×1920.",
-      "focalPoint": "16:9: centro (0,50 / 0,50). 9:16: x≈0,55, y=0,50 — palmeras y cabañas de la isla. Valores estimados por comparación de imagen.",
-      "crops": {
-        "16x9": "media/references/frames/05-nature-16x9.jpg",
-        "9x16": "media/references/frames/05-nature-9x16.jpg"
-      },
-      "webDerivative": "public/images/guna-yala-isla.webp",
-      "posters": [
-        "public/video/hero-panama-desktop-poster.webp",
-        "public/video/hero-panama-mobile-poster.webp"
-      ],
-      "locationConfidence": "media",
-      "locationEvidence": "Sin GPS. Categorías Commons 'Guna Yala Comarca', 'San Blas Islands', 'Islands of Panama' + descripción 'Isla en Guna Yala, Panamá'. La comarca es fiable; la isla exacta no.",
-      "notes": "Territorio indígena guna: no atribuir a la imagen un nombre de isla ni un uso turístico concreto sin verificar."
-    }
-  ]
+ "retrievedAt": "2026-10-14",
+ "changesNotice": "Recortada y animada mediante IA",
+ "items": [
+  {
+   "scene": 1,
+   "sceneName": "Llegada",
+   "key": "01-arrival",
+   "title": "File:Panama City financial district.jpg",
+   "sourcePage": "https://commons.wikimedia.org/wiki/File:Panama_City_financial_district.jpg",
+   "fileUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Panama_City_financial_district.jpg",
+   "author": "Dronepicr",
+   "license": "CC BY 3.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+   "attributionRequired": true,
+   "creditLine": "Dronepicr, CC BY 3.0, vía Wikimedia Commons",
+   "location": "Ciudad de Panamá, distrito financiero visto desde la Bahía de Panamá (Cinta Costera)",
+   "gps": {
+    "lat": 8.965575,
+    "lon": -79.524282
+   },
+   "capturedAt": "2016-03-22T08:40:21",
+   "resolution": {
+    "width": 3992,
+    "height": 2242
+   },
+   "orientation": "landscape",
+   "compat169": "Sí. El original ya es casi 16:9 (1,78:1); recorte 3985×2242 a fotograma completo, reducido a 1920×1080.",
+   "compat916": "Sí, por recorte, con reservas. Es la imagen de menor resolución: el recorte 9:16 solo tiene 1261×2242 px de fuente (reducido a 1080×1920, sin ampliación, pero con muy poco margen) y descarta ~68 % del ancho. Revisar nitidez del clip resultante.",
+   "focalPoint": "16:9: centro (0,50 / 0,50). 9:16: x≈0,45, y=0,50 — torres del distrito financiero sobre la marina. Valores estimados por comparación de imagen.",
+   "crops": {
+    "16x9": "media/references/frames/01-arrival-16x9.jpg",
+    "9x16": "media/references/frames/01-arrival-9x16.jpg"
+   },
+   "locationConfidence": "alta",
+   "locationEvidence": "Coordenadas GPS en EXIF + categorías Commons 'Panama Bay', 'Cinta Costera', 'Skylines of Panama City' + descripción 'Panama City, financial district'.",
+   "usedIn": "Video de portada (public/video/*), animado con IA a partir de esta fotografía."
+  },
+  {
+   "scene": 2,
+   "sceneName": "Canal",
+   "key": "02-canal",
+   "title": "File:Two Ships Transit Miraflores Locks as Secretary Kerry Visits Panama Canal After Attending Summit of the Americas in Panama (17108904531).jpg",
+   "sourcePage": "https://commons.wikimedia.org/wiki/File:Two_Ships_Transit_Miraflores_Locks_as_Secretary_Kerry_Visits_Panama_Canal_After_Attending_Summit_of_the_Americas_in_Panama_(17108904531).jpg",
+   "fileUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Two_Ships_Transit_Miraflores_Locks_as_Secretary_Kerry_Visits_Panama_Canal_After_Attending_Summit_of_the_Americas_in_Panama_%2817108904531%29.jpg",
+   "author": "U.S. Department of State",
+   "license": "Dominio público",
+   "licenseUrl": null,
+   "attributionRequired": false,
+   "creditLine": "U.S. Department of State, dominio público, vía Wikimedia Commons",
+   "location": "Esclusas de Miraflores, Canal de Panamá",
+   "gps": {
+    "lat": 8.97461,
+    "lon": -79.578952
+   },
+   "capturedAt": "2015-04-10T18:57:03",
+   "resolution": {
+    "width": 4727,
+    "height": 3146
+   },
+   "orientation": "landscape",
+   "compat169": "Sí, por recorte: 4727×2658 (franja vertical centrada), reducido a 1920×1080.",
+   "compat916": "Sí, por recorte: 1769×3146, reducido a 1080×1920. Margen de resolución suficiente.",
+   "focalPoint": "16:9: centro (0,50 / 0,50). 9:16: x≈0,38, y=0,50 — proa del buque rojo y muro central de la esclusa. Valores estimados por comparación de imagen.",
+   "crops": {
+    "16x9": "media/references/frames/02-canal-16x9.jpg",
+    "9x16": "media/references/frames/02-canal-9x16.jpg"
+   },
+   "locationConfidence": "alta",
+   "locationEvidence": "Coordenadas GPS + categoría Commons 'Miraflores Locks' + descripción oficial del Departamento de Estado.",
+   "notes": "Atribución no obligatoria (obra del Gobierno de EE. UU.), pero se mantiene el crédito por transparencia. El nombre del buque es visible en la imagen.",
+   "usedIn": "Video de portada (public/video/*), animado con IA a partir de esta fotografía."
+  },
+  {
+   "scene": 3,
+   "sceneName": "Identidad / Casco Antiguo",
+   "key": "03-casco",
+   "title": "File:Old Panama City - Casco Viejo - Panama - panoramio (14).jpg",
+   "sourcePage": "https://commons.wikimedia.org/wiki/File:Old_Panama_City_-_Casco_Viejo_-_Panama_-_panoramio_(14).jpg",
+   "fileUrl": "https://upload.wikimedia.org/wikipedia/commons/9/90/Old_Panama_City_-_Casco_Viejo_-_Panama_-_panoramio_%2814%29.jpg",
+   "author": "David Broad",
+   "license": "CC BY 3.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+   "attributionRequired": true,
+   "creditLine": "David Broad, CC BY 3.0, vía Wikimedia Commons",
+   "location": "Casco Antiguo (Casco Viejo), Ciudad de Panamá",
+   "gps": {
+    "lat": 8.952008,
+    "lon": -79.535804
+   },
+   "capturedAt": "2016-02-15",
+   "resolution": {
+    "width": 4288,
+    "height": 2848
+   },
+   "orientation": "landscape",
+   "compat169": "Sí, por recorte: 4288×2412, desplazado ligeramente hacia arriba, reducido a 1920×1080.",
+   "compat916": "Sí, por recorte: 1602×2848, reducido a 1080×1920.",
+   "focalPoint": "16:9: x=0,50, y≈0,45 (balcones superiores). 9:16: x≈0,60, y=0,50 — esquina de la fachada rosa con balcones. Valores estimados por comparación de imagen.",
+   "crops": {
+    "16x9": "media/references/frames/03-casco-16x9.jpg",
+    "9x16": "media/references/frames/03-casco-9x16.jpg"
+   },
+   "locationConfidence": "alta",
+   "locationEvidence": "Coordenadas GPS + categoría Commons 'Historic District of Panamá' + título 'Casco Viejo'. El edificio concreto no está identificado.",
+   "notes": "Foto procedente de Panoramio (archivada); solo fecha de captura, sin hora.",
+   "usedIn": "Video de portada (public/video/*), animado con IA a partir de esta fotografía."
+  },
+  {
+   "scene": 4,
+   "sceneName": "Modernidad / Skyline",
+   "key": "04-skyline",
+   "title": "File:Panama Stadt (27057207512).jpg",
+   "sourcePage": "https://commons.wikimedia.org/wiki/File:Panama_Stadt_(27057207512).jpg",
+   "fileUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Panama_Stadt_%2827057207512%29.jpg",
+   "author": "dronepicr",
+   "license": "CC BY 2.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+   "attributionRequired": true,
+   "creditLine": "dronepicr, CC BY 2.0, vía Wikimedia Commons",
+   "location": "Cinta Costera / Bahía de Panamá, Ciudad de Panamá",
+   "gps": null,
+   "capturedAt": "2016-03-21T15:31",
+   "resolution": {
+    "width": 5483,
+    "height": 3655
+   },
+   "orientation": "landscape",
+   "compat169": "Sí, por recorte: 5483×3084, reducido a 1920×1080.",
+   "compat916": "Sí, por recorte: 2055×3655, reducido a 1080×1920. Amplio margen de resolución.",
+   "focalPoint": "16:9: centro (0,50 / 0,50). 9:16: x≈0,62, y=0,50 — grupo de torres y la avenida costera. Valores estimados por comparación de imagen.",
+   "crops": {
+    "16x9": "media/references/frames/04-skyline-16x9.jpg",
+    "9x16": "media/references/frames/04-skyline-9x16.jpg"
+   },
+   "locationConfidence": "alta",
+   "locationEvidence": "Sin GPS. Categorías Commons 'Cinta Costera', 'Panama Bay', 'Skylines of Panama City'; título 'Panama Stadt'. Mismo autor que la escena 1.",
+   "notes": "Original de ~22 MB; no publicar en public/.",
+   "usedIn": "Video de portada (public/video/*), animado con IA a partir de esta fotografía."
+  },
+  {
+   "scene": 5,
+   "sceneName": "Apertura / Naturaleza",
+   "key": "05-nature",
+   "title": "File:Guna Yala Island.jpg",
+   "sourcePage": "https://commons.wikimedia.org/wiki/File:Guna_Yala_Island.jpg",
+   "fileUrl": "https://upload.wikimedia.org/wikipedia/commons/7/72/Guna_Yala_Island.jpg",
+   "author": "Ayaita",
+   "license": "CC BY 3.0",
+   "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+   "attributionRequired": true,
+   "creditLine": "Ayaita, CC BY 3.0, vía Wikimedia Commons",
+   "location": "Isla en la Comarca Guna Yala (archipiélago de San Blas), Caribe panameño — isla concreta no identificada",
+   "gps": null,
+   "capturedAt": "2012-05-06",
+   "resolution": {
+    "width": 5184,
+    "height": 3456
+   },
+   "orientation": "landscape",
+   "compat169": "Sí, por recorte: 5184×2916, reducido a 1920×1080.",
+   "compat916": "Sí, por recorte: 1944×3456, reducido a 1080×1920.",
+   "focalPoint": "16:9: centro (0,50 / 0,50). 9:16: x≈0,55, y=0,50 — palmeras y cabañas de la isla. Valores estimados por comparación de imagen.",
+   "crops": {
+    "16x9": "media/references/frames/05-nature-16x9.jpg",
+    "9x16": "media/references/frames/05-nature-9x16.jpg"
+   },
+   "posters": [
+    "public/video/hero-panama-desktop-poster.webp",
+    "public/video/hero-panama-mobile-poster.webp"
+   ],
+   "locationConfidence": "media",
+   "locationEvidence": "Sin GPS. Categorías Commons 'Guna Yala Comarca', 'San Blas Islands', 'Islands of Panama' + descripción 'Isla en Guna Yala, Panamá'. La comarca es fiable; la isla exacta no.",
+   "notes": "Territorio indígena guna: no atribuir a la imagen un nombre de isla ni un uso turístico concreto sin verificar.",
+   "usedIn": "Video de portada (public/video/*), animado con IA a partir de esta fotografía."
+  }
+ ],
+ "retrievalMethodVideo": "API de Wikimedia Commons (prop=imageinfo, extmetadata); licencia, autor y resolución reverificados el 2026-10-14.",
+ "webPhotosNote": "Fotografías del sitio (public/images/*.webp), sustituidas el 2026-10-14 por originales de mayor calidad. Licencia Unsplash: uso comercial y no comercial gratuito, sin atribución obligatoria (se acredita igualmente en Nosotros). Masters HD en media/references/u-*.jpg (no versionados); derivados con scripts/build-web-images.py.",
+ "webPhotos": [
+  {
+   "key": "bahia",
+   "file": "public/images/panama-city-bahia-aerea.webp",
+   "master": "media/references/u-bahia.jpg",
+   "subject": "Bahía de Panamá y torres de Punta Paitilla al atardecer (aérea)",
+   "location": "Ciudad de Panamá",
+   "author": "Sol Cerrud",
+   "sourcePage": "https://unsplash.com/photos/d_4hdowbIaY",
+   "fileUrl": "https://images.unsplash.com/photo-1773424216455-a936cba886c3",
+   "license": "Unsplash License",
+   "licenseUrl": "https://unsplash.com/license",
+   "attributionRequired": false,
+   "resolution": {
+    "width": 4032,
+    "height": 3024
+   },
+   "camera": "DJI FC3582",
+   "locationEvidence": "contentLocation Unsplash: 'Panama City, Panamá'"
+  },
+  {
+   "key": "canal",
+   "file": "public/images/canal-esclusas-miraflores.webp",
+   "master": "media/references/u-canalA.jpg",
+   "subject": "Buque portacontenedores en las esclusas de Miraflores",
+   "location": "Esclusas de Miraflores, Canal de Panamá",
+   "author": "Rikin Katyal",
+   "sourcePage": "https://unsplash.com/photos/qeltMhQIw3w",
+   "fileUrl": "https://images.unsplash.com/photo-1641176716788-d4816a66dc6d",
+   "license": "Unsplash License",
+   "licenseUrl": "https://unsplash.com/license",
+   "attributionRequired": false,
+   "resolution": {
+    "width": 4032,
+    "height": 3024
+   },
+   "camera": "iPhone 11 Pro",
+   "locationEvidence": "contentLocation Unsplash: 'Panama City'. Esclusas del Pacífico vistas desde el mirador elevado; Miraflores es el único juego de esclusas del lado Pacífico con mirador público. Inferido, confianza media-alta."
+  },
+  {
+   "key": "casco",
+   "file": "public/images/casco-antiguo-fachada.webp",
+   "master": "media/references/u-casco.jpg",
+   "subject": "Fachadas con balcones en el Casco Antiguo",
+   "location": "Casco Antiguo (Casco Viejo), Ciudad de Panamá",
+   "author": "Kaori Hirakata",
+   "sourcePage": "https://unsplash.com/photos/LV7a6u6SuTk",
+   "fileUrl": "https://images.unsplash.com/photo-1656781313303-51379444b553",
+   "license": "Unsplash License",
+   "licenseUrl": "https://unsplash.com/license",
+   "attributionRequired": false,
+   "resolution": {
+    "width": 3740,
+    "height": 2494
+   },
+   "camera": "Canon EOS Rebel T6i",
+   "locationEvidence": "Etiquetas Unsplash: 'Casco Viejo', 'Vieille ville', 'Panama'."
+  },
+  {
+   "key": "skyline",
+   "file": "public/images/skyline-cinta-costera.webp",
+   "master": "media/references/u-cinta.jpg",
+   "subject": "Cinta Costera y skyline (aérea)",
+   "location": "Avenida Balboa / Cinta Costera, Ciudad de Panamá",
+   "author": "Luis Aleman",
+   "sourcePage": "https://unsplash.com/photos/JBjd0IBIAl8",
+   "fileUrl": "https://images.unsplash.com/photo-1632505702897-cc41b0ba3b64",
+   "license": "Unsplash License",
+   "licenseUrl": "https://unsplash.com/license",
+   "attributionRequired": false,
+   "resolution": {
+    "width": 5464,
+    "height": 3070
+   },
+   "camera": "DJI FC6310",
+   "locationEvidence": "contentLocation Unsplash: 'Av. Balboa, Panamá'."
+  },
+  {
+   "key": "gunaYala",
+   "file": "public/images/guna-yala-isla.webp",
+   "master": "media/references/u-isla.jpg",
+   "subject": "Playa con palmeras en las islas de San Blas",
+   "location": "Islas de San Blas, Guna Yala",
+   "author": "Azzedine Rouichi",
+   "sourcePage": "https://unsplash.com/photos/qAasDdTu_Sg",
+   "fileUrl": "https://images.unsplash.com/photo-1611946022552-d2ca5ffba186",
+   "license": "Unsplash License",
+   "licenseUrl": "https://unsplash.com/license",
+   "attributionRequired": false,
+   "resolution": {
+    "width": 4000,
+    "height": 3000
+   },
+   "camera": "Panasonic DMC-TZ10",
+   "locationEvidence": "contentLocation Unsplash: 'San Blas Islands, Panama'."
+  }
+ ]
 }

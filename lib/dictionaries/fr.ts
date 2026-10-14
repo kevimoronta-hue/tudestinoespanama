@@ -40,7 +40,7 @@ export const fr: Dictionary = {
       eyebrow: "Bienvenue",
       title: "Un pays. Mille façons d'en faire une page de votre histoire.",
       text: "Tu Destino es Panamá rassemble des informations, des conseils d'orientation et des contacts utiles pour celles et ceux qui souhaitent découvrir le pays, y commencer une nouvelle étape ou explorer des possibilités d'affaires.",
-      imageAlt: "Deux navires franchissent les écluses de Miraflores, sur le canal de Panama.",
+      imageAlt: "Vue aérienne de la Cinta Costera et des tours de la ville de Panama face au Pacifique.",
     },
     journeys: {
       eyebrow: "Trois chemins",
@@ -62,7 +62,7 @@ export const fr: Dictionary = {
           title: "Investir",
           text: "Explorez l'environnement des affaires, les secteurs et les opportunités publiées par des sources vérifiées.",
           cta: "Explorer les possibilités",
-          imageAlt: "Navires dans les écluses de Miraflores du canal de Panama.",
+          imageAlt: "Porte-conteneurs dans les écluses de Miraflores du canal de Panama.",
         },
       },
     },
@@ -175,7 +175,7 @@ export const fr: Dictionary = {
       ctaButton: "Demander une orientation",
       guidesAvailable: "guides",
       noGuides: "Bientôt disponible",
-      imageAlt: "Vue aérienne de la baie de Panama et de la Cinta Costera.",
+      imageAlt: "Vue aérienne de la baie de Panama et de ses tours au coucher du soleil.",
     },
     invest: {
       eyebrow: "Investir",
@@ -207,7 +207,7 @@ export const fr: Dictionary = {
       disclaimer:
         "Les informations publiées ont une visée informative et ne constituent pas un conseil financier, fiscal ou juridique.",
       viewAll: "Tout voir",
-      imageAlt: "Navires dans les écluses de Miraflores du canal de Panama.",
+      imageAlt: "Porte-conteneurs dans les écluses de Miraflores du canal de Panama.",
     },
     explore: {
       eyebrow: "Explorer",
@@ -270,7 +270,9 @@ export const fr: Dictionary = {
       ],
       creditsTitle: "Crédits photographiques",
       creditsIntro:
-        "Photographies issues de Wikimedia Commons, réutilisées conformément à leur licence. Les images ont été recadrées et, pour la vidéo de couverture, animées à l'aide d'outils d'IA à partir de la photographie d'origine.",
+        "Les photographies du site proviennent d'Unsplash, sous sa licence. La vidéo d'accueil a été animée par IA à partir de photographies de Wikimedia Commons, dont les auteurs et licences sont indiqués ci-dessous.",
+      creditsPhotos: "Photographies",
+      creditsVideo: "Vidéo d'accueil",
     },
     contact: {
       eyebrow: "Contact",

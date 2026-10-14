@@ -58,7 +58,17 @@ function Overline({ children }: { children: React.ReactNode }) {
   return <p className="font-display text-xs font-bold uppercase tracking-[0.12em] text-ocean">{children}</p>;
 }
 
-function Photo({ item, priority, ratio = "aspect-[3/2]" }: { item: ListingItem; priority?: boolean; ratio?: string }) {
+function Photo({
+  item,
+  priority,
+  ratio = "aspect-[3/2]",
+  sizes = "(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw",
+}: {
+  item: ListingItem;
+  priority?: boolean;
+  ratio?: string;
+  sizes?: string;
+}) {
   if (!item.image) return null;
   return (
     <div className={`relative ${ratio} overflow-hidden bg-ocean-mist`}>
@@ -66,7 +76,7 @@ function Photo({ item, priority, ratio = "aspect-[3/2]" }: { item: ListingItem; 
         src={item.image.src}
         alt={item.image.alt}
         fill
-        sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw"
+        sizes={sizes}
         loading={priority ? "eager" : "lazy"}
         className="object-cover transition-transform duration-[180ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.02]"
       />
@@ -104,7 +114,7 @@ export function GuideCard({ item, locale, labels, priority, headingLevel, varian
     return (
       <article className={shell}>
         <Demo item={item} labels={labels} floating={Boolean(item.image)} />
-        <Photo item={item} priority={priority} ratio="aspect-[16/10]" />
+        <Photo item={item} priority={priority} ratio="aspect-[16/10]" sizes="(min-width: 1024px) 720px, 100vw" />
         <div className="flex flex-1 flex-col gap-3 p-6 sm:p-9">
           {!item.image ? <Demo item={item} labels={labels} /> : null}
           <Overline>{item.categoryLabel}</Overline>
