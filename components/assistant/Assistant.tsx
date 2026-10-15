@@ -30,6 +30,7 @@ const KEY = "tdp.assistant.v1";
 const SEND_MAX = 12;
 const MAX_LEN = 500;
 const OPEN_EVENT = "tdep:assistant-open";
+const TEASER_KEY = "tdp.assistant.teaser";
 
 /** Lets any component (e.g. the FAQ) open the assistant. */
 export function openAssistant(question?: string) {
@@ -79,6 +80,24 @@ export function Assistant({
   useEffect(() => {
     if (visible) track("assistant_launcher_visible", { locale });
   }, [visible, locale]);
+
+  /* ---- one-time invitation (once per session) ---- */
+  const [teaser, setTeaser] = useState(false);
+  useEffect(() => {
+    if (!visible) return;
+    try {
+      if (sessionStorage.getItem(TEASER_KEY)) return;
+      sessionStorage.setItem(TEASER_KEY, "1");
+    } catch {
+      return;
+    }
+    const on = window.setTimeout(() => setTeaser(true), 1500);
+    const off = window.setTimeout(() => setTeaser(false), 5500);
+    return () => {
+      window.clearTimeout(on);
+      window.clearTimeout(off);
+    };
+  }, [visible]);
 
   /* ---- session conversation ---- */
   useEffect(() => {
@@ -151,6 +170,7 @@ export function Assistant({
   const show = useCallback((question?: string) => {
     setVisible(true);
     setOpen(true);
+    setTeaser(false);
     track("assistant_opened", { locale });
     if (question) void send(question);
   }, [locale, send]);
@@ -354,17 +374,33 @@ export function Assistant({
       </div>
 
       <button
+        type="button"
+        className="ai-teaser"
+        data-show={teaser && visible && !open}
+        tabIndex={-1}
+        aria-hidden="true"
+        onClick={() => show()}
+      >
+        {labels.teaser}
+      </button>
+
+      <button
         ref={launcherRef}
         type="button"
         className="ai-launcher"
-        aria-label={labels.open}
+        aria-label={open ? labels.close : labels.open}
         aria-expanded={open}
         aria-haspopup="dialog"
         tabIndex={visible ? 0 : -1}
         aria-hidden={visible ? undefined : true}
         onClick={() => (open ? close() : show())}
       >
-        <Image src="/brand/logo-symbol-white.webp" alt="" width={44} height={30} className="relative z-10 h-auto w-[40px]" unoptimized />
+        <span className="ai-ico ai-ico-mark" aria-hidden="true">
+          <Image src="/brand/logo-symbol-white.webp" alt="" width={44} height={30} className="h-auto w-[40px]" unoptimized />
+        </span>
+        <span className="ai-ico ai-ico-close" aria-hidden="true">
+          <Icon name="close" size={24} />
+        </span>
       </button>
     </div>
   );

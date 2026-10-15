@@ -566,6 +566,7 @@ export const en: Dictionary = {
     open: "Open the AI assistant",
     close: "Close the assistant",
     log: "Conversation with the AI assistant",
+    teaser: "Questions? Ask me",
     suggestionsTitle: "You can start here",
     suggestions: ["What can I discover in Panama?", "Why invest in Panama?", "What is living in Panama like?", "How can I contact you?"],
     error: "I can't answer right now. Please try again in a moment.",

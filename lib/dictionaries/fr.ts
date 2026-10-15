@@ -581,6 +581,7 @@ export const fr: Dictionary = {
     open: "Ouvrir l’assistant IA",
     close: "Fermer l’assistant",
     log: "Conversation avec l’assistant IA",
+    teaser: "Des questions ? Demandez-moi",
     suggestionsTitle: "Vous pouvez commencer ici",
     suggestions: ["Que découvrir au Panama ?", "Pourquoi investir au Panama ?", "Comment vit-on au Panama ?", "Comment vous contacter ?"],
     error: "Je ne peux pas répondre pour le moment. Réessayez dans un instant.",

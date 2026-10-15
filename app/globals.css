@@ -598,7 +598,7 @@ dialog.glass-surface::backdrop {
 }
 .ai-launcher {
   position: fixed;
-  z-index: 40;
+  z-index: 61; /* above the desktop panel: it becomes the close toggle */
   right: var(--ai-right);
   bottom: var(--ai-bottom);
   display: grid;
@@ -614,14 +614,18 @@ dialog.glass-surface::backdrop {
     0 0 0 1px rgb(6 28 61 / 0.18),
     0 2px 4px rgb(6 28 61 / 0.18),
     0 14px 30px -14px rgb(6 28 61 / 0.6);
+  /* Entrance: never from nothing — 92% + 10px + a little blur that clears. */
   opacity: 0;
-  transform: translateY(10px);
+  transform: translateY(10px) scale(0.92);
+  filter: blur(4px);
   pointer-events: none;
   transition:
-    opacity 220ms var(--ease-out-snappy),
-    transform 220ms var(--ease-out-snappy);
+    opacity 260ms var(--ease-out-snappy),
+    transform 200ms var(--ease-out-snappy),
+    filter 260ms var(--ease-out-snappy),
+    box-shadow 200ms var(--ease-out-snappy);
 }
-/* Fine luminous rim (static) + slow travelling highlight (rotating, masked to 1.5px). */
+/* Fine luminous rim (static) + one light sweep on arrival (masked to 1.5px). */
 .ai-launcher::before,
 .ai-launcher::after {
   content: "";
@@ -633,40 +637,133 @@ dialog.glass-surface::backdrop {
   mask: radial-gradient(farthest-side, transparent calc(100% - 1.5px), #000 calc(100% - 1.5px));
 }
 .ai-launcher::before {
-  background: rgb(173 214 240 / 0.7);
+  background: rgb(173 214 240 / 0.6);
+  transition: background-color 200ms var(--ease-out-snappy);
 }
 .ai-launcher::after {
-  background: conic-gradient(from 0deg, transparent 0deg, rgb(255 255 255 / 0.95) 40deg, transparent 90deg, transparent 360deg);
-  animation: ai-rim 7s linear infinite;
+  background: conic-gradient(from 0deg, transparent 0deg, rgb(255 255 255 / 0.95) 50deg, transparent 110deg, transparent 360deg);
+  opacity: 0;
 }
-@keyframes ai-rim {
-  to {
-    transform: rotate(360deg);
+.ai[data-visible="true"] .ai-launcher::after {
+  animation: ai-sweep 900ms var(--ease-out-snappy) 120ms 1 both;
+}
+@keyframes ai-sweep {
+  0% {
+    opacity: 0;
+    transform: rotate(-60deg);
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(300deg);
   }
 }
 .ai[data-visible="true"] .ai-launcher {
   opacity: 1;
   transform: none;
+  filter: none;
   pointer-events: auto;
 }
-.ai[data-open="true"] .ai-launcher {
-  opacity: 0;
-  transform: translateY(6px) scale(0.96);
-  pointer-events: none;
-}
-.ai[data-visible="true"]:not([data-open="true"]) .ai-launcher:active {
+/* Press: instant (120ms); release eases back in 200ms (base transition). */
+.ai[data-visible="true"] .ai-launcher:active {
   transform: scale(0.97);
-  transition-duration: 160ms;
+  transition-duration: 260ms, 120ms, 260ms, 200ms;
+}
+/* Icon swap: brand symbol ↔ close, crossfaded with a light blur so they read as one object. */
+.ai-ico {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  transition:
+    opacity 180ms var(--ease-out-snappy),
+    transform 220ms var(--ease-out-snappy),
+    filter 180ms var(--ease-out-snappy);
+}
+.ai-ico-close {
+  opacity: 0;
+  transform: scale(0.6);
+  filter: blur(3px);
+}
+.ai[data-open="true"] .ai-ico-mark {
+  opacity: 0;
+  transform: scale(0.6);
+  filter: blur(3px);
+}
+.ai[data-open="true"] .ai-ico-close {
+  opacity: 1;
+  transform: none;
+  filter: none;
 }
 @media (hover: hover) and (pointer: fine) {
-  .ai[data-visible="true"]:not([data-open="true"]) .ai-launcher:hover {
+  .ai[data-visible="true"] .ai-launcher:hover {
     transform: translateY(-2px);
+    box-shadow:
+      0 0 0 1px rgb(6 28 61 / 0.18),
+      0 4px 8px rgb(6 28 61 / 0.2),
+      0 20px 36px -14px rgb(6 28 61 / 0.65);
+  }
+  .ai-launcher:hover::before {
+    background-color: rgb(214 236 250 / 0.95);
   }
 }
+@media (max-width: 639px) {
+  /* Phones: the full-screen sheet has its own close button; the launcher stays underneath. */
+  .ai[data-open="true"] .ai-launcher {
+    z-index: 40;
+  }
+}
+
+/* One-time invitation next to the launcher (once per session, auto-hides). */
+.ai-teaser {
+  position: fixed;
+  z-index: 40;
+  right: calc(var(--ai-right) + 72px);
+  bottom: calc(var(--ai-bottom) + 10px);
+  max-width: calc(100vw - var(--ai-right) - 96px);
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow:
+    0 0 0 1px rgb(6 34 48 / 0.08),
+    0 10px 24px -14px rgb(6 34 48 / 0.45);
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transform-origin: right center;
+  opacity: 0;
+  transform: translateX(8px) scale(0.95);
+  pointer-events: none;
+  transition:
+    opacity 220ms var(--ease-out-snappy),
+    transform 220ms var(--ease-out-snappy);
+}
+.ai-teaser[data-show="true"] {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+.ai-teaser:active {
+  transform: scale(0.97);
+}
+/* Reduced motion: fades only — no sweep, no blur, no movement. */
 @media (prefers-reduced-motion: reduce) {
-  .ai-launcher::after {
+  .ai[data-visible="true"] .ai-launcher::after {
     animation: none;
-    opacity: 0.6;
+  }
+  .ai-launcher,
+  .ai-ico,
+  .ai-teaser {
+    filter: none !important;
+    transform: none !important;
   }
 }
 
@@ -709,9 +806,9 @@ dialog.glass-surface::backdrop {
 @media (min-width: 640px) {
   .ai-panel {
     right: var(--ai-right);
-    bottom: var(--ai-bottom);
+    bottom: calc(var(--ai-bottom) + 72px);
     width: 400px;
-    height: min(660px, calc(100dvh - 112px));
+    height: min(640px, calc(100dvh - var(--ai-bottom) - 72px - 24px));
     border-radius: 26px;
     transform-origin: bottom right;
     box-shadow:
@@ -772,6 +869,11 @@ dialog.glass-surface::backdrop {
 }
 .ai-head-close:active {
   transform: scale(0.97);
+}
+@media (min-width: 640px) {
+  .ai-head-close {
+    display: none;
+  }
 }
 
 /* White body overlapping the band. */

@@ -572,6 +572,7 @@ export const es = {
     open: "Abrir el asistente IA",
     close: "Cerrar el asistente",
     log: "Conversación con el asistente IA",
+    teaser: "¿Tienes preguntas? Pregúntame",
     suggestionsTitle: "Puedes empezar por aquí",
     suggestions: ["¿Qué puedo descubrir en Panamá?", "¿Por qué invertir en Panamá?", "¿Cómo es vivir en Panamá?", "¿Cómo puedo contactarlos?"],
     error: "Ahora mismo no puedo responder. Inténtalo de nuevo en un momento.",

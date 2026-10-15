@@ -580,6 +580,7 @@ export const de: Dictionary = {
     open: "KI-Assistent öffnen",
     close: "Assistent schließen",
     log: "Unterhaltung mit dem KI-Assistenten",
+    teaser: "Fragen? Fragen Sie mich",
     suggestionsTitle: "Hier können Sie beginnen",
     suggestions: ["Was kann ich in Panama entdecken?", "Warum in Panama investieren?", "Wie lebt es sich in Panama?", "Wie kann ich Sie kontaktieren?"],
     error: "Ich kann gerade nicht antworten. Bitte versuchen Sie es gleich noch einmal.",

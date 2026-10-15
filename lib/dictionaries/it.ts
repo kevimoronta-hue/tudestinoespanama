@@ -574,6 +574,7 @@ export const it: Dictionary = {
     open: "Apri l’assistente IA",
     close: "Chiudi l’assistente",
     log: "Conversazione con l’assistente IA",
+    teaser: "Domande? Chiedimi",
     suggestionsTitle: "Puoi iniziare da qui",
     suggestions: ["Cosa posso scoprire a Panamá?", "Perché investire a Panamá?", "Com’è vivere a Panamá?", "Come posso contattarvi?"],
     error: "Al momento non posso rispondere. Riprova tra un attimo.",
