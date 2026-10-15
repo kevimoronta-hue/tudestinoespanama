@@ -19,6 +19,12 @@
 
   --logo-navy: #002870; /* dominant logo navy */
   --logo-royal: #0048a8;
+  /* Smart-glass material — one source for the scrolled navbar and the burger menu. */
+  --glass-bg: rgb(255 255 255 / 0.68);
+  --glass-filter: blur(16px) saturate(160%);
+  --glass-reflection: linear-gradient(180deg, rgb(255 255 255 / 0.06), rgb(255 255 255 / 0) 70%);
+  --glass-shadow:
+    inset 0 -1px 0 rgb(6 34 48 / 0.08), inset 0 1px 0 rgb(255 255 255 / 0.9), 0 10px 28px -24px rgb(6 34 48 / 0.45);
   --brand-ocean-navy: #0a2b5c; /* logo navy pulled toward ink: footer + dark buttons */
   --brand-ocean-navy-deep: #061c3d;
 
@@ -460,20 +466,31 @@
   box-shadow: inset 0 -1px 0 rgb(6 34 48 / 0.05);
 }
 .nav-glass[data-scrolled="true"] {
-  background: rgb(255 255 255 / 0.68);
-  -webkit-backdrop-filter: blur(16px) saturate(160%);
-  backdrop-filter: blur(16px) saturate(160%);
-  box-shadow:
-    inset 0 -1px 0 rgb(6 34 48 / 0.08),
-    inset 0 1px 0 rgb(255 255 255 / 0.9),
-    0 10px 28px -24px rgb(6 34 48 / 0.45);
+  background-color: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-filter);
+  backdrop-filter: var(--glass-filter);
+  box-shadow: var(--glass-shadow);
 }
 .nav-glass[data-scrolled="true"]::before {
-  opacity: 0.6;
+  background: var(--glass-reflection);
+  opacity: 1;
+}
+/* The same material as a standalone primitive (burger menu). */
+.glass-surface {
+  background-color: var(--glass-bg);
+  background-image: var(--glass-reflection);
+  -webkit-backdrop-filter: var(--glass-filter);
+  backdrop-filter: var(--glass-filter);
+  box-shadow: var(--glass-shadow);
+}
+/* As a full-screen modal it sits directly on the page, exactly like the navbar: no dimmed
+   backdrop in between, otherwise the same glass would read darker. */
+dialog.glass-surface::backdrop {
+  background: transparent;
 }
 @media (prefers-reduced-transparency: reduce) {
-  .nav-glass[data-scrolled="true"] {
-    background: rgb(255 255 255 / 0.96);
+  :root {
+    --glass-bg: rgb(255 255 255 / 0.96);
   }
 }
 

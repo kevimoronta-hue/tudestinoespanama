@@ -3,12 +3,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
-import { LOCALE_COOKIE, localeMeta, locales, type Locale } from "@/lib/i18n";
+import type { Locale } from "@/lib/i18n";
 import { buttonClasses } from "../ui/Button";
-import { Flag } from "../ui/Flag";
 import { Icon } from "../ui/Icon";
 import { Logo } from "./Logo";
-import { isActive, languageTargets, type DetailAlternates, type NavItem } from "./nav";
+import { isActive, type DetailAlternates, type NavItem } from "./nav";
 
 interface Props {
   locale: Locale;
@@ -22,13 +21,13 @@ interface Props {
 /**
  * Full-screen menu built on a native modal <dialog>: the rest of the page becomes
  * inert (focus is trapped), Escape closes it, and body scroll is locked via CSS
- * (`html:has(dialog[open])`).
+ * (`html:has(dialog[open])`). Surface = the navbar's smart glass (.glass-surface). The
+ * language switch is not repeated here: it stays next to the burger in the bar.
  */
-export function MobileNavigation({ locale, items, cta, labels, detailAlternates, tone }: Props) {
+export function MobileNavigation({ locale, items, cta, labels, tone }: Props) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const pathname = usePathname() ?? "";
-  const targets = languageTargets(pathname, locale, detailAlternates);
 
   const open = () => dialogRef.current?.showModal();
   const close = () => {
@@ -59,7 +58,7 @@ export function MobileNavigation({ locale, items, cta, labels, detailAlternates,
         ref={dialogRef}
         aria-label={labels.title}
         onClose={() => triggerRef.current?.focus()}
-        className="m-0 h-dvh max-h-none w-full max-w-none bg-white p-0 text-ink open:flex open:flex-col open:animate-[fade-up_0.25s_var(--ease-out-soft)_both]"
+        className="glass-surface m-0 h-dvh max-h-none w-full max-w-none p-0 text-ink open:flex open:flex-col open:animate-[fade-up_0.25s_var(--ease-out-soft)_backwards]"
       >
         <div
           className="container-site flex items-center justify-between"
@@ -83,7 +82,7 @@ export function MobileNavigation({ locale, items, cta, labels, detailAlternates,
             {items.map((item) => {
               const active = isActive(pathname, item, locale);
               return (
-                <li key={item.key} className="border-b border-line last:border-b-0">
+                <li key={item.key} className="border-b border-ink/10 last:border-b-0">
                   <Link
                     href={item.href}
                     onClick={close}
@@ -102,37 +101,9 @@ export function MobileNavigation({ locale, items, cta, labels, detailAlternates,
         </nav>
 
         <div
-          className="container-site flex flex-col gap-4 border-t border-line py-5"
+          className="container-site flex flex-col gap-4 border-t border-ink/10 py-5"
           style={{ paddingBottom: "max(20px, env(safe-area-inset-bottom))" }}
         >
-          <nav aria-label={labels.language}>
-            <ul className="flex justify-between gap-1">
-              {locales.map((l) => {
-                const current = l === locale;
-                return (
-                  <li key={l}>
-                    <Link
-                      href={targets[l]}
-                      hrefLang={localeMeta[l].htmlLang}
-                      lang={localeMeta[l].htmlLang}
-                      aria-current={current ? "true" : undefined}
-                      aria-label={localeMeta[l].name}
-                      onClick={() => {
-                        document.cookie = `${LOCALE_COOKIE}=${l}; path=/; max-age=31536000; samesite=lax`;
-                        close();
-                      }}
-                      className={`tap inline-flex items-center gap-1.5 rounded-full px-2.5 text-sm font-bold uppercase ${
-                        current ? "bg-ocean-mist text-ink" : "text-muted hover:bg-ocean-mist"
-                      }`}
-                    >
-                      <Flag code={localeMeta[l].flag} size={18} />
-                      {l}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </nav>
           <Link href={cta.href} onClick={close} className={buttonClasses("primary", "w-full")}>
             {cta.label}
           </Link>
