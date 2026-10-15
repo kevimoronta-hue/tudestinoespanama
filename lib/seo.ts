@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { getDictionary } from "@/lib/dictionaries";
-import { HERO_MEDIA } from "@/lib/hero-media";
 import { localeMeta, locales, routeAlternates, type Locale, type RouteKey } from "@/lib/i18n";
-import { absoluteUrl, hasSiteUrl, SITE_URL } from "@/lib/site";
+import { absoluteUrl, hasSiteUrl, SITE_URL, SOCIAL_BASE_URL } from "@/lib/site";
 
 interface MetaInput {
   locale: Locale;
@@ -18,15 +17,17 @@ interface MetaInput {
   modifiedTime?: string;
 }
 
+/** Default social preview (scripts/build-og-image.py): San Blas beach + white logo + title. */
 const DEFAULT_OG = {
-  src: HERO_MEDIA.desktop.poster,
-  width: HERO_MEDIA.desktop.width,
-  height: HERO_MEDIA.desktop.height,
+  src: "/og/og-tu-destino-es-panama.jpg",
+  width: 1200,
+  height: 630,
 };
 
 export function buildMetadata(input: MetaInput): Metadata {
   const dict = getDictionary(input.locale);
-  const image = input.image ?? { ...DEFAULT_OG, alt: dict.hero.posterAlt };
+  const image = input.image ?? { ...DEFAULT_OG, alt: dict.meta.siteName };
+  const socialImage = SOCIAL_BASE_URL ? new URL(image.src, SOCIAL_BASE_URL).toString() : undefined;
   const langs = { ...(input.alternates ?? {}), [input.locale]: input.path } as Partial<Record<Locale, string>>;
 
   // Canonical + hreflang need absolute URLs: only emitted once the real domain is configured.
@@ -52,8 +53,8 @@ export function buildMetadata(input: MetaInput): Metadata {
       locale: localeMeta[input.locale].og,
       alternateLocale: locales.filter((l) => l !== input.locale && langs[l]).map((l) => localeMeta[l].og),
       url: absoluteUrl(input.path),
-      // Social images need absolute URLs → only once the real domain is configured.
-      images: hasSiteUrl ? [{ url: image.src, width: image.width, height: image.height, alt: image.alt }] : undefined,
+      // Social images need absolute URLs (real domain, else the Vercel deployment URL).
+      images: socialImage ? [{ url: socialImage, width: image.width, height: image.height, alt: image.alt }] : undefined,
       ...(input.type === "article"
         ? { publishedTime: input.publishedTime, modifiedTime: input.modifiedTime }
         : {}),
@@ -62,7 +63,7 @@ export function buildMetadata(input: MetaInput): Metadata {
       card: "summary_large_image",
       title: input.title,
       description: input.description,
-      images: hasSiteUrl ? [image.src] : undefined,
+      images: socialImage ? [{ url: socialImage, alt: image.alt }] : undefined,
     },
   };
 }

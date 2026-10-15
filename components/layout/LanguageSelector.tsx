@@ -90,7 +90,13 @@ export function LanguageSelector({ locale, labels, detailAlternates, tone = "dar
       className="relative"
       onKeyDown={onKeyDown}
       onBlur={(e) => {
-        if (!rootRef.current?.contains(e.relatedTarget as Node)) setOpen(false);
+        // Close only when focus really moves to another element outside (keyboard Tab-out).
+        // A null relatedTarget means focus fell back to the page — what iOS/macOS Safari do
+        // when the trigger <button> itself is tapped (Safari never focuses buttons on click).
+        // Closing there made the following click toggle the panel back open. Outside taps
+        // are handled by the pointerdown listener above.
+        const next = e.relatedTarget as Node | null;
+        if (next && !rootRef.current?.contains(next)) setOpen(false);
       }}
     >
       <button
