@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import type { Locale } from "@/lib/i18n";
+import { SCROLLED_AT } from "@/lib/scroll";
 import { buttonClasses } from "../ui/Button";
 import { DesktopNavigation } from "./DesktopNavigation";
 import { LanguageSelector } from "./LanguageSelector";
@@ -42,7 +43,7 @@ export function Header({ locale, items, cta, labels, detailAlternates, lightLogo
 
   useEffect(() => {
     const onScroll = () => {
-      const next = window.scrollY > 16;
+      const next = window.scrollY > SCROLLED_AT;
       setScrolled((prev) => (prev === next ? prev : next));
     };
     onScroll();

@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { FaqSection } from "@/components/faq/FaqSection";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { HeroVideo } from "@/components/home/HeroVideo";
 import {
@@ -44,6 +45,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       <GuidesSection locale={locale} dict={dict} />
       <ExploreSection locale={locale} dict={dict} />
       <SocialCommitment locale={locale} dict={dict} />
+      <FaqSection locale={locale} dict={dict} />
       <FinalCTA locale={locale} dict={dict} />
     </>
   );

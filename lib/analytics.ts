@@ -22,7 +22,12 @@ export type AnalyticsEvent =
   | "contact_start"
   | "contact_submit_success"
   | "contact_submit_error"
-  | "language_change";
+  | "language_change"
+  | "assistant_launcher_visible"
+  | "assistant_opened"
+  | "assistant_question_sent"
+  | "suggested_question_clicked"
+  | "whatsapp_clicked";
 
 type Props = Record<string, string | number | boolean | undefined>;
 

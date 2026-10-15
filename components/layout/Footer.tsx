@@ -81,7 +81,7 @@ export async function Footer({ locale, dict }: { locale: Locale; dict: Dictionar
           </div>
         </div>
 
-        <div className="flex flex-col gap-4 border-t border-white/12 py-7 text-[0.85rem] text-white/70 sm:flex-row sm:items-center sm:justify-between lg:pt-9 max-[1399px]:pb-24 min-[1400px]:pb-9">
+        <div className="flex flex-col gap-4 border-t border-white/12 py-7 text-[0.85rem] text-white/70 sm:flex-row sm:items-center sm:justify-between lg:pt-9 max-[1399px]:pb-28 min-[1400px]:pb-9">
           <div className="space-y-1.5">
             <p className="flex items-center gap-2.5 text-white/85">
               <Flag code="pa" size={18} />

@@ -9,17 +9,21 @@ const WINDOW_MS = 10 * 60 * 1000;
 const MAX_REQUESTS = 5;
 const hits = new Map<string, { count: number; reset: number }>();
 
-export function rateLimit(key: string, now = Date.now()): { allowed: boolean; retryAfter: number } {
+export function rateLimit(
+  key: string,
+  now = Date.now(),
+  { max = MAX_REQUESTS, windowMs = WINDOW_MS }: { max?: number; windowMs?: number } = {},
+): { allowed: boolean; retryAfter: number } {
   const entry = hits.get(key);
   if (!entry || entry.reset <= now) {
-    hits.set(key, { count: 1, reset: now + WINDOW_MS });
+    hits.set(key, { count: 1, reset: now + windowMs });
     if (hits.size > 5000) {
       for (const [k, v] of hits) if (v.reset <= now) hits.delete(k);
     }
     return { allowed: true, retryAfter: 0 };
   }
   entry.count += 1;
-  return entry.count > MAX_REQUESTS
+  return entry.count > max
     ? { allowed: false, retryAfter: Math.ceil((entry.reset - now) / 1000) }
     : { allowed: true, retryAfter: 0 };
 }
