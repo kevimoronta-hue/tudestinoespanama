@@ -76,7 +76,7 @@ export function FilterDrawer({
         type="button"
         onClick={() => ref.current?.showModal()}
         aria-haspopup="dialog"
-        className="tap inline-flex items-center gap-2 rounded-full border border-line-strong bg-white px-5 font-display text-sm font-bold text-blue-900"
+        className={buttonClasses("secondary", "", "sm")}
       >
         <Icon name="filter" size={18} />
         {labels.open}

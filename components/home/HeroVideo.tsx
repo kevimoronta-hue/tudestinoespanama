@@ -51,7 +51,7 @@ export function HeroVideo({ locale, dict }: { locale: Locale; dict: Dictionary }
               href={href("discover", locale)}
               event="hero_primary_cta_click"
               eventProps={{ locale }}
-              className={buttonClasses("primary", "!px-7 !py-3.5")}
+              className={buttonClasses("primary", "", "lg")}
             >
               {dict.hero.primary}
               <Icon name="arrowRight" size={18} />
@@ -60,7 +60,7 @@ export function HeroVideo({ locale, dict }: { locale: Locale; dict: Dictionary }
               href={href("opportunities", locale)}
               event="hero_secondary_cta_click"
               eventProps={{ locale }}
-              className={buttonClasses("outline-light", "!px-7 !py-3.5")}
+              className={buttonClasses("outline-light", "", "lg")}
             >
               {dict.hero.secondary}
             </TrackedLink>

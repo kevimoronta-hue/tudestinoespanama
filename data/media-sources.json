@@ -387,5 +387,23 @@
    },
    "locationEvidence": "contentLocation Unsplash: 'Casco Antiguo, Panama'. Recorte sin la pareja con mascarilla del primer plano."
   }
- ]
+ ],
+ "contact": {
+  "key": "contact",
+  "file": "public/images/contacto-ventana-skyline.webp",
+  "master": "media/references/c-window.jpg",
+  "subject": "Persona fotografiando el skyline de Ciudad de Panamá al atardecer desde una ventana",
+  "location": "Ciudad de Panamá",
+  "author": "Jason Grant",
+  "sourcePage": "https://unsplash.com/photos/cAgOWdeQftw",
+  "fileUrl": "https://images.unsplash.com/photo-1743165601497-a3fcb29d7fa5",
+  "license": "Unsplash License",
+  "licenseUrl": "https://unsplash.com/license",
+  "attributionRequired": false,
+  "resolution": {
+   "width": 3024,
+   "height": 4032
+  },
+  "locationEvidence": "contentLocation Unsplash: 'Panama City, Panama'."
+ }
 }

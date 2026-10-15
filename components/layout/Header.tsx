@@ -76,7 +76,7 @@ export function Header({ locale, items, cta, labels, detailAlternates, lightLogo
 
       <div className="hidden items-center gap-2 xl:flex">
         {selector}
-        <Link href={cta.href} className={buttonClasses("primary", "!px-5 !py-2.5 whitespace-nowrap")}>
+        <Link href={cta.href} className={buttonClasses("primary", "whitespace-nowrap", "sm")}>
           {cta.label}
         </Link>
       </div>

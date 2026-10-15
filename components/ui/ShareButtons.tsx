@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useSyncExternalStore } from "react";
+import { buttonClasses } from "./Button";
 import { Icon } from "./Icon";
 
 const noop = () => () => {};
@@ -28,8 +29,7 @@ export function ShareButtons({ title, labels }: { title: string; labels: { share
     }
   };
 
-  const btn =
-    "tap inline-flex items-center gap-2 rounded-full border border-line-strong bg-white px-4 text-sm font-bold text-blue-900 transition-colors hover:bg-blue-100";
+  const btn = buttonClasses("secondary", "", "sm");
   return (
     <div className="flex flex-wrap items-center gap-2">
       {canShare ? (

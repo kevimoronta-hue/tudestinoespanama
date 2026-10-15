@@ -1,4 +1,5 @@
 import type { Dictionary } from "@/lib/dictionaries";
+import { buttonClasses } from "../ui/Button";
 import { Icon } from "../ui/Icon";
 
 export function Pagination({
@@ -15,6 +16,7 @@ export function Pagination({
   const pages = Array.from({ length: total }, (_, i) => i + 1);
   const btn =
     "tap inline-flex items-center justify-center gap-1.5 rounded-full border px-4 font-display text-sm font-bold transition-colors disabled:cursor-not-allowed disabled:opacity-40";
+  const step = buttonClasses("secondary", "", "sm");
   return (
     <nav aria-label={labels.pagination} className="flex flex-col items-center gap-3">
       <div className="flex items-center gap-2">
@@ -22,7 +24,7 @@ export function Pagination({
           type="button"
           onClick={() => onPage(page - 1)}
           disabled={page <= 1}
-          className={`${btn} border-line-strong bg-white text-blue-900 hover:bg-blue-100`}
+          className={step}
         >
           <Icon name="chevronLeft" size={18} />
           <span className="hidden sm:inline">{labels.previous}</span>
@@ -48,7 +50,7 @@ export function Pagination({
           type="button"
           onClick={() => onPage(page + 1)}
           disabled={page >= total}
-          className={`${btn} border-line-strong bg-white text-blue-900 hover:bg-blue-100`}
+          className={step}
         >
           <span className="hidden sm:inline">{labels.next}</span>
           <span className="sr-only sm:hidden">{labels.next}</span>

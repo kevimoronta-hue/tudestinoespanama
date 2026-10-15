@@ -182,7 +182,7 @@ export function ExploreListing({
             activeCount={[type, cat, loc].filter(Boolean).length}
           />
           {activeFilters ? (
-            <button type="button" onClick={clearAll} className="tap text-sm font-semibold text-blue-800 underline underline-offset-4">
+            <button type="button" onClick={clearAll} className={buttonClasses("ghost", "underline underline-offset-4", "sm")}>
               {labels.clearFilters}
             </button>
           ) : null}
@@ -201,7 +201,7 @@ export function ExploreListing({
           <button
             type="button"
             onClick={clearAll}
-            className="tap hidden items-center gap-1.5 text-sm font-semibold text-blue-800 underline-offset-4 hover:underline md:inline-flex"
+            className={buttonClasses("ghost", "!hidden md:!inline-flex", "sm")}
           >
             <Icon name="close" size={16} />
             {labels.clearFilters}

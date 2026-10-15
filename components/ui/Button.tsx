@@ -2,35 +2,32 @@ import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 import { Icon, type IconName } from "./Icon";
 
-export type ButtonVariant = "primary" | "secondary" | "ghost" | "light" | "outline-light";
+/**
+ * One button family for the whole site (styles: `.btn*` in app/globals.css).
+ * primary = main CTA (brand red) · dark = filled brand-blue action · secondary = outline on
+ * light surfaces · light = white on dark surfaces · outline-light = on photos/video ·
+ * ghost = text CTA with arrow. Sizes: default 48px, "sm" 44px, "lg" 52px.
+ */
+export type ButtonVariant = "primary" | "dark" | "secondary" | "ghost" | "light" | "outline-light";
+export type ButtonSize = "sm" | "md" | "lg";
 
-const base =
-  "tap inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-display text-[0.95rem] font-bold leading-tight transition-[background-color,color,border-color,box-shadow,transform] duration-[160ms] ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-55 disabled:active:scale-100 aria-disabled:cursor-not-allowed aria-disabled:opacity-55";
-
-const variants: Record<ButtonVariant, string> = {
-  primary: "bg-red-600 text-white shadow-[0_1px_0_rgb(0_0_0/0.08)] hover:bg-red-700 focus-visible:bg-red-700",
-  secondary: "border border-blue-800 bg-white text-blue-800 hover:bg-blue-100",
-  ghost: "text-blue-800 hover:bg-blue-100 px-4",
-  light: "bg-white text-blue-900 hover:bg-blue-100",
-  "outline-light": "border border-white/70 text-white hover:bg-white/12 backdrop-blur-[2px]",
-};
-
-export function buttonClasses(variant: ButtonVariant = "primary", extra = "") {
-  return `${base} ${variants[variant]} ${extra}`;
+export function buttonClasses(variant: ButtonVariant = "primary", extra = "", size: ButtonSize = "md") {
+  return `btn btn-${variant} ${size === "md" ? "" : `btn-${size}`} ${extra}`.trim();
 }
 
 interface ButtonLinkProps extends Omit<ComponentProps<typeof Link>, "className"> {
   variant?: ButtonVariant;
+  size?: ButtonSize;
   icon?: IconName;
   className?: string;
   children: ReactNode;
 }
 
-export function ButtonLink({ variant = "primary", icon, className = "", children, ...rest }: ButtonLinkProps) {
+export function ButtonLink({ variant = "primary", size = "md", icon, className = "", children, ...rest }: ButtonLinkProps) {
   return (
-    <Link className={buttonClasses(variant, className)} {...rest}>
+    <Link className={buttonClasses(variant, className, size)} {...rest}>
       <span>{children}</span>
-      {icon ? <Icon name={icon} size={18} /> : null}
+      {icon ? <Icon name={icon} size={17} /> : null}
     </Link>
   );
 }

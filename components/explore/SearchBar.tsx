@@ -1,4 +1,5 @@
 import type { FormEvent } from "react";
+import { buttonClasses } from "../ui/Button";
 import { Icon } from "../ui/Icon";
 
 interface Props {
@@ -38,9 +39,7 @@ export function SearchBar({ label, placeholder, button, defaultValue, onSubmit, 
       </label>
       <button
         type="submit"
-        className={`tap inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-blue-800 px-5 font-display font-bold text-white transition-colors hover:bg-blue-900 ${
-          large ? "h-14" : "h-12"
-        }`}
+        className={buttonClasses("dark", `shrink-0 !rounded-full ${large ? "!min-h-14" : ""}`)}
       >
         <Icon name="search" size={18} className="sm:hidden" />
         <span className="sr-only sm:not-sr-only">{button}</span>

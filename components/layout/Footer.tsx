@@ -14,7 +14,8 @@ const link =
 
 /**
  * Global footer, one for every page and language: logo, a short navigation, then a quiet
- * legal line. Background = the logo navy (--logo-navy #002870) deepening to --logo-navy-deep (#001d57).
+ * legal line. Background = brand ocean navy (--brand-ocean-navy #0A2B5C: the logo navy pulled
+ * toward the site ink) deepening to #061C3D, with one very faint ocean light pool.
  * The language switch lives only in the navbar.
  */
 export async function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
@@ -26,11 +27,13 @@ export async function Footer({ locale, dict }: { locale: Locale; dict: Dictionar
     { label: dict.nav.about, href: href("about", locale) },
     { label: dict.nav.contact, href: href("contact", locale) },
   ];
-  const logoH = 64;
+  // Same height as the header logo (Header.tsx: 36px below xl, 44px from xl). Both files are
+  // 1564×468 renders of the same master, so equal height = equal visual size.
+  const logoH = 44;
 
   return (
     <footer
-      className="relative isolate bg-[linear-gradient(180deg,var(--logo-navy)_0%,var(--logo-navy-deep)_100%)] text-white"
+      className="relative isolate bg-[radial-gradient(110%_70%_at_12%_0%,rgb(14_106_128/0.2)_0%,transparent_60%),linear-gradient(180deg,var(--brand-ocean-navy)_0%,var(--brand-ocean-navy-deep)_100%)] text-white"
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
     >
       <div className="container-site">
@@ -42,7 +45,7 @@ export async function Footer({ locale, dict }: { locale: Locale; dict: Dictionar
               width={Math.round(logoH * LOGO_RATIO)}
               height={logoH}
               sizes={`${Math.round(logoH * LOGO_RATIO)}px`}
-              className="block h-[52px] w-auto sm:h-[64px]"
+              className="block h-9 w-auto xl:h-11"
               unoptimized
             />
           </Link>
