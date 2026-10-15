@@ -549,7 +549,7 @@ export const en: Dictionary = {
     demoNotice: "Development environment: some items labelled “Demo” are examples, not real information.",
   },
   whatsapp: {
-    message: "Hello, I would like more information about TodoDestino Panamá.",
+    message: "Hello, I would like more information about Tu Destino es Panamá.",
   },
   faq: {
     eyebrow: "Frequently asked questions",
@@ -560,12 +560,13 @@ export const en: Dictionary = {
   assistant: {
     name: "AI assistant",
     beta: "Beta",
-    welcome: "I'm the TodoDestino Panamá AI assistant.\nWhat would you like to know?",
+    welcome: "I'm the Tu Destino es Panamá AI assistant.\nWhat would you like to know?",
     placeholder: "Type your question…",
     send: "Send",
     open: "Open the AI assistant",
     close: "Close the assistant",
     log: "Conversation with the AI assistant",
+    suggestionsTitle: "You can start here",
     suggestions: ["What can I discover in Panama?", "Why invest in Panama?", "What is living in Panama like?", "How can I contact you?"],
     error: "I can't answer right now. Please try again in a moment.",
     rateLimited: "You've sent many messages in a row. Please try again in a few minutes.",

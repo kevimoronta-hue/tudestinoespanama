@@ -555,7 +555,7 @@ export const es = {
       "Entorno de desarrollo: algunos contenidos marcados «Demo» son ejemplos y no información real.",
   },
   whatsapp: {
-    message: "Hola, me gustaría recibir más información sobre TodoDestino Panamá.",
+    message: "Hola, me gustaría recibir más información sobre Tu Destino es Panamá.",
   },
   faq: {
     eyebrow: "Preguntas frecuentes",
@@ -566,12 +566,13 @@ export const es = {
   assistant: {
     name: "Asistente IA",
     beta: "Beta",
-    welcome: "Soy el asistente IA de TodoDestino Panamá.\n¿Qué te gustaría saber?",
+    welcome: "Soy el asistente IA de Tu Destino es Panamá.\n¿Qué te gustaría saber?",
     placeholder: "Escribe tu pregunta…",
     send: "Enviar",
     open: "Abrir el asistente IA",
     close: "Cerrar el asistente",
     log: "Conversación con el asistente IA",
+    suggestionsTitle: "Puedes empezar por aquí",
     suggestions: ["¿Qué puedo descubrir en Panamá?", "¿Por qué invertir en Panamá?", "¿Cómo es vivir en Panamá?", "¿Cómo puedo contactarlos?"],
     error: "Ahora mismo no puedo responder. Inténtalo de nuevo en un momento.",
     rateLimited: "Has enviado muchos mensajes seguidos. Inténtalo de nuevo en unos minutos.",

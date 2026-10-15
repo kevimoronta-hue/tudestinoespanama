@@ -563,7 +563,7 @@ export const de: Dictionary = {
       "Entwicklungsumgebung: Einige mit „Demo“ gekennzeichnete Inhalte sind Beispiele und keine echten Informationen.",
   },
   whatsapp: {
-    message: "Hallo, ich hätte gerne mehr Informationen über TodoDestino Panamá.",
+    message: "Hallo, ich hätte gerne mehr Informationen über Tu Destino es Panamá.",
   },
   faq: {
     eyebrow: "Häufige Fragen",
@@ -574,12 +574,13 @@ export const de: Dictionary = {
   assistant: {
     name: "KI-Assistent",
     beta: "Beta",
-    welcome: "Ich bin der KI-Assistent von TodoDestino Panamá.\nWas möchten Sie wissen?",
+    welcome: "Ich bin der KI-Assistent von Tu Destino es Panamá.\nWas möchten Sie wissen?",
     placeholder: "Ihre Frage…",
     send: "Senden",
     open: "KI-Assistent öffnen",
     close: "Assistent schließen",
     log: "Unterhaltung mit dem KI-Assistenten",
+    suggestionsTitle: "Hier können Sie beginnen",
     suggestions: ["Was kann ich in Panama entdecken?", "Warum in Panama investieren?", "Wie lebt es sich in Panama?", "Wie kann ich Sie kontaktieren?"],
     error: "Ich kann gerade nicht antworten. Bitte versuchen Sie es gleich noch einmal.",
     rateLimited: "Sie haben viele Nachrichten hintereinander gesendet. Bitte versuchen Sie es in einigen Minuten erneut.",

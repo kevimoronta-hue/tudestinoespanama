@@ -67,7 +67,7 @@ const es: FaqEntry[] = [
   },
   {
     id: "informacion",
-    q: "¿Qué información ofrece TodoDestino Panamá?",
+    q: "¿Qué información ofrece Tu Destino es Panamá?",
     a: [
       "Información, orientación y conexiones útiles para descubrir el país, preparar una nueva etapa de vida o explorar posibilidades de negocio: guías prácticas con fecha de actualización y fuentes oficiales, profesionales referenciados, oportunidades con fuente identificable y recursos.",
       "Es contenido informativo: no constituye asesoría jurídica, migratoria, fiscal ni financiera.",
@@ -86,7 +86,7 @@ const es: FaqEntry[] = [
   },
   {
     id: "contacto",
-    q: "¿Cómo puedo contactar con TodoDestino Panamá?",
+    q: "¿Cómo puedo contactar con Tu Destino es Panamá?",
     a: [
       "Por el formulario de la página de contacto o por WhatsApp al +507 6575 0380. También puedes seguirnos en Instagram y LinkedIn desde el pie de página.",
     ],
@@ -105,7 +105,7 @@ const es: FaqEntry[] = [
     q: "¿Dónde puedo consultar información oficial antes de tomar una decisión?",
     a: [
       "En las propias instituciones. En Vivir en Panamá encontrarás instituciones de referencia: el Servicio Nacional de Migración, el Ministerio de Salud (MINSA), la Autoridad de Tránsito y Transporte Terrestre (ATTT) y el Instituto Nacional de Estadística y Censo (INEC).",
-      "TodoDestino Panamá no está afiliado a estas instituciones. Verifica siempre la información vigente y consulta a un profesional habilitado.",
+      "Tu Destino es Panamá no está afiliado a estas instituciones. Verifica siempre la información vigente y consulta a un profesional habilitado.",
     ],
     links: ["live"],
     institutions: true,
@@ -160,7 +160,7 @@ const en: FaqEntry[] = [
   },
   {
     id: "informacion",
-    q: "What information does TodoDestino Panamá offer?",
+    q: "What information does Tu Destino es Panamá offer?",
     a: [
       "Useful information, guidance and connections to discover the country, prepare a new chapter of life or explore business possibilities: practical guides with update dates and official sources, listed professionals, opportunities with an identifiable source, and resources.",
       "It is informational content: it does not constitute legal, immigration, tax or financial advice.",
@@ -179,7 +179,7 @@ const en: FaqEntry[] = [
   },
   {
     id: "contacto",
-    q: "How can I contact TodoDestino Panamá?",
+    q: "How can I contact Tu Destino es Panamá?",
     a: [
       "Through the form on the contact page or on WhatsApp at +507 6575 0380. You can also follow us on Instagram and LinkedIn from the footer.",
     ],
@@ -198,7 +198,7 @@ const en: FaqEntry[] = [
     q: "Where can I check official information before making a decision?",
     a: [
       "With the institutions themselves. In Live in Panama you'll find reference institutions: the National Migration Service, the Ministry of Health (MINSA), the Land Transit and Transport Authority (ATTT) and the National Institute of Statistics and Census (INEC).",
-      "TodoDestino Panamá is not affiliated with these institutions. Always check the current information and consult a qualified professional.",
+      "Tu Destino es Panamá is not affiliated with these institutions. Always check the current information and consult a qualified professional.",
     ],
     links: ["live"],
     institutions: true,
@@ -253,7 +253,7 @@ const fr: FaqEntry[] = [
   },
   {
     id: "informacion",
-    q: "Quelles informations propose TodoDestino Panamá ?",
+    q: "Quelles informations propose Tu Destino es Panamá ?",
     a: [
       "Des informations, une orientation et des contacts utiles pour découvrir le pays, préparer une nouvelle étape de vie ou explorer des possibilités d’affaires : guides pratiques datés avec sources officielles, professionnels référencés, opportunités à la source identifiable et ressources.",
       "Il s’agit de contenu informatif : il ne constitue pas un conseil juridique, migratoire, fiscal ou financier.",
@@ -272,7 +272,7 @@ const fr: FaqEntry[] = [
   },
   {
     id: "contacto",
-    q: "Comment contacter TodoDestino Panamá ?",
+    q: "Comment contacter Tu Destino es Panamá ?",
     a: [
       "Par le formulaire de la page contact ou par WhatsApp au +507 6575 0380. Vous pouvez aussi nous suivre sur Instagram et LinkedIn depuis le pied de page.",
     ],
@@ -291,7 +291,7 @@ const fr: FaqEntry[] = [
     q: "Où consulter des informations officielles avant de décider ?",
     a: [
       "Auprès des institutions elles-mêmes. Dans Vivre au Panama, vous trouverez des institutions de référence : le Service national de migration, le ministère de la Santé (MINSA), l’Autorité du transit et des transports terrestres (ATTT) et l’Institut national de la statistique et du recensement (INEC).",
-      "TodoDestino Panamá n’est pas affilié à ces institutions. Vérifiez toujours l’information en vigueur et consultez un professionnel habilité.",
+      "Tu Destino es Panamá n’est pas affilié à ces institutions. Vérifiez toujours l’information en vigueur et consultez un professionnel habilité.",
     ],
     links: ["live"],
     institutions: true,
@@ -346,7 +346,7 @@ const de: FaqEntry[] = [
   },
   {
     id: "informacion",
-    q: "Welche Informationen bietet TodoDestino Panamá?",
+    q: "Welche Informationen bietet Tu Destino es Panamá?",
     a: [
       "Nützliche Informationen, Orientierung und Kontakte, um das Land zu entdecken, einen neuen Lebensabschnitt vorzubereiten oder Geschäftsmöglichkeiten zu erkunden: datierte praktische Leitfäden mit offiziellen Quellen, gelistete Fachleute, Chancen mit identifizierbarer Quelle und Ressourcen.",
       "Es handelt sich um informative Inhalte, keine rechtliche, migrationsrechtliche, steuerliche oder finanzielle Beratung.",
@@ -365,7 +365,7 @@ const de: FaqEntry[] = [
   },
   {
     id: "contacto",
-    q: "Wie kann ich TodoDestino Panamá kontaktieren?",
+    q: "Wie kann ich Tu Destino es Panamá kontaktieren?",
     a: [
       "Über das Formular auf der Kontaktseite oder per WhatsApp unter +507 6575 0380. Über die Fußzeile können Sie uns auch auf Instagram und LinkedIn folgen.",
     ],
@@ -384,7 +384,7 @@ const de: FaqEntry[] = [
     q: "Wo finde ich offizielle Informationen, bevor ich entscheide?",
     a: [
       "Bei den Institutionen selbst. Unter In Panama leben finden Sie Referenzinstitutionen: den Nationalen Migrationsdienst, das Gesundheitsministerium (MINSA), die Behörde für Landverkehr (ATTT) und das Nationale Institut für Statistik und Zensus (INEC).",
-      "TodoDestino Panamá ist mit diesen Institutionen nicht verbunden. Prüfen Sie stets die aktuellen Informationen und wenden Sie sich an eine zugelassene Fachperson.",
+      "Tu Destino es Panamá ist mit diesen Institutionen nicht verbunden. Prüfen Sie stets die aktuellen Informationen und wenden Sie sich an eine zugelassene Fachperson.",
     ],
     links: ["live"],
     institutions: true,
@@ -439,7 +439,7 @@ const it: FaqEntry[] = [
   },
   {
     id: "informacion",
-    q: "Quali informazioni offre TodoDestino Panamá?",
+    q: "Quali informazioni offre Tu Destino es Panamá?",
     a: [
       "Informazioni, orientamento e contatti utili per scoprire il paese, preparare una nuova fase di vita o esplorare possibilità di business: guide pratiche datate con fonti ufficiali, professionisti segnalati, opportunità con fonte identificabile e risorse.",
       "È un contenuto informativo: non costituisce consulenza legale, migratoria, fiscale o finanziaria.",
@@ -458,7 +458,7 @@ const it: FaqEntry[] = [
   },
   {
     id: "contacto",
-    q: "Come posso contattare TodoDestino Panamá?",
+    q: "Come posso contattare Tu Destino es Panamá?",
     a: [
       "Tramite il modulo della pagina contatti o su WhatsApp al +507 6575 0380. Puoi anche seguirci su Instagram e LinkedIn dal piè di pagina.",
     ],
@@ -477,7 +477,7 @@ const it: FaqEntry[] = [
     q: "Dove posso consultare informazioni ufficiali prima di decidere?",
     a: [
       "Presso le istituzioni stesse. In Vivere a Panamá trovi le istituzioni di riferimento: il Servizio nazionale di migrazione, il Ministero della Salute (MINSA), l’Autorità del transito e dei trasporti terrestri (ATTT) e l’Istituto nazionale di statistica e censimento (INEC).",
-      "TodoDestino Panamá non è affiliato a queste istituzioni. Verifica sempre le informazioni in vigore e consulta un professionista abilitato.",
+      "Tu Destino es Panamá non è affiliato a queste istituzioni. Verifica sempre le informazioni in vigore e consulta un professionista abilitato.",
     ],
     links: ["live"],
     institutions: true,

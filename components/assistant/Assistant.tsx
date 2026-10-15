@@ -36,7 +36,17 @@ export function openAssistant(question?: string) {
   window.dispatchEvent(new CustomEvent(OPEN_EVENT, { detail: { question } }));
 }
 
-export function Assistant({ locale, labels, whatsappMessage }: { locale: Locale; labels: Dictionary["assistant"]; whatsappMessage: string }) {
+export function Assistant({
+  locale,
+  labels,
+  siteName,
+  whatsappMessage,
+}: {
+  locale: Locale;
+  labels: Dictionary["assistant"];
+  siteName: string;
+  whatsappMessage: string;
+}) {
   const pathname = usePathname() ?? "";
   const isHome = pathname === `/${locale}`;
   const [visible, setVisible] = useState(false);
@@ -207,46 +217,54 @@ export function Assistant({ locale, labels, whatsappMessage }: { locale: Locale;
         className="ai-panel"
         inert={!open}
       >
-        <header className="flex items-center gap-3 border-b border-ink/8 px-5 py-3.5">
-          <Image src="/brand/logo-symbol.webp" alt="" width={44} height={30} className="h-auto w-[40px] shrink-0" unoptimized />
+        {/* Brand band: the white body slides over its lower edge. */}
+        <header className="ai-head">
+          <span className="ai-head-mark" aria-hidden="true">
+            <Image src="/brand/logo-symbol-white.webp" alt="" width={44} height={30} className="h-auto w-[30px]" unoptimized />
+          </span>
           <div className="min-w-0 flex-1">
-            <p id={titleId} className="flex items-center gap-2 font-display text-[1rem] font-bold leading-tight text-ink">
-              {labels.name}
-              <span className="rounded-full border border-blue-800/25 px-2 py-px font-display text-[0.68rem] font-bold uppercase tracking-[0.1em] text-blue-800">
-                {labels.beta}
-              </span>
+            <p id={titleId} className="truncate font-display text-[1.05rem] font-bold leading-tight tracking-[-0.01em] text-white">
+              {siteName}
             </p>
-            <p className="truncate text-[0.78rem] text-muted">TodoDestino Panamá</p>
+            <p className="mt-0.5 flex items-center gap-2 text-[0.8rem] text-white/70">
+              {labels.name}
+              <span className="ai-beta">{labels.beta}</span>
+            </p>
           </div>
-          <button type="button" onClick={close} aria-label={labels.close} className="ai-icon-btn -mr-2">
+          <button type="button" onClick={close} aria-label={labels.close} className="ai-head-close">
             <Icon name="close" size={20} />
           </button>
         </header>
 
         <div ref={logRef} className="ai-log" role="log" aria-live="polite" aria-label={labels.log}>
-          <AssistantBubble>
-            {labels.welcome.split("\n").map((l) => (
-              <p key={l}>{l}</p>
+          <div className="ai-welcome">
+            {labels.welcome.split("\n").map((l, i) => (
+              <p key={l} className={i === 0 ? "text-ink" : "text-muted"}>
+                {l}
+              </p>
             ))}
-          </AssistantBubble>
+          </div>
 
           {welcomeOnly ? (
-            <ul className="mt-1 flex flex-col items-start gap-2">
-              {labels.suggestions.map((s) => (
-                <li key={s}>
-                  <button
-                    type="button"
-                    className="ai-chip"
-                    onClick={() => {
-                      track("suggested_question_clicked", { locale });
-                      void send(s);
-                    }}
-                  >
-                    {s}
-                  </button>
-                </li>
-              ))}
-            </ul>
+            <div>
+              <p className="ai-kicker">{labels.suggestionsTitle}</p>
+              <ul className="ai-suggest">
+                {labels.suggestions.map((s) => (
+                  <li key={s}>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        track("suggested_question_clicked", { locale });
+                        void send(s);
+                      }}
+                    >
+                      <span>{s}</span>
+                      <Icon name="arrowRight" size={16} />
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ) : null}
 
           {msgs.map((m, i) =>
@@ -255,17 +273,15 @@ export function Assistant({ locale, labels, whatsappMessage }: { locale: Locale;
                 {m.content}
               </div>
             ) : (
-              <div key={i} className="flex flex-col items-start gap-2">
-                <AssistantBubble>
-                  {m.content.split(/\n+/).map((l, k) => (
-                    <p key={k}>{l}</p>
-                  ))}
-                </AssistantBubble>
+              <div key={i} className="ai-msg-bot">
+                {m.content.split(/\n+/).map((l, k) => (
+                  <p key={k}>{l}</p>
+                ))}
                 {m.links?.length ? (
-                  <div className="flex flex-wrap gap-x-4 gap-y-1 pl-1">
+                  <div className="mt-3 flex flex-wrap gap-2">
                     {m.links.map((l) => (
                       <Link key={l.key} href={l.href} className="ai-link" onClick={() => window.matchMedia("(max-width: 639px)").matches && close()}>
-                        {labels.see}: {l.label}
+                        {l.label}
                         <Icon name="arrowRight" size={14} />
                       </Link>
                     ))}
@@ -274,7 +290,7 @@ export function Assistant({ locale, labels, whatsappMessage }: { locale: Locale;
                 {m.whatsapp ? (
                   <div className="ai-wa">
                     <p>{labels.whatsappPrompt}</p>
-                    <a href={wa} target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-sm mt-2.5" onClick={() => track("whatsapp_clicked", { locale, from: "assistant" })}>
+                    <a href={wa} target="_blank" rel="noopener noreferrer" className="ai-wa-btn" onClick={() => track("whatsapp_clicked", { locale, from: "assistant" })}>
                       <Icon name="whatsapp" size={17} />
                       <span>{labels.whatsappCta}</span>
                     </a>
@@ -294,7 +310,7 @@ export function Assistant({ locale, labels, whatsappMessage }: { locale: Locale;
         </div>
 
         <form
-          className="border-t border-ink/8 px-4 pb-[max(12px,env(safe-area-inset-bottom))] pt-3"
+          className="ai-foot"
           onSubmit={(e) => {
             e.preventDefault();
             void send(text);
@@ -330,7 +346,7 @@ export function Assistant({ locale, labels, whatsappMessage }: { locale: Locale;
               {error}
             </p>
           ) : (
-            <p id={`${titleId}-note`} className="mt-2 text-[0.72rem] leading-snug text-muted">
+            <p id={`${titleId}-note`} className="mt-2.5 text-center text-[0.7rem] leading-snug text-muted/80">
               {labels.note}
             </p>
           )}
@@ -354,6 +370,3 @@ export function Assistant({ locale, labels, whatsappMessage }: { locale: Locale;
   );
 }
 
-function AssistantBubble({ children }: { children: React.ReactNode }) {
-  return <div className="ai-msg-bot">{children}</div>;
-}

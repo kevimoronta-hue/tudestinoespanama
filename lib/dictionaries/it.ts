@@ -557,7 +557,7 @@ export const it: Dictionary = {
       "Ambiente di sviluppo: alcuni contenuti contrassegnati «Demo» sono esempi e non informazioni reali.",
   },
   whatsapp: {
-    message: "Ciao, vorrei ricevere maggiori informazioni su TodoDestino Panamá.",
+    message: "Ciao, vorrei ricevere maggiori informazioni su Tu Destino es Panamá.",
   },
   faq: {
     eyebrow: "Domande frequenti",
@@ -568,12 +568,13 @@ export const it: Dictionary = {
   assistant: {
     name: "Assistente IA",
     beta: "Beta",
-    welcome: "Sono l’assistente IA di TodoDestino Panamá.\nCosa vorresti sapere?",
+    welcome: "Sono l’assistente IA di Tu Destino es Panamá.\nCosa vorresti sapere?",
     placeholder: "Scrivi la tua domanda…",
     send: "Invia",
     open: "Apri l’assistente IA",
     close: "Chiudi l’assistente",
     log: "Conversazione con l’assistente IA",
+    suggestionsTitle: "Puoi iniziare da qui",
     suggestions: ["Cosa posso scoprire a Panamá?", "Perché investire a Panamá?", "Com’è vivere a Panamá?", "Come posso contattarvi?"],
     error: "Al momento non posso rispondere. Riprova tra un attimo.",
     rateLimited: "Hai inviato molti messaggi di seguito. Riprova tra qualche minuto.",

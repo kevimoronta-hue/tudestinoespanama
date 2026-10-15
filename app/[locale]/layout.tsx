@@ -88,7 +88,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
           {children}
         </main>
         <Footer locale={locale} dict={dict} />
-        <Assistant locale={locale} labels={dict.assistant} whatsappMessage={dict.whatsapp.message} />
+        <Assistant locale={locale} labels={dict.assistant} siteName={dict.meta.siteName} whatsappMessage={dict.whatsapp.message} />
         <RevealObserver />
       </body>
     </html>
