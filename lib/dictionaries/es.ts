@@ -551,8 +551,7 @@ export const es = {
     disclaimer:
       "Contenido informativo. No constituye asesoría jurídica, migratoria, fiscal ni financiera.",
     rights: "Tu Destino es Panamá",
-    demoNotice:
-      "Entorno de desarrollo: algunos contenidos marcados «Demo» son ejemplos y no información real.",
+    demoNotice: "Versión de demostración: los contenidos marcados «Demo» son ejemplos y no información real.",
   },
   whatsapp: {
     message: "Hola, me gustaría recibir más información sobre Tu Destino es Panamá.",

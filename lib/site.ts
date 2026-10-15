@@ -22,11 +22,8 @@ export function absoluteUrl(path: string): string | undefined {
 }
 
 /**
- * Demo content (status: "demo") is shown in development by default and hidden in
- * production builds unless NEXT_PUBLIC_SHOW_DEMO_CONTENT=true is set explicitly
- * (e.g. for a private preview). It is always labelled "Demo" when shown.
+ * Demo content (status: "demo", always labelled "Demo") is SHOWN by default — the site is
+ * presented to the client as a demo. To hide it on the public launch, set
+ * NEXT_PUBLIC_SHOW_DEMO_CONTENT=false (e.g. in the Vercel project) and redeploy.
  */
-export const showDemoContent =
-  process.env.NEXT_PUBLIC_SHOW_DEMO_CONTENT !== undefined
-    ? process.env.NEXT_PUBLIC_SHOW_DEMO_CONTENT === "true"
-    : process.env.NODE_ENV !== "production";
+export const showDemoContent = process.env.NEXT_PUBLIC_SHOW_DEMO_CONTENT !== "false";

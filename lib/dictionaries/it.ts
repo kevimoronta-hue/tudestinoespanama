@@ -553,8 +553,7 @@ export const it: Dictionary = {
     disclaimer:
       "Contenuto informativo. Non costituisce consulenza legale, migratoria, fiscale né finanziaria.",
     rights: "Tu Destino es Panamá",
-    demoNotice:
-      "Ambiente di sviluppo: alcuni contenuti contrassegnati «Demo» sono esempi e non informazioni reali.",
+    demoNotice: "Versione dimostrativa: i contenuti contrassegnati «Demo» sono esempi e non informazioni reali.",
   },
   whatsapp: {
     message: "Ciao, vorrei ricevere maggiori informazioni su Tu Destino es Panamá.",

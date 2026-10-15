@@ -546,7 +546,7 @@ export const en: Dictionary = {
     commitment: "Stated goal: allocate at least 20% of profits to supporting sectors with social needs.",
     disclaimer: "Informational content. Not legal, immigration, tax or financial advice.",
     rights: "Tu Destino es Panamá",
-    demoNotice: "Development environment: some items labelled “Demo” are examples, not real information.",
+    demoNotice: "Demo version: items labelled “Demo” are examples, not real information.",
   },
   whatsapp: {
     message: "Hello, I would like more information about Tu Destino es Panamá.",

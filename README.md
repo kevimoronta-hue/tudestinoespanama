@@ -29,7 +29,7 @@ Ver `.env.example`. Puntos clave:
 | Variable | Uso |
 | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | **Vacía** hasta que el cliente confirme el dominio. Mientras esté vacía: sin canonical / hreflang absolutos, sin imágenes OG, `sitemap.xml` vacío y `robots.txt` bloquea la indexación. |
-| `NEXT_PUBLIC_SHOW_DEMO_CONTENT` | Muestra el contenido `status: "demo"` (siempre con insignia «Demo»). Por defecto: visible en `dev`, oculto en `build`. **No activar en el sitio público.** |
+| `NEXT_PUBLIC_SHOW_DEMO_CONTENT` | Contenido `status: "demo"` (siempre con insignia «Demo»). Por defecto **visible** (fase de demostración al cliente). Para el lanzamiento público: `false` y redesplegar. |
 | `CONTACT_WEBHOOK_URL` (+ `_CONOCER`, `_VIVIR`, `_INVERTIR`, `_EMPRESA`, `_OTRA`, `CONTACT_WEBHOOK_SECRET`) | Entrega de formularios (CRM, Make/Zapier, servicio de correo…). Sin endpoint, la API responde 503 y el formulario muestra un error conservando los datos. |
 | `CONTACT_DRY_RUN` | Solo en desarrollo: valida sin enviar y la interfaz dice explícitamente que **no** se envió. |
 
