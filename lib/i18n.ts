@@ -118,7 +118,7 @@ export function formatDate(iso: string, locale: Locale): string {
 }
 
 /** Best supported locale for an Accept-Language header (falls back to Spanish). */
-export function negotiateLocale(acceptLanguage: string | null | undefined): Locale {
+export function negotiateLocale(acceptLanguage: string | null | undefined, fallback: Locale = defaultLocale): Locale {
   const ranked = (acceptLanguage ?? "")
     .split(",")
     .map((part) => {
@@ -128,7 +128,7 @@ export function negotiateLocale(acceptLanguage: string | null | undefined): Loca
     .filter((x) => x.lang)
     .sort((a, b) => b.q - a.q);
   const best = ranked.find((x) => isLocale(x.lang))?.lang;
-  return isLocale(best) ? best : defaultLocale;
+  return isLocale(best) ? best : fallback;
 }
 
 export const LOCALE_COOKIE = "NEXT_LOCALE";

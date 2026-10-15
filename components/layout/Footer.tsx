@@ -3,8 +3,10 @@ import Link from "next/link";
 import { getToday } from "@/lib/content";
 import type { Dictionary } from "@/lib/dictionaries";
 import { href, routeAlternates, type Locale } from "@/lib/i18n";
+import { SOCIAL_LINKS } from "@/lib/contact-links";
 import { showDemoContent } from "@/lib/site";
 import { Flag } from "../ui/Flag";
+import { Icon } from "../ui/Icon";
 
 /** White-on-blue logo (scripts/build-logo-white.py): the brand blue of the master turned white. */
 const LOGO_RATIO = 1564 / 468;
@@ -49,20 +51,37 @@ export async function Footer({ locale, dict }: { locale: Locale; dict: Dictionar
               unoptimized
             />
           </Link>
-          <nav aria-label={dict.footer.explore}>
-            <ul className="grid grid-cols-2 gap-x-8 sm:flex sm:flex-wrap sm:gap-x-9 sm:gap-y-1">
-              {nav.map((l) => (
-                <li key={l.label}>
-                  <Link href={l.href} className={link}>
-                    {l.label}
-                  </Link>
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-10">
+            <nav aria-label={dict.footer.explore}>
+              <ul className="grid grid-cols-2 gap-x-8 sm:flex sm:flex-wrap sm:gap-x-9 sm:gap-y-1">
+                {nav.map((l) => (
+                  <li key={l.label}>
+                    <Link href={l.href} className={link}>
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+            <ul aria-label={dict.footer.social} className="-ml-2.5 flex items-center gap-1 lg:ml-0 lg:border-l lg:border-white/15 lg:pl-6">
+              {SOCIAL_LINKS.map((s) => (
+                <li key={s.key}>
+                  <a
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${s.label} ${dict.a11y.newTab}`}
+                    className="tap inline-flex items-center justify-center rounded-full text-white/75 transition-[color,background-color,transform] duration-[160ms] ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-white/10 hover:text-white active:scale-[0.97]"
+                  >
+                    <Icon name={s.key} size={20} />
+                  </a>
                 </li>
               ))}
             </ul>
-          </nav>
+          </div>
         </div>
 
-        <div className="flex flex-col gap-4 border-t border-white/12 py-7 text-[0.85rem] text-white/70 sm:flex-row sm:items-center sm:justify-between lg:py-9">
+        <div className="flex flex-col gap-4 border-t border-white/12 py-7 text-[0.85rem] text-white/70 sm:flex-row sm:items-center sm:justify-between lg:pt-9 max-[1399px]:pb-24 min-[1400px]:pb-9">
           <div className="space-y-1.5">
             <p className="flex items-center gap-2.5 text-white/85">
               <Flag code="pa" size={18} />

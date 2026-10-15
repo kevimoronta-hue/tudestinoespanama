@@ -548,6 +548,7 @@ export const fr: Dictionary = {
     },
   },
   footer: {
+    social: "Réseaux sociaux",
     tagline: "Informations, conseils d'orientation et contacts utiles pour découvrir le Panama.",
     explore: "Explorer",
     project: "Le projet",
@@ -561,6 +562,14 @@ export const fr: Dictionary = {
     rights: "Tu Destino es Panamá",
     demoNotice:
       "Environnement de développement : certains contenus marqués « Démo » sont des exemples et non des informations réelles.",
+  },
+  whatsapp: {
+    open: "Contact WhatsApp",
+    title: "Besoin d’aide ?",
+    text: "Écrivez-nous sur WhatsApp, nous vous orientons.",
+    cta: "Écrire sur WhatsApp",
+    close: "Fermer",
+    message: "Bonjour, j’aimerais recevoir plus d’informations sur TodoDestino Panamá.",
   },
   notFound: {
     title: "Page introuvable",

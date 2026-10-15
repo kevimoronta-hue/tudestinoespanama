@@ -8,6 +8,7 @@ import { RevealObserver } from "@/components/ui/RevealObserver";
 import { NAV_KEYS } from "@/components/layout/nav";
 import { getDetailAlternates } from "@/lib/content";
 import { getDictionary } from "@/lib/dictionaries";
+import { WhatsAppContact } from "@/components/ui/WhatsAppContact";
 import { lightLogoSrc } from "@/lib/brand";
 import { href, isLocale, localeMeta, locales } from "@/lib/i18n";
 import { metadataBase } from "@/lib/seo";
@@ -87,6 +88,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
           {children}
         </main>
         <Footer locale={locale} dict={dict} />
+        <WhatsAppContact labels={dict.whatsapp} />
         <RevealObserver />
       </body>
     </html>

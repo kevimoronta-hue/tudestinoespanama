@@ -541,6 +541,7 @@ export const it: Dictionary = {
     },
   },
   footer: {
+    social: "Social",
     tagline: "Informazioni, orientamento e contatti utili per scoprire Panamá.",
     explore: "Esplora",
     project: "Il progetto",
@@ -554,6 +555,14 @@ export const it: Dictionary = {
     rights: "Tu Destino es Panamá",
     demoNotice:
       "Ambiente di sviluppo: alcuni contenuti contrassegnati «Demo» sono esempi e non informazioni reali.",
+  },
+  whatsapp: {
+    open: "Contatto WhatsApp",
+    title: "Hai bisogno di aiuto?",
+    text: "Scrivici su WhatsApp e ti orientiamo.",
+    cta: "Scrivi su WhatsApp",
+    close: "Chiudi",
+    message: "Ciao, vorrei ricevere maggiori informazioni su TodoDestino Panamá.",
   },
   notFound: {
     title: "Pagina non trovata",

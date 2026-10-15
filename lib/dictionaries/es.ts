@@ -539,6 +539,7 @@ export const es = {
     },
   },
   footer: {
+    social: "Redes sociales",
     tagline: "Información, orientación y conexiones útiles para descubrir Panamá.",
     explore: "Explora",
     project: "El proyecto",
@@ -552,6 +553,14 @@ export const es = {
     rights: "Tu Destino es Panamá",
     demoNotice:
       "Entorno de desarrollo: algunos contenidos marcados «Demo» son ejemplos y no información real.",
+  },
+  whatsapp: {
+    open: "Contacto por WhatsApp",
+    title: "¿Necesitas ayuda?",
+    text: "Escríbenos por WhatsApp y te orientamos.",
+    cta: "Escribir por WhatsApp",
+    close: "Cerrar",
+    message: "Hola, me gustaría recibir más información sobre TodoDestino Panamá.",
   },
   notFound: {
     title: "Página no encontrada",
